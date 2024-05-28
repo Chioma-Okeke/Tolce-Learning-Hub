@@ -1,16 +1,16 @@
-// import { img1, img2, img3 } from "../assets/Hero"
+import { img1, img2, img3 } from "/src/assets/Hero"
 
 export const heroData = [
     {
         id: 1,
-        image: "/src/assets/Hero/collaborative-learning.jpeg"
+        image: {img1}
     },
     {
         id: 1,
-        image: "/src/assets/Hero/friends-learning-study-group.avif"
+        image: {img2}
     },
     {
         id: 1,
-        image: "/src/assets/Hero/heroimage1.png"
+        image: {img3}
     }
 ]

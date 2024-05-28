@@ -13,7 +13,7 @@ import GetStarted from "../components/GetStarted";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 import Service from "../components/Service";
-import { testimonialData } from "../data/TestimonialData";
+// import { testimonialData } from "../data/TestimonialData";
 
 function Home() {
     console.log(heroData);
