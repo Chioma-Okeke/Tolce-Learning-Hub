@@ -7,6 +7,7 @@ import {
     useAnimation,
     useScroll,
 } from "framer-motion";
+import src from "../assets/service-images/image1.png";
 
 function OurService() {
     const ref = React.useRef(null);
@@ -35,59 +36,53 @@ function OurService() {
                     outreaches. We currently focus on three (3) major areas
                 </p>
             </div>
-            {individualServiceData.map(
-                ({ id, src, Icon, title, description }) => {
-                    return id % 2 === 0 ? (
-                        <motion.div
-                            variants={{
-                                hidden: { opacity: 0, x: 75 },
-                                visible: { opacity: 1, x: 0 },
-                            }}
-                            initial="hidden"
-                            whileInView="visible"
-                            animate={mainControls}
-                            transition={{ duration: 0.6 }}
-                            key={id}
-                            className="md:grid md:grid-cols-2 mb-8 md:shadow-lg xl:shadow-none transition ease-out xl:hover:shadow-lg max-w-[1440px] mx-auto"
-                        >
-                            <img src={src} alt="" className="hidden md:block" />
-                            <div className="mx-auto md:border-none md:bg-white md:mb-0 md:rounded-none md:shadow-none border border-solid border-[#D0D5DD] p-5 bg-[#F9FAFB] rounded-lg shadow-lg ">
-                                <div className="bg-[#0020F11A] rounded-lg w-fit p-2 mb-12">
-                                    <Icon size={30} color="#0020F1" />
-                                </div>
-                                <h1 className="font-bold lg:text-lg">
-                                    {title}
-                                </h1>
-                                <p className="lg:text-lg">{description}</p>
+            {individualServiceData.map(({ id, Icon, title, description }) => {
+                return id % 2 === 0 ? (
+                    <motion.div
+                        variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                        initial="hidden"
+                        whileInView="visible"
+                        animate={mainControls}
+                        transition={{ duration: 0.6 }}
+                        key={id}
+                        className="md:grid md:grid-cols-2 mb:gap-2 mb-8 md:shadow-lg xl:shadow-none transition ease-out xl:hover:shadow-lg max-w-[1440px] mx-auto"
+                    >
+                        <img src={src} alt="" className="hidden md:block" />
+                        <div className="mx-auto md:border-none md:bg-white md:mb-0 md:rounded-none md:shadow-none border border-solid border-[#D0D5DD] p-5 bg-[#F9FAFB] rounded-lg shadow-lg lg:flex lg:items-start lg:justify-center lg:flex-col ">
+                            <div className="bg-[#0020F11A] rounded-lg w-fit p-2 mb-12">
+                                <Icon size={30} color="#0020F1" />
                             </div>
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            variants={{
-                                hidden: { opacity: 0, x: 75 },
-                                visible: { opacity: 1, x: 0 },
-                            }}
-                            initial="hidden"
-                            whileInView="visible"
-                            animate={mainControls}
-                            transition={{ duration: 0.6 }}
-                            key={id}
-                            className="md:grid md:grid-cols-2 mb-8 md:shadow-lg xl:shadow-none transition ease-out xl:hover:shadow-lg max-w-[1440px] mx-auto"
-                        >
-                            <div className="mx-auto md:border-none md:bg-white md:mb-0 border md:rounded-none md:shadow-none border-solid border-[#D0D5DD] p-5 bg-[#F9FAFB] rounded-lg shadow-lg ">
-                                <div className="bg-[#0020F11A] rounded-lg w-fit p-2 mb-12">
-                                    <Icon size={30} color="#0020F1" />
-                                </div>
-                                <h1 className="font-bold lg:text-lg">
-                                    {title}
-                                </h1>
-                                <p className="lg:text-lg">{description}</p>
+                            <h1 className="font-bold lg:text-lg">{title}</h1>
+                            <p className="lg:text-lg">{description}</p>
+                        </div>
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                        initial="hidden"
+                        whileInView="visible"
+                        animate={mainControls}
+                        transition={{ duration: 0.6 }}
+                        key={id}
+                        className="md:grid md:grid-cols-2 mb:gap-2 mb-8 md:shadow-lg xl:shadow-none transition ease-out xl:hover:shadow-lg max-w-[1440px] mx-auto"
+                    >
+                        <div className="mx-auto md:border-none md:bg-white md:mb-0 border md:rounded-none md:shadow-none border-solid border-[#D0D5DD] p-5 bg-[#F9FAFB] rounded-lg shadow-lg lg:flex lg:items-start lg:justify-center lg:flex-col ">
+                            <div className="bg-[#0020F11A] rounded-lg w-fit p-2 mb-12">
+                                <Icon size={30} color="#0020F1" />
                             </div>
-                            <img src={src} alt="" className="hidden md:block" />
-                        </motion.div>
-                    );
-                }
-            )}
+                            <h1 className="font-bold lg:text-lg">{title}</h1>
+                            <p className="lg:text-lg">{description}</p>
+                        </div>
+                        <img src={src} alt="" className="hidden md:block" />
+                    </motion.div>
+                );
+            })}
         </div>
     );
 }

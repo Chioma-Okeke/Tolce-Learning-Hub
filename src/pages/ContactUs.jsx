@@ -38,7 +38,7 @@ function ContactUs() {
     return (
         <div>
             <Nav />
-            <section className="w-[90%] md:w-[95%] mx-auto my-2 py-6">
+            <section className="w-[90%] max-w-[1100px] md:w-[95%] mx-auto my-2 py-6">
                 <div className="md:grid md:grid-cols-2 md:gap-4 lg:gap-10 max-w-[1440px] mx-auto">
                     <form
                         onSubmit={(event) => handleSubmit(event)}

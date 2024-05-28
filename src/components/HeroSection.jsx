@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react'
+import src from "../assets/Hero/heroimage1.png";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function HeroSection({ image, swiper }) {
@@ -14,7 +15,7 @@ function HeroSection({ image, swiper }) {
     console.log(image, "hey");
     return (
         <div
-            style={{ backgroundImage: `url('${image}')` }}
+            style={{ backgroundImage: `url('${src}')` }}
             className="bg-no-repeat bg-center bg-cover h-screen relative hero-section pt-40"
         >
             <div className="bg-black h-full absolute top-0 left-0 opacity-50 w-full -z-1"></div>
