@@ -13,6 +13,7 @@ function JoinUs() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        setEmail("");
         console.log(email);
     }
 

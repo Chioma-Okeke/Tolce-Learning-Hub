@@ -20,6 +20,7 @@ function OurServices() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        setEmail("");
         console.log(email);
     }
     return (
