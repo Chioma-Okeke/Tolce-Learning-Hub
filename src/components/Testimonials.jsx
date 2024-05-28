@@ -5,6 +5,26 @@ import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import { testimonialData } from "../data/TestimonialData";
 
 function Testimonials({ swiper }) {
+    // const scrollContainer = document.querySelector(".scrollBar");
+    // scrollContainer.addEventListener("wheel", (event) => {
+    //     event.preventDefault();
+    //     scrollContainer.scrollLeft += event.deltaY;
+    //     scrollContainer.style;
+    // });
+
+    // const backBtn = document.querySelector(".backBtn");
+    // const nextBtn = document.querySelector(".nextBtn");
+
+    // backBtn.addEventListener("click", () => {
+    //     scrollContainer.style.scrollBehavior = "smooth";
+    //     scrollContainer.scrollLeft -= 1200;
+    // });
+
+    // nextBtn.addEventListener("click", () => {
+    //     scrollContainer.style.scrollBehavior = "smooth";
+    //     scrollContainer.scrollLeft += 1200;
+    // });
+
     function handlePrev() {
         swiper?.slidePrev();
     }
@@ -20,10 +40,9 @@ function Testimonials({ swiper }) {
                     size={25}
                     className="hover:scale-150"
                     cursor={"pointer"}
-                    onClick={handlePrev}
                 />
             </div>
-            <div className="flex overflow-y-scroll w-[90%] mx-auto">
+            <div className="flex overflow-y-scroll w-[90%] mx-auto scrollBar">
                 {testimonialData.map(({ id, message, name, cohort }) => {
                     return (
                         <div
@@ -73,7 +92,6 @@ function Testimonials({ swiper }) {
                     size={25}
                     className="hover:scale-150"
                     cursor={"pointer"}
-                    onClick={handleNext}
                 />
             </div>
         </div>

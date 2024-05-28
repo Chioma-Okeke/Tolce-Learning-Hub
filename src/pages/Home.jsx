@@ -58,7 +58,7 @@ function Home() {
             <section className="bg-[#0020F1]">
                 <GetStarted />
             </section>
-            <Swiper
+            {/* <Swiper
                 spaceBetween={0}
                 speed={4000}
                 autoplay={{ delay: 6000, disableOnInteraction: false }}
@@ -73,10 +73,10 @@ function Home() {
                 <SwiperSlide className="my-16">
                     <Testimonials swiper={swiperInstane} />
                 </SwiperSlide>
-            </Swiper>
-            {/* <section className="my-16">
+            </Swiper> */}
+            <section className="my-16">
                 <Testimonials />
-            </section> */}
+            </section>
             <div className="w-[85%] mx-auto my-10">
                 <JoinUs />
             </div>

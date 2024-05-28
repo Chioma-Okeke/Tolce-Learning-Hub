@@ -20,3 +20,5 @@ body {
 .blue-to-whiteIcon:hover {
   color: #fff;
 }
+
+.scrollBar::-webkit-scrollbar {display:none;}
