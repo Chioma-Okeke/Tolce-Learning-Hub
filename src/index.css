@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Ínter', sans-serif;
+}
+
+/* .hero-section {
+  background-image: url('./assets/heroimage1.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+} */
+
+.blue-to-whiteIcon {
+  color: #050794;
+}
+
+.blue-to-whiteIcon:hover {
+  color: #fff;
+}
