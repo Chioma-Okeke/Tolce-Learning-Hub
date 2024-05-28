@@ -23,7 +23,7 @@ function OurService() {
 
     return (
         <div>
-            <div className="w-[80%] md:w-[60%] mx-auto text-center mb-12">
+            <div className="w-[90%] md:w-[60%] mx-auto text-center mb-12">
                 <h1 className="font-bold text-[#0020F1] text-lg lg:text-2xl">
                     Our Services
                 </h1>

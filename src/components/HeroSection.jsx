@@ -24,7 +24,7 @@ function HeroSection({ image, swiper }) {
                     size={50}
                     color="white"
                     cursor={"pointer"}
-                    className="transition ease-out hover:scale-150"
+                    className="hidden lg:block transition ease-out hover:scale-150"
                     onClick={handlePrev}
                 />
                 <div className="ml-3 mt-5">
@@ -45,7 +45,7 @@ function HeroSection({ image, swiper }) {
                     size={50}
                     color="white"
                     cursor={"pointer"}
-                    className="transition ease-out hover:scale-150"
+                    className="hidden lg:block transition ease-out hover:scale-150"
                     onClick={handleNext}
                 />
             </div>

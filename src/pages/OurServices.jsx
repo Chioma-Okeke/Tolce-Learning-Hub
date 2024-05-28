@@ -52,11 +52,11 @@ function OurServices() {
                             <input
                                 type="text"
                                 placeholder="Enter your email"
-                                className="border border-solid border-[#D0D5DD] mb-4 lg:mr-4 lg:mb-0 py-2 px-4 w-[60%] lg:w-[70%] rounded-lg focus:outline-none transition ease-out hover:shadow-md focus:shadow-md"
+                                className="border border-solid border-[#D0D5DD] mb-4 lg:mr-4 lg:mb-0 py-2 px-4 w-[80%] lg:w-[70%] rounded-lg focus:outline-none transition ease-out hover:shadow-md focus:shadow-md"
                                 value={email}
                                 onChange={(event) => handleChange(event)}
                             />
-                            <button className="bg-[#0020F1] border-2 border-solid border-[#7F56D9] text-white py-2 px-4 w-[60%] lg:w-[50%] xl:w-[40%] rounded-lg focus:bg-[#0020F1] transition ease-linear hover:bg-[#050794] duration-500">
+                            <button className="bg-[#0020F1] border-2 border-solid border-[#7F56D9] text-white py-2 px-4 w-[80%] lg:w-[50%] xl:w-[40%] rounded-lg focus:bg-[#0020F1] transition ease-linear hover:bg-[#050794] duration-500">
                                 Join our newsletter
                             </button>
                         </form>

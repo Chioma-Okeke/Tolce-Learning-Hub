@@ -1,9 +1,26 @@
 /* eslint-disable react/prop-types */
-// import React from 'react'
+import React from "react";
 import Image from "../assets/serviceImage.jpeg";
 import { serviceData } from "../data/serviceData";
+import {
+    motion,
+    useInView,
+    useAnimate,
+    useAnimation,
+    useScroll,
+} from "framer-motion";
 
 function Service({ title }) {
+    const ref = React.useRef(null);
+    const isInView = useInView(ref, { once: true });
+
+    const mainControls = useAnimation();
+
+    React.useEffect(() => {
+        if (isInView) {
+            mainControls.start("visible");
+        }
+    }, [isInView]);
     return (
         <div className="w-[85%] mx-auto">
             <div className="text-center mb-5">
@@ -16,7 +33,15 @@ function Service({ title }) {
                 <img className="hidden md:block w-full " src={Image} alt="" />
                 <div className="grid grid-row-3 md:grid-cols-3 gap-4 lg:grid-rows-none md:mt-[-200px] lg:mt-[-250px]">
                     {serviceData.map(({ id, Icon, title, description }) => (
-                        <div
+                        <motion.div
+                            variants={{
+                                hidden: { opacity: 0 },
+                                visible: { opacity: 1 },
+                            }}
+                            initial="hidden"
+                            whileInView="visible"
+                            animate={mainControls}
+                            transition={{ duration: 0.6 }}
                             key={id}
                             className="p-6 bg-[#F9FAFB] pb-10 lg:pb-16 md:p-4"
                         >
@@ -25,7 +50,7 @@ function Service({ title }) {
                             </div>
                             <h1 className="font-bold lg:text-lg">{title}</h1>
                             <p className="lg:text-lg">{description}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
