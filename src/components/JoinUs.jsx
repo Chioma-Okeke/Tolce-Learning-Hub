@@ -64,7 +64,7 @@ function JoinUs({ setSubscriptionConfirmed }) {
 
     return (
         <section className="bg-[#F9FAFB] flex flex-col justify-center py-12 px-3">
-            <h1 className="font-bold text-xl sm:text-2xl md:text-4xl text-[#101828] text-center">
+            <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl text-[#101828] text-center">
                 Join our Learning Community here
             </h1>
             <p className="text-[#475467] text-sm sm:text-md md:text-xl mt-4 mb-5 text-center">

@@ -33,7 +33,7 @@ function About() {
                     <p className="bg-[#E1E5FF] border border-solid border-[#D5DAFF] font-bold text-lg w-24 mx-auto rounded-2xl lg:text-lg xl:text-xl">
                         About
                     </p>
-                    <h1 className="font-bold text-4xl my-6 lg:text-3xl xl:text-5xl">
+                    <h1 className="font-bold text-2xl lg:text-4xl my-6 xl:text-5xl">
                         Our Mission
                     </h1>
                     <p className="text-base text-[#475467] lg:text-lg xl:text-xl">

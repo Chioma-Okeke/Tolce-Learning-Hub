@@ -17,7 +17,7 @@ function OurService() {
     return (
         <div>
             <div className="w-[90%] md:w-[60%] mx-auto text-center mb-12">
-                <h1 className="font-bold text-[#0020F1] text-lg lg:text-2xl">
+                <h1 className="font-bold text-[#0020F1] text-2xl lg:text-5xl mb-4">
                     Our Services
                 </h1>
                 <p className="text-[#475467] lg:text-lg">

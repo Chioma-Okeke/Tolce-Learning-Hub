@@ -8,7 +8,7 @@ function Service({ title }) {
     return (
         <div className="w-[90%] mx-auto">
             <div className="text-center mb-5">
-                <h1 className="font-bold mb-2 text-4xl my-6 lg:text-3xl xl:text-5xl">
+                <h1 className="font-bold mb-2 text-2xl my-6 lg:text-4xl">
                     {title}
                 </h1>
                 <p className="text-base sm:text-lg">

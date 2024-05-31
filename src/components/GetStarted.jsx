@@ -17,9 +17,9 @@ function GetStarted() {
     }, [isInView, mainControls]);
 
     return (
-        <div className="w-[90%] max-w-[1024px] mx-auto px-4 py-12 md:py-20 border border-neutral-300 bg-white">
-            <div className="md:flex md:items-center mb-4">
-                <h1 className="font-bold mb-5 mb:mb-0 text-[#050794] text-xl sm:text-4xl md:w-[40%] lg:w-[50%]">
+        <div className="w-[90%] max-w-[1440px] mx-auto px-4 py-12 md:py-20 flex flex-col lg:flex-row bg-white">
+            <div className="md:flex md:items-center mb-4 lg:w-[60%] gap-5 xl:g">
+                <h1 className="font-bold mb-5 mb:mb-0 text-[#050794] text-2xl sm:text-4xl md:w-[60%] lg:w-[60%]">
                     Accelerate Your Career Growth. Your learning, Our hub
                 </h1>
                 <button className=" flex items-center justify-center p-3 bg-white text-[#050794] rounded-lg transition ease-linear hover:bg-[#050794] hover:text-white duration-500">
@@ -42,7 +42,7 @@ function GetStarted() {
                 }}
                 initial="hidden"
                 animate={mainControls}
-                className="flex flex-col items-center justify-center sm:flex-row"
+                className="flex flex-col items-center justify-center sm:flex-row lg:w-[40%]"
             >
                 <div className="flex w-72 flex-col items-center py-8 sm:py-0">
                     <h1 className="mb-2 text-center">
