@@ -22,8 +22,8 @@ function YoutubeVideo() {
             src="https://www.youtube.com/embed/GfF2e0vyGM4?si=pnb5P_twj_xL5Ylg?autoplay=1&mute=1&controls=1"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            className="absolute bottom-14 md:bottom-0 left-1/2 -translate-x-1/2 left w-[80%] md:w-[680px] xl:w-[60%] h-[350px] xl:h-[400px] 2xl:h-[450px] shadow-lg"
+            allowFullScreen
+            className="bg-black absolute bottom-14 md:bottom-0 left-1/2 -translate-x-1/2 left w-[80%] md:w-[680px] xl:w-[60%] h-[350px] xl:h-[400px] 2xl:h-[450px] shadow-lg"
         ></iframe>
     );
 }

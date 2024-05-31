@@ -1,16 +1,19 @@
-// import { img1, img2, img3 } from "/src/assets/Hero"
+
+import image1 from "../assets/Hero/heroimage1.png";
+import image2 from "../assets/Hero/collaborative-learning.jpeg";
+import image3 from "../assets/Hero/friends-learning-study-group.avif";
 
 export const heroData = [
     {
         id: 1,
-        // image: {img1}
+        image: image1,
     },
     {
-        id: 1,
-        // image: {img2}
+        id: 2,
+        image: image2,
     },
     {
-        id: 1,
-        // image: {img3}
-    }
+        id: 3,
+        image: image3,
+    },
 ]
