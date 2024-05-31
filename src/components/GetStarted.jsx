@@ -2,14 +2,8 @@
 // import React from "react";
 import { image1, image2 } from "../assets/get-started";
 import { GrFormNextLink } from "react-icons/gr";
-import { useEffect, useRef } from "react";
-import {
-    motion,
-    useInView,
-    useAnimate,
-    useAnimation,
-    useScroll,
-} from "framer-motion";
+// import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 function GetStarted() {
     // const [studentCount, setStudentCount] = React.useState(0);
@@ -25,19 +19,8 @@ function GetStarted() {
 
     // const { scrollYProgress } = useScroll;
 
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
-
-    const mainControls = useAnimation();
-
-    useEffect(() => {
-        if (isInView) {
-            mainControls.start("visible");
-        }
-    }, [isInView]);
-
     return (
-        <div className="w-[85%] mx-auto py-20 md:py-28" ref={ref}>
+        <div className="w-[85%] mx-auto py-20 md:py-28">
             <div className="md:flex md:items-center justify-between mb-16">
                 <h1 className="font-bold mb-5 mb:mb-0 text-white text-xl sm:text-4xl md:w-[40%] lg:w-[30%]">
                     Accelerate Your Career Growth. Your learning, Our hub
@@ -57,8 +40,7 @@ function GetStarted() {
                 }}
                 initial="hidden"
                 whileInView="visible"
-                animate={mainControls}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.9 }}
                 className="gap-4 grid grid-rows-4 sm:grid-cols-4 sm:grid-rows-none w-[80%] mx-auto sm:w-full"
             >
                 <div className="bg-[#F9FAFB] flex flex-col justify-center px-5">

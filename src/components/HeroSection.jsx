@@ -1,32 +1,16 @@
 /* eslint-disable react/prop-types */
 // import React from 'react'
 import src from "../assets/Hero/heroimage1.png";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+// import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-function HeroSection({ image, swiper }) {
-    function handlePrev() {
-        swiper?.slidePrev();
-    }
-
-    function handleNext() {
-        swiper?.slideNext();
-    }
-
-    console.log(image, "hey");
+function HeroSection() {
     return (
         <div
             style={{ backgroundImage: `url('${src}')` }}
-            className="bg-no-repeat bg-center bg-cover h-screen relative hero-section pt-40"
+            className="bg-no-repeat bg-center bg-cover h-screen relative hero-section pt-40 -z-20"
         >
             <div className="bg-black h-full absolute top-0 left-0 opacity-50 w-full -z-1"></div>
             <div className="w-[90%] mx-auto max-w-[1440px] z-1 flex items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <IoIosArrowBack
-                    size={50}
-                    color="white"
-                    cursor={"pointer"}
-                    className="hidden lg:block transition ease-out hover:scale-150"
-                    onClick={handlePrev}
-                />
                 <div className="ml-3 mt-5">
                     <h1 className="font-bold text-lg sm:text-3xl md:text-4xl lg:text-5xl text-white w-full lg:w-[60%] mb-3 md:mb-9 leading-12">
                         Bridging the gap between the Classroom and Corporate
@@ -41,13 +25,6 @@ function HeroSection({ image, swiper }) {
                         </button>
                     </div>
                 </div>
-                <IoIosArrowForward
-                    size={50}
-                    color="white"
-                    cursor={"pointer"}
-                    className="hidden lg:block transition ease-out hover:scale-150"
-                    onClick={handleNext}
-                />
             </div>
         </div>
     );

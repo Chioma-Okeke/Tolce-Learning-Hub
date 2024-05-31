@@ -2,25 +2,21 @@
 import React from "react";
 import Image from "../assets/serviceImage.jpeg";
 import { serviceData } from "../data/serviceData";
-import {
-    motion,
-    useInView,
-    useAnimate,
-    useAnimation,
-    useScroll,
-} from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function Service({ title }) {
-    const ref = React.useRef(null);
-    const isInView = useInView(ref, { once: true });
+    // const ref = React.useRef(null);
+    const [ref, inView] = useInView();
 
     const mainControls = useAnimation();
 
     React.useEffect(() => {
-        if (isInView) {
+        if (inView) {
             mainControls.start("visible");
         }
-    }, [isInView]);
+    }, [inView, mainControls]);
+
     return (
         <div className="w-[85%] mx-auto">
             <div className="text-center mb-5">
@@ -34,14 +30,17 @@ function Service({ title }) {
                 <div className="grid grid-row-3 md:grid-cols-3 gap-4 lg:grid-rows-none md:mt-[-200px] lg:mt-[-250px]">
                     {serviceData.map(({ id, Icon, title, description }) => (
                         <motion.div
+                            ref={ref}
                             variants={{
-                                hidden: { opacity: 0 },
-                                visible: { opacity: 1 },
+                                hidden: { opacity: 0, y: 50 },
+                                visible: {
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: { duration: 0.8 },
+                                },
                             }}
                             initial="hidden"
-                            whileInView="visible"
                             animate={mainControls}
-                            transition={{ duration: 0.6 }}
                             key={id}
                             className="p-6 bg-[#F9FAFB] pb-10 lg:pb-16 md:p-4"
                         >

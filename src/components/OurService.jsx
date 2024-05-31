@@ -1,25 +1,19 @@
 import React from "react";
 import { individualServiceData } from "../data/serviceData";
-import {
-    motion,
-    useInView,
-    useAnimate,
-    useAnimation,
-    useScroll,
-} from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import src from "../assets/service-images/image1.png";
+import { useInView } from "react-intersection-observer";
 
 function OurService() {
-    const ref = React.useRef(null);
-    const isInView = useInView(ref, { once: true });
+    const [ref, inView] = useInView(ref, { once: true });
 
     const mainControls = useAnimation();
 
     React.useEffect(() => {
-        if (isInView) {
+        if (inView) {
             mainControls.start("visible");
         }
-    }, [isInView]);
+    }, [inView, mainControls]);
 
     return (
         <div>
@@ -41,12 +35,14 @@ function OurService() {
                     <motion.div
                         variants={{
                             hidden: { opacity: 0, y: 50 },
-                            visible: { opacity: 1, y: 0 },
+                            visible: {
+                                opacity: 1,
+                                y: 0,
+                                transition: { duration: 1 },
+                            },
                         }}
                         initial="hidden"
-                        whileInView="visible"
                         animate={mainControls}
-                        transition={{ duration: 0.6 }}
                         key={id}
                         className="md:grid md:grid-cols-2 mb:gap-2 mb-8 md:shadow-lg xl:shadow-none transition ease-out xl:hover:shadow-lg max-w-[1440px] mx-auto"
                     >
@@ -63,12 +59,14 @@ function OurService() {
                     <motion.div
                         variants={{
                             hidden: { opacity: 0, y: 50 },
-                            visible: { opacity: 1, y: 0 },
+                            visible: {
+                                opacity: 1,
+                                y: 0,
+                                transition: { duration: 1 },
+                            },
                         }}
                         initial="hidden"
-                        whileInView="visible"
                         animate={mainControls}
-                        transition={{ duration: 0.6 }}
                         key={id}
                         className="md:grid md:grid-cols-2 mb:gap-2 mb-8 md:shadow-lg xl:shadow-none transition ease-out xl:hover:shadow-lg max-w-[1440px] mx-auto"
                     >
