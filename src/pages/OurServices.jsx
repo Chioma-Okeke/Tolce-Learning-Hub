@@ -8,6 +8,7 @@ import heroImage from "../assets/service-images/heroImage.png";
 import { faqData } from "../data/faqItems";
 import FaqItems from "../components/FaqItems";
 import OurService from "../components/OurService";
+import BackToTop from "../components/BackToTop";
 
 function OurServices() {
     const [email, setEmail] = React.useState("");
@@ -25,6 +26,7 @@ function OurServices() {
     }
     return (
         <div>
+            <BackToTop />
             <Nav />
             <section
                 className="py-8 relative w-[90%] mx-auto my-4"

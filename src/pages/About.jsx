@@ -7,6 +7,7 @@ import Service from "../components/Service";
 import backgroundPicture from "../assets/backgroundpattern.svg";
 import YoutubeVideo from "../components/YoutubeVideo";
 import { useEffect, useState } from "react";
+import BackToTop from "../components/BackToTop";
 
 function About() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -25,6 +26,7 @@ function About() {
 
     return (
         <div>
+            <BackToTop />
             <Nav />
             <section className="w-[90%] mx-auto text-center my-4 pt-4 pb-8">
                 <div className="w-full sm:w-[75%] xl:w-[65%] mx-auto">

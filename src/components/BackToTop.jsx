@@ -28,7 +28,7 @@ function BackToTop() {
                     size={50}
                     onClick={scrollTop}
                     color="white"
-                    className="fixed bottom-3 right-5 bg-[#0020f1] p-2 cursor-pointer rounded-full tansition ease-out hover:scale-110 duration-300"
+                    className="fixed bottom-4 right-5 bg-[#0020f1] p-2 cursor-pointer rounded-full tansition ease-out hover:scale-110 duration-300"
                 />
             )}
         </div>

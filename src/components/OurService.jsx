@@ -5,7 +5,7 @@ import src from "../assets/service-images/image1.png";
 import { useInView } from "react-intersection-observer";
 
 function OurService() {
-    const [ref, inView] = useInView(ref, { once: true });
+    const [ref, inView] = useInView();
 
     const mainControls = useAnimation();
 
@@ -33,12 +33,13 @@ function OurService() {
             {individualServiceData.map(({ id, Icon, title, description }) => {
                 return id % 2 === 0 ? (
                     <motion.div
+                        ref={ref}
                         variants={{
                             hidden: { opacity: 0, y: 50 },
                             visible: {
                                 opacity: 1,
                                 y: 0,
-                                transition: { duration: 1 },
+                                transition: { duration: 0.4 },
                             },
                         }}
                         initial="hidden"

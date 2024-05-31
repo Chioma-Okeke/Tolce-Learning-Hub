@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import JoinUs from "../components/JoinUs";
 import Nav from "../components/Nav";
 import image from "../assets/contactUsImage.png";
+import BackToTop from "../components/BackToTop";
 
 function ContactUs() {
     const [isChecked, setIsChecked] = React.useState(false);
@@ -37,6 +38,7 @@ function ContactUs() {
 
     return (
         <div>
+            <BackToTop />
             <Nav />
             <section className="w-[90%] max-w-[1100px] md:w-[95%] mx-auto my-2 py-6">
                 <div className="md:grid md:grid-cols-2 md:gap-4 lg:gap-10 max-w-[1440px] mx-auto">
