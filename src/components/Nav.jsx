@@ -10,7 +10,7 @@ function Nav() {
     }
 
     return (
-        <header className="w-full flex flex-row items-center justify-between px-8 pl-3 sm:px-20 bg-white relative max-w-[1440px] mx-auto z-10">
+        <header className="w-full flex flex-row items-center justify-between px-8 pl-3 sm:px-20 bg-white relative max-w-[1440px] mx-auto z-40">
             <a href="/">
                 <img src={Logo} alt="" className="w-32" />
             </a>
