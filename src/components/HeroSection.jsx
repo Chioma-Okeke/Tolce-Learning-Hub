@@ -32,7 +32,7 @@ function HeroSection() {
     }
 
     return (
-        <div className="relative">
+        <div className="relative h-screen">
             <Swiper
                 spaceBetween={0}
                 speed={4000}
@@ -50,7 +50,10 @@ function HeroSection() {
                         key={id}
                         className="relative w-full h-fit z-10"
                     >
-                        <img src={image} alt="" className="w-full" />
+                        <div
+                            style={{ backgroundImage: `url(${image})` }}
+                            className="w-full h-screen bg-cover bg-no-repeat bg-center"
+                        ></div>
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -69,10 +72,10 @@ function HeroSection() {
                         environment
                     </h1>
                     <div className="flex flex-row items-center gap-3">
-                        <button className="bg-[#0020F1] text-[13px] sm:text-base font-bold text-white rounded-lg p-2 w-[43%] sm:w-[60%] lg:w-[30%] md:px-7 md:py-4 transition ease-linear delay-150 hover:bg-[#080E7F] duration-300">
+                        <button className="bg-[#0020F1] text-[13px] sm:text-base font-bold text-white rounded-lg p-2 md:px-7 md:py-4 transition ease-linear delay-150 hover:bg-[#080E7F] duration-300">
                             Our Services
                         </button>
-                        <button className="text-white text-[12px] sm:text-base font-bold bg-transparent rounded-lg p-2 w-[40%] sm:w-[60%] lg:w-[30%] md:px-11 md:py-[13px] border-solid border-2 border-white transition ease-linear hover:bg-[#050794] hover:text-white duration-500">
+                        <button className="text-white text-[12px] sm:text-base font-bold bg-transparent rounded-lg p-2 md:px-11 md:py-[13px] border-solid border-2 border-white transition ease-linear hover:bg-[#050794] hover:text-white duration-500">
                             Join us
                         </button>
                     </div>

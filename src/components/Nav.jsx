@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Logo from "../assets/logo.svg";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 function Nav() {
     const [shownav, setshownav] = useState(false);
@@ -17,36 +18,57 @@ function Nav() {
             <nav className="hidden md:flex">
                 <ul className="list-style-none flex gap-9">
                     <li>
-                        <a
-                            className="text-[#475467] hover:text-[#0020F1] focus:text-[#0020F1] font-bold text-base"
-                            href="/"
+                        <NavLink
+                            className={({ isActive }) => {
+                                return (
+                                    "text-[#141414] no-underline " +
+                                    (!isActive
+                                        ? " hover:text-[#0020f1]"
+                                        : "font-bold text-[#0020f1]")
+                                );
+                            }}
+                            to="/"
                         >
                             Home
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
-                        <a
-                            className="text-[#475467] hover:text-[#0020F1] focus:text-[#0020F1] font-bold text-base"
-                            href="/about"
+                        <NavLink
+                            className={({ isActive }) => {
+                                return (
+                                    "text-[#141414] no-underline " +
+                                    (!isActive
+                                        ? " hover:text-[#0020f1]"
+                                        : "font-bold text-[#0020f1]")
+                                );
+                            }}
+                            to="/about"
                         >
                             About Us
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
-                        <a
-                            className="text-[#475467] hover:text-[#0020F1] focus:text-[#0020F1] font-bold text-base"
-                            href="/ourservices"
+                        <NavLink
+                            className={({ isActive }) => {
+                                return (
+                                    "text-[#141414] no-underline " +
+                                    (!isActive
+                                        ? " hover:text-[#0020f1]"
+                                        : "text-[#0020f1] font-bold")
+                                );
+                            }}
+                            to="/ourservices"
                         >
                             Our Services
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
-                        <a
+                        <NavLink
                             className="bg-[#0020F1] px-4 py-2 text-white text-base rounded-lg transition ease-linear hover:bg-[#050794] hover:text-white duration-500 font-bold"
-                            href="/contactus"
+                            to="/contactus"
                         >
                             Contact Us
-                        </a>
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
@@ -77,40 +99,61 @@ function Nav() {
                 </a>
                 <ul className="uppercase px-4 text-black">
                     <li className="py-4">
-                        <a
-                            href="/"
+                        <NavLink
                             onClick={() => setshownav(false)}
-                            className="text-[#475467] hover:text-[#0020F1] focus:text-[#0020F1] font-bold text-base"
+                            className={({ isActive }) => {
+                                return (
+                                    "text-[#141414] no-underline " +
+                                    (!isActive
+                                        ? " hover:text-[#0020f1]"
+                                        : "font-bold text-[#0020f1]")
+                                );
+                            }}
+                            to="/"
                         >
                             Home
-                        </a>
+                        </NavLink>
                     </li>
                     <li className="py-4">
-                        <a
+                        <NavLink
                             onClick={() => setshownav(false)}
-                            className="text-[#475467] hover:text-[#0020F1] focus:text-[#0020F1] font-bold text-base"
-                            href="/about"
+                            className={({ isActive }) => {
+                                return (
+                                    "text-[#141414] no-underline " +
+                                    (!isActive
+                                        ? " hover:text-[#0020f1]"
+                                        : "font-bold text-[#0020f1]")
+                                );
+                            }}
+                            to="/about"
                         >
                             About Us
-                        </a>
+                        </NavLink>
                     </li>
                     <li className="py-4">
-                        <a
+                        <NavLink
                             onClick={() => setshownav(false)}
-                            className="text-[#475467] hover:text-[#0020F1] focus:text-[#0020F1] font-bold text-base"
-                            href="/ourservices"
+                            className={({ isActive }) => {
+                                return (
+                                    "text-[#141414] no-underline " +
+                                    (!isActive
+                                        ? " hover:text-[#0020f1]"
+                                        : "text-[#0020f1] font-bold")
+                                );
+                            }}
+                            to="/ourservices"
                         >
                             Our Services
-                        </a>
+                        </NavLink>
                     </li>
                     <li className="py-4">
-                        <a
+                        <NavLink
                             onClick={() => setshownav(false)}
-                            className="bg-[#0020F1] px-4 py-2 text-white text-base rounded-lg hover:shadow-lg font-bold"
-                            href="/contactus"
+                            className="bg-[#0020F1] px-4 py-2 text-white text-base rounded-lg transition ease-linear hover:bg-[#050794] hover:text-white duration-500 font-bold"
+                            to="/contactus"
                         >
                             Contact Us
-                        </a>
+                        </NavLink>
                     </li>
                 </ul>
             </div>

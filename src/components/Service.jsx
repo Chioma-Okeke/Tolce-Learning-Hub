@@ -6,10 +6,12 @@ import { motion } from "framer-motion";
 
 function Service({ title }) {
     return (
-        <div className="w-[85%] mx-auto">
+        <div className="w-[90%] mx-auto">
             <div className="text-center mb-5">
-                <h1 className="font-bold mb-2 text-2xl md:text-3xl">{title}</h1>
-                <p className="text-sm md:text-md">
+                <h1 className="font-bold mb-2 text-4xl my-6 lg:text-3xl xl:text-5xl">
+                    {title}
+                </h1>
+                <p className="text-base sm:text-lg">
                     We currently focus on three (3)major arears
                 </p>
             </div>
@@ -34,7 +36,9 @@ function Service({ title }) {
                             <div className="bg-[#61DB99] rounded-lg w-fit p-2 mb-12">
                                 <Icon size={30} color="white" />
                             </div>
-                            <h1 className="font-bold lg:text-lg">{title}</h1>
+                            <h1 className="font-bold text-lg text-[#141414] mb-2">
+                                {title}
+                            </h1>
                             <p className="lg:text-lg">{description}</p>
                         </motion.div>
                     ))}

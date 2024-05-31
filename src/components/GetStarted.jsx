@@ -1,31 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-// import React from "react";
-import { image1, image2 } from "../assets/get-started";
+import React from "react";
 import { GrFormNextLink } from "react-icons/gr";
 // import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import Counter from "./Counter";
+import { useInView } from "react-intersection-observer";
 
 function GetStarted() {
-    // const [studentCount, setStudentCount] = React.useState(0);
-    // let count = 1;
+    const [ref, isInView] = useInView();
+    const mainControls = useAnimation();
 
-    // setInterval(() => {
-    //     if (count < 35) {
-    //         count++;
-    //         // setStudentCount(count);
-    //         console.log(count);
-    //     }
-    // }, 1);
-
-    // const { scrollYProgress } = useScroll;
+    React.useEffect(() => {
+        if (isInView) {
+            mainControls.start("visible");
+        }
+    }, [isInView, mainControls]);
 
     return (
-        <div className="w-[85%] mx-auto py-20 md:py-28">
-            <div className="md:flex md:items-center justify-between mb-16">
-                <h1 className="font-bold mb-5 mb:mb-0 text-white text-xl sm:text-4xl md:w-[40%] lg:w-[30%]">
+        <div className="w-[90%] max-w-[1024px] mx-auto px-4 py-12 md:py-20 border border-neutral-300 bg-white">
+            <div className="md:flex md:items-center mb-4">
+                <h1 className="font-bold mb-5 mb:mb-0 text-[#050794] text-xl sm:text-4xl md:w-[40%] lg:w-[50%]">
                     Accelerate Your Career Growth. Your learning, Our hub
                 </h1>
-                <button className=" flex items-center justify-center bg-white text-[#050794] rounded-lg py-3 px-5 transition ease-linear hover:bg-[#050794] hover:text-white duration-500">
+                <button className=" flex items-center justify-center p-3 bg-white text-[#050794] rounded-lg transition ease-linear hover:bg-[#050794] hover:text-white duration-500">
                     Get Started
                     <GrFormNextLink
                         size={25}
@@ -34,33 +31,34 @@ function GetStarted() {
                 </button>
             </div>
             <motion.div
+                ref={ref}
                 variants={{
                     hidden: { opacity: 0, y: 75 },
-                    visible: { opacity: 1, y: 0 },
+                    visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.9 },
+                    },
                 }}
                 initial="hidden"
-                whileInView="visible"
-                transition={{ duration: 0.9 }}
-                className="gap-4 grid grid-rows-4 sm:grid-cols-4 sm:grid-rows-none w-[80%] mx-auto sm:w-full"
+                animate={mainControls}
+                className="flex flex-col items-center justify-center sm:flex-row"
             >
-                <div className="bg-[#F9FAFB] flex flex-col justify-center px-5">
-                    <h1 className="font-extrabold text-4xl mb-1">35+</h1>
-                    <p>Students Trained</p>
+                <div className="flex w-72 flex-col items-center py-8 sm:py-0">
+                    <h1 className="mb-2 text-center">
+                        <Counter number={31} />
+                    </h1>
+                    <p className="max-w-48 text-center text-neutral-600">
+                        Students Trained
+                    </p>
                 </div>
-                <img
-                    src={image1}
-                    alt=""
-                    className="rounded-full sm:rounded-none opacity-80 transition hover:opacity-100 hover:scale-110 duration-300"
-                />
-                <div className="bg-[#61DB99] flex flex-col justify-center  px-5">
-                    <h1 className="font-extrabold text-4xl mb-1">60+</h1>
+                <div className="h-[1px] w-12 bg-indigo-200 sm:h-12 sm:w-[1px]"></div>
+                <div className="flex w-72 flex-col items-center py-8 sm:py-0">
+                    <h1 className="mb-2 text-center">
+                        <Counter number={60} />
+                    </h1>
                     <p>Outreaches</p>
                 </div>
-                <img
-                    src={image2}
-                    alt=""
-                    className="rounded-full sm:rounded-none opacity-80 transition hover:opacity-100 hover:scale-110 duration-300"
-                />
             </motion.div>
         </div>
     );

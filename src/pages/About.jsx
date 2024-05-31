@@ -61,7 +61,7 @@ function About() {
             <section className="py-10">
                 <Service title="Our Services" />
             </section>
-            <section className="bg-[#0020F1]">
+            <section className="bg-[#0020F1] sm:bg-transparent">
                 <GetStarted />
             </section>
             <div className="w-[90%] mx-auto my-10">

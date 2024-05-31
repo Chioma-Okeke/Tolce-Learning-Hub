@@ -13,6 +13,7 @@ function JoinUs({ setSubscriptionConfirmed }) {
     const [erroMessage, setErrorMessage] = useState("");
 
     function handleChange(event) {
+        setErrorMessage(false);
         setEmail(event.target.value);
     }
 
@@ -62,8 +63,8 @@ function JoinUs({ setSubscriptionConfirmed }) {
     }
 
     return (
-        <section className="bg-[#F9FAFB] flex flex-col justify-center py-16 px-3">
-            <h1 className="font-bold text-lg sm:text-2xl md:text-4xl text-[#101828] text-center">
+        <section className="bg-[#F9FAFB] flex flex-col justify-center py-12 px-3">
+            <h1 className="font-bold text-xl sm:text-2xl md:text-4xl text-[#101828] text-center">
                 Join our Learning Community here
             </h1>
             <p className="text-[#475467] text-sm sm:text-md md:text-xl mt-4 mb-5 text-center">
@@ -71,7 +72,7 @@ function JoinUs({ setSubscriptionConfirmed }) {
                 and development.
             </p>
             <div className="flex justify-center">
-                <div className="relative w-[80%] lg:w-[60%]">
+                <div className="relative w-[90%] sm:w-[60%] lg:w-[40%]">
                     <form
                         onSubmit={(event) => handleSubmit(event)}
                         className="w-full flex flex-col sm:flex-row items-center justify-start"
@@ -80,7 +81,7 @@ function JoinUs({ setSubscriptionConfirmed }) {
                             <input
                                 type="text"
                                 placeholder="Enter your email"
-                                className="border border-solid border-[#D0D5DD] py-2 px-4 rounded-lg focus:outline-none transition ease-out hover:shadow-md focus:shadow-md"
+                                className="border border-solid border-[#D0D5DD] w-full py-2 px-4 rounded-lg focus:outline-none transition ease-out hover:shadow-md focus:shadow-md"
                                 value={email}
                                 onChange={(event) => handleChange(event)}
                             />
@@ -90,7 +91,7 @@ function JoinUs({ setSubscriptionConfirmed }) {
                                 </p>
                             )}
                         </div>
-                        <button className="bg-[#0020F1] border-2 border-solid border-[#7F56D9] text-white py-2 px-4 w-[80%] sm:w-[100%] xl:w-[60%] rounded-lg focus:bg-[#0020F1] transition ease-linear hover:bg-[#050794] duration-500">
+                        <button className="bg-[#0020F1] border-2 border-solid border-[#7F56D9] text-white py-2 px-4 w-[50%] sm:w-[30%] xl:w-[30%] rounded-lg focus:bg-[#0020F1] transition ease-linear hover:bg-[#050794] duration-500">
                             Subscribe
                         </button>
                     </form>

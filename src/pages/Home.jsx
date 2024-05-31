@@ -25,13 +25,13 @@ function Home() {
             <section className="py-10">
                 <Service title="Our focus areas" />
             </section>
-            <section className="bg-[#0020F1]">
+            <section className="bg-[#0020F1] sm:bg-transparent">
                 <GetStarted />
             </section>
-            <section className="my-16">
+            <section className="mt-16 mb-0">
                 <Testimonials />
             </section>
-            <div className="w-[90%] mx-auto my-10">
+            <div className="w-[90%] mx-auto mb-10 mt-2 md:my-14">
                 <JoinUs setSubscriptionConfirmed={setSubscriptionConfirmed} />
             </div>
             <footer className="bg-[#0C111D] py-16">
