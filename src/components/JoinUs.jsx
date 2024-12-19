@@ -10,7 +10,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
 function JoinUs({ setSubscriptionConfirmed }) {
     const [email, setEmail] = useState("");
-    const [erroMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     function handleChange(event) {
         setErrorMessage(false);
@@ -64,10 +64,10 @@ function JoinUs({ setSubscriptionConfirmed }) {
 
     return (
         <section className="bg-[#F9FAFB] flex flex-col justify-center py-12 px-3">
-            <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl text-[#101828] text-center">
+            <h1 className="font-semibold text-2xl lg:text-4xl pb-2 xl:text-[40px] text-center">
                 Join our Learning Community here
             </h1>
-            <p className="text-[#475467] text-sm sm:text-md md:text-xl mt-4 mb-5 text-center">
+            <p className="text-base xl:text-lg text-center pb-5">
                 Sign up for our newsletter and get advice for your career growth
                 and development.
             </p>
@@ -85,9 +85,9 @@ function JoinUs({ setSubscriptionConfirmed }) {
                                 value={email}
                                 onChange={(event) => handleChange(event)}
                             />
-                            {erroMessage && (
+                            {errorMessage && (
                                 <p className="block text-red-500 text-left text-sm sm:hidden">
-                                    {erroMessage}
+                                    {errorMessage}
                                 </p>
                             )}
                         </div>
@@ -95,9 +95,9 @@ function JoinUs({ setSubscriptionConfirmed }) {
                             Subscribe
                         </button>
                     </form>
-                    {erroMessage && (
+                    {errorMessage && (
                         <p className="hidden text-red-500 text-left text-sm sm:block">
-                            {erroMessage}
+                            {errorMessage}
                         </p>
                     )}
                 </div>

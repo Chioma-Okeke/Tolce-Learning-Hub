@@ -17,8 +17,6 @@ function Home() {
 
     return (
         <div className="relative">
-            <BackToTop />
-            <Nav />
             <section className="">
                 <HeroSection />
             </section>
@@ -28,7 +26,7 @@ function Home() {
             <section className="bg-[#0020F1] sm:bg-transparent">
                 <GetStarted />
             </section>
-            <section className="mt-16 mb-0">
+            <section className="mt-10 mb-0">
                 <Testimonials />
             </section>
             <div className="w-[90%] mx-auto mb-10 mt-2 md:my-14">

@@ -15,17 +15,17 @@ export const faqData = [
         answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing."
     },
     {
-        id: 3,
+        id: 4,
         question: "Lorem ipsum dolor sit ?",
         answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing."
     },
     {
-        id: 3,
+        id: 5,
         question: "Lorem ipsum dolor sit ?",
         answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing."
     },
     {
-        id: 3,
+        id: 6,
         question: "Lorem ipsum dolor sit ?",
         answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing."
     }

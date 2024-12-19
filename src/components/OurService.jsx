@@ -17,10 +17,10 @@ function OurService() {
     return (
         <div>
             <div className="w-[90%] md:w-[60%] mx-auto text-center mb-12">
-                <h1 className="font-bold text-[#0020F1] text-2xl lg:text-5xl mb-4">
+                <h1 className="font-semibold text-2xl lg:text-4xl my-6 xl:text-[40px]">
                     Our Services
                 </h1>
-                <p className="text-[#475467] lg:text-lg">
+                <p className="text-base font-medium text-[#475467] lg:text-lg xl:text-[18px]">
                     We are building a community of students who are life-long
                     learners by taking a simplified and interesting approach
                     towards self-paced digital skills courses, getting exposed
@@ -52,10 +52,12 @@ function OurService() {
                                 <div className="bg-[#0020F11A] rounded-lg w-fit p-2 mb-12">
                                     <Icon size={30} color="#0020F1" />
                                 </div>
-                                <h1 className="font-bold lg:text-lg">
+                                <h1 className="font-bold text-lg mb-2 lg:text-2xl">
                                     {title}
                                 </h1>
-                                <p className="lg:text-lg">{description}</p>
+                                <p className="text-lg lg:text-xl">
+                                    {description}
+                                </p>
                             </div>
                         </motion.div>
                     ) : (
@@ -65,7 +67,7 @@ function OurService() {
                                 visible: {
                                     opacity: 1,
                                     y: 0,
-                                    transition: { duration: 1 },
+                                    transition: { duration: 0.4 },
                                 },
                             }}
                             initial="hidden"
@@ -77,10 +79,12 @@ function OurService() {
                                 <div className="bg-[#0020F11A] rounded-lg w-fit p-2 mb-12">
                                     <Icon size={30} color="#0020F1" />
                                 </div>
-                                <h1 className="font-bold lg:text-lg">
+                                <h1 className="font-bold text-lg mb-2 lg:text-2xl">
                                     {title}
                                 </h1>
-                                <p className="lg:text-lg">{description}</p>
+                                <p className="text-lg lg:text-xl">
+                                    {description}
+                                </p>
                             </div>
                             <img src={src} alt="" className="hidden md:block" />
                         </motion.div>

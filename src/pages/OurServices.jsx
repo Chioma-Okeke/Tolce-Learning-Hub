@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Footer from "../components/Footer";
 import JoinUs from "../components/JoinUs";
@@ -11,7 +11,8 @@ import OurService from "../components/OurService";
 import BackToTop from "../components/BackToTop";
 
 function OurServices() {
-    const [email, setEmail] = React.useState("");
+    const [email, setEmail] = useState("");
+    const [currentIndex, setCurrentIndex] = useState(null);
 
     function handleChange(event) {
         console.log(email);
@@ -26,8 +27,6 @@ function OurServices() {
     }
     return (
         <div>
-            <BackToTop />
-            <Nav />
             <section
                 className="py-8 relative w-[90%] mx-auto my-4"
                 style={{
@@ -75,10 +74,10 @@ function OurServices() {
             </section>
             <section className="h-fit w-[90%] sm:w-[80%] mx-auto flex items-center justify-center my-5">
                 <div className="w-full sm:w-[80%] mx-auto p-4">
-                    <h1 className="text-2xl lg:text-5xl font-bold text-center mb-2">
+                    <h1 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px] text-center">
                         Frequently Asked Questions
                     </h1>
-                    <p className="text-sm sm:text-base text-center mb-8">
+                    <p className="text-base xl:text-lg text-center mb-8">
                         Everything you need to know about the product and
                         billing
                     </p>
@@ -88,10 +87,12 @@ function OurServices() {
                                 key={id}
                                 question={question}
                                 answer={answer}
+                                index={id}
+                                currentIndex={currentIndex}
+                                setCurrentIndex={setCurrentIndex}
                             />
                         );
                     })}
-                    {/* <FaqItems /> */}
                 </div>
             </section>
             <div className="w-[90%] mx-auto my-10">

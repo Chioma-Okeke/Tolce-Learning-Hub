@@ -3,7 +3,7 @@
 
 import { useEffect } from "react";
 
-function YoutubeVideo() {
+function YoutubeVideo({videoFrameClass}) {
     useEffect(() => {
         const timer = setTimeout(() => {
             const iframe = document.getElementById("youtube-iframe");
@@ -23,7 +23,7 @@ function YoutubeVideo() {
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            className="bg-black absolute bottom-14 md:bottom-0 left-1/2 -translate-x-1/2 left w-[80%] md:w-[680px] xl:w-[60%] h-[350px] xl:h-[400px] 2xl:h-[450px] shadow-lg"
+            className={videoFrameClass}
         ></iframe>
     );
 }

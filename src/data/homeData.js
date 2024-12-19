@@ -1,7 +1,7 @@
 
 import image1 from "../assets/Hero/heroimage1.png";
 import image2 from "../assets/Hero/collaborative-learning.jpeg";
-import image3 from "../assets/Hero/friends-learning-study-group.avif";
+import image3 from "../assets/Hero/team-image.png";
 
 export const heroData = [
     {

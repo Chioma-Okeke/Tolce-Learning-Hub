@@ -5,17 +5,17 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { Autoplay, EffectFade } from "swiper/modules";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+// import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { heroData } from "../data/homeData";
 
-function HeroSection() {
+export default function HeroSection() {
     const swiperRef = React.useRef(null);
-    const [swiperInstane, setSwiperInstance] = React.useState(null);
-    React.useEffect(() => {
-        if (swiperRef.current) {
-            setSwiperInstance(swiperRef.current);
-        }
-    }, []);
+    // const [swiperInstane, setSwiperInstance] = React.useState(null);
+    // React.useEffect(() => {
+    //     if (swiperRef.current) {
+    //         setSwiperInstance(swiperRef.current);
+    //     }
+    // }, []);
 
     const handleSlideChange = (swiper) => {
         if (swiper.activeIndex === heroData.length) {
@@ -23,13 +23,13 @@ function HeroSection() {
         }
     };
 
-    function handlePrev() {
-        swiperInstane?.slidePrev();
-    }
+    // function handlePrev() {
+    //     swiperInstane?.slidePrev();
+    // }
 
-    function handleNext() {
-        swiperInstane?.slideNext();
-    }
+    // function handleNext() {
+    //     swiperInstane?.slideNext();
+    // }
 
     return (
         <div className="relative h-screen">
@@ -59,13 +59,6 @@ function HeroSection() {
             </Swiper>
             <div className="bg-black h-full absolute top-0 left-0 opacity-50 w-full z-10"></div>
             <div className="w-[90%] mx-auto max-w-[1440px] z-20 flex items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                {/* <IoIosArrowBack
-                    size={50}
-                    color="white"
-                    cursor={"pointer"}
-                    className="transition ease-out hover:scale-150 z-20"
-                    onClick={handlePrev}
-                /> */}
                 <div className="ml-3 mt-5">
                     <h1 className="font-bold text-center md:text-start text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white w-full lg:w-[80%] mb-5 md:mb-9 leading-12">
                         Bridging the gap between the Classroom and Corporate
@@ -77,16 +70,7 @@ function HeroSection() {
                         </button>
                     </div>
                 </div>
-                {/* <IoIosArrowForward
-                    size={50}
-                    color="white"
-                    cursor={"pointer"}
-                    className="transition ease-out hover:scale-150 z-20"
-                    onClick={handleNext}
-                /> */}
             </div>
         </div>
     );
 }
-
-export default HeroSection;

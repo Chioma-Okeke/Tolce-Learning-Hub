@@ -5,6 +5,10 @@ import { FaChartLine } from "react-icons/fa";
 import image1 from "../assets/service-images/image1.png"
 import image2 from "../assets/service-images/image2.png"
 import image3 from "../assets/service-images/image3.png"
+import { FaHandHoldingHeart } from "react-icons/fa";
+import { FaGraduationCap } from "react-icons/fa";
+import { VscWorkspaceTrusted } from "react-icons/vsc";
+import { TbGraphFilled } from "react-icons/tb";
 
 export const serviceData = [
     {
@@ -32,7 +36,7 @@ export const individualServiceData = [
         id: 1,
         src: image1,
         Icon: PiChatsCircleLight,
-        title: "Digital ans soft skills",
+        title: "Digital and Soft Skills",
         description: "Students are equipped through self-paced digital skills and soft skills such as Microsoft Excel, Power BI, Communication/Presentation skills, Personal branding, emotional intelligence, etc."
     },
     {
@@ -46,7 +50,34 @@ export const individualServiceData = [
         id: 3,
         src: image3,
         Icon: FaChartLine,
-        title: "Digital skills",
+        title: "Digital Skills",
         description: "Students organize Orphanage or Public Secondary School outreaches to promote early exposure to the right skills and opportunities through setting up learning hubs where children are teenagers are exposed to reading, playing educational games while organizing seminars and workshops, etc."
+    },
+]
+
+export const values = [
+    {
+        id: 1,
+        Icon: TbGraphFilled,
+        value: "Personal Development",
+        description: "We believe that investing in oneself is the greatest form of investment. We are BIG on continuous self-improvement and growth, encouraging lifelong learning and self-awareness to reach one's full potential.",
+    },
+    {
+        id: 2,
+        Icon: VscWorkspaceTrusted,
+        value: "Integrity",
+        description: "We are honest and uphold strong moral principles. We do what is right even when no one is watching and are truthful in our actions and words.",
+    },
+    {
+        id: 3,
+        Icon: FaGraduationCap,
+        value: "Continuous Professional Development",
+        description: "We actively seek opportunities to learn and grow, staying current with industry trends to enhance our skills and adapt to new challenges.",
+    },
+    {
+        id: 4,
+        Icon: FaHandHoldingHeart,
+        value: "Service",
+        description: "We believe we rise by serving. As students get equipped, they use acquired skills to solve problems in local communities through outreaches.",
     },
 ]

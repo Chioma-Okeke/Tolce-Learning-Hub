@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Ínter', sans-serif;
+  font-family: 'Source Serif 4', sans-serif;
 }
 
 /* .hero-section {
@@ -22,3 +22,7 @@ body {
 }
 
 .scrollBar::-webkit-scrollbar {display:none;}
+
+.testimonial-carousel::-webkit-scrollbar{
+  visibility: hidden;
+}
