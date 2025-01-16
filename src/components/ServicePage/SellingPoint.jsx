@@ -20,7 +20,9 @@ function SellingPoint() {
                         }}
                         onPointerEnter={() => window.innerWidth >= 1024 && setFlippedCard(title)}
                         onPointerLeave={() => window.innerWidth >= 1024 && setFlippedCard("")}
-                        onClick={() => window.innerWidth < 1024 && setFlippedCard(title)}
+                        onClick={() => window.innerWidth < 1024 && setFlippedCard(flippedCard === title ? "" : title)}
+                        onBlur={() => window.innerWidth < 1024 && setFlippedCard("")}
+                        tabIndex={0}
                         className={`sellingCard rounded-lg relative transition-transform ease-in-out duration-700 cursor-pointer w-full xl:w-[290px] h-[250px] ${
                             flippedCard === title ? "flip" : ""
                         }`}

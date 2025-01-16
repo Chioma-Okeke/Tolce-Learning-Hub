@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { programData } from "../../data/programData";
 import ServiceDescription from "./ServiceDescription";
@@ -7,10 +7,11 @@ import { splitSentence } from "../../utils/textFormatting";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const ServiceTiers = ({activeTab, setActiveTab}) => {
+const ServiceTiers = ({ activeTab, setActiveTab }) => {
     // const [activeTab, setActiveTab] = useState("beginners");
     const [showSubMenus, setShowSubMenus] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(null);
+    const cardRefs = useRef([])
     const [ref, inView] = useInView();
 
     const mainControls = useAnimation();
@@ -21,22 +22,33 @@ const ServiceTiers = ({activeTab, setActiveTab}) => {
         }
     }, [inView, mainControls]);
 
-    function expandTier(index) {
+    function scrollToTopOfCard(index) {
+        console.log(index, "focused index")
+        cardRefs.current[index].scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            // inline: "nearest",
+        });
+    }
+
+    function expandTier(id, index) {
         if (window.innerWidth < 768) {
-            if (currentIndex === index) {
+            if (currentIndex === id) {
                 setCurrentIndex(null);
                 setShowSubMenus(false);
+                scrollToTopOfCard(index);
                 return;
             }
-            setCurrentIndex(index);
+            setCurrentIndex(id);
             setShowSubMenus(true);
+            scrollToTopOfCard(index);
         }
     }
 
     return (
         <div className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4">
-                <div className="flex justify-center mb-12 border-b relative">
+                <div className="flex justify-center mb-12 border-b relative overflow-auto">
                     {/* <div
                         className={`absolute bottom-0 h-[3px] bg-red-500 transition-all ease-linear duration-300`}
                         style={{
@@ -60,14 +72,16 @@ const ServiceTiers = ({activeTab, setActiveTab}) => {
                             {tab.charAt(0).toUpperCase() + tab.slice(1)} Program
                             <div
                                 className={`absolute bg-[#1D976C] h-[2px] w-full bottom-0 left-0 transition-transform ease-in-out duration-300 ${
-                                    activeTab === tab ? "transform scale-x-100" : "transform scale-x-0"
+                                    activeTab === tab
+                                        ? "transform scale-x-100"
+                                        : "transform scale-x-0"
                                 }`}
                             ></div>
                         </button>
                     ))}
                 </div>
 
-                <motion.div 
+                <motion.div
                     ref={ref}
                     variants={{
                         hidden: { opacity: 0, y: 20 },
@@ -81,11 +95,12 @@ const ServiceTiers = ({activeTab, setActiveTab}) => {
                     animate={mainControls}
                     className={`${
                         programData[activeTab].packages.length > 1 ? "grid" : ""
-                    } md:grid-cols-2  gap-8`}
+                    } md:grid-cols-2  gap-8 overflow-scroll`}
                 >
-                    {programData[activeTab].packages.map((package_) => (
+                    {programData[activeTab].packages.map((package_, index) => (
                         <div
                             key={package_.id}
+                            ref={(el) => cardRefs.current[index] = el}
                             className={` bg-white rounded-xl shadow-lg p-8 ${
                                 programData[activeTab].packages.length > 1
                                     ? ""
@@ -94,7 +109,7 @@ const ServiceTiers = ({activeTab, setActiveTab}) => {
                         >
                             <div
                                 tabIndex={0}
-                                onClick={() => expandTier(package_.id)}
+                                onClick={() => expandTier(package_.id, index)}
                                 className="mb-8 flex lg:block items-center justify-between"
                             >
                                 <div className="flex flex-col xl:flex-row gap-2 xl:gap-6 justify-between xl:items-center">
