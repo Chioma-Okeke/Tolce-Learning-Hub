@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { values } from "../data/serviceData";
 import YoutubeVideo from "./YoutubeVideo";
+import AnimatedSection from "./shared/AnimatedSection";
 
 function MissionAndValues() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,8 +20,8 @@ function MissionAndValues() {
     }
 
     return (
-        <div className="font-medium flex flex-col lg:flex-row gap-[19px]">
-            <div className="flex-1 py-10 lg:pb-0 lg:py-12 lg:pl-16 lg:pr-4 mx-auto w-[90%] lg:w-full">
+        <div className="font-medium flex flex-col lg:flex-row lg:gap-[19px]">
+            <AnimatedSection className="flex-1 py-20 lg:pl-16 lg:pr-4 mx-auto w-[90%] lg:w-full">
                 <h1 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px]">
                     The Road We are on
                 </h1>
@@ -42,9 +43,9 @@ function MissionAndValues() {
                         videoFrameClass={"w-full xl:w-[80%] bg-black mx-auto"}
                     />
                 </div>
-            </div>
-            <div className="bg-[#0C111D] py-10 lg:py-12 lg:px-10 flex-1 flex flex-col mx-auto">
-                <div className="w-[90%] mx-auto lg:w-full">
+            </AnimatedSection>
+            <div className="py-20 bg-[#0C111D] lg:px-10 flex-1 flex flex-col mx-auto">
+                <AnimatedSection className="w-[90%] mx-auto lg:w-full">
                     <h1 className="font-semibold text-white text-2xl lg:text-4xl pb-[10px] xl:text-[40px]">
                         The Values that Drive Us
                     </h1>
@@ -83,7 +84,7 @@ function MissionAndValues() {
                             );
                         })}
                     </div>
-                </div>
+                </AnimatedSection>
             </div>
         </div>
     );

@@ -1,14 +1,10 @@
-// import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
-import JoinUs from "../components/JoinUs";
-import Nav from "../components/Nav";
-import backgroundPicture from "../assets/backgroundpattern.svg";
-import YoutubeVideo from "../components/YoutubeVideo";
-import { useEffect, useState } from "react";
-import BackToTop from "../components/BackToTop";
 import MissionAndValues from "../components/MissionAndValues";
+import TeamMembers from "../components/AboutPage/TeamMembers";
+import backgroundPicture from "../assets/backgroundpattern.svg";
 import Team from "../assets/Hero/Core_values_3.png";
-import GetStarted from "../components/GetStarted";
+import AnimatedSection from "../components/shared/AnimatedSection";
 
 function About() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -19,15 +15,21 @@ function About() {
         }
 
         handleResize();
-
-        window.addEventListener("reszie", handleResize);
+        window.addEventListener("resize", handleResize);
 
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    useEffect(() => {
+        window.scrollTo(0, {
+            top: 0,
+            behavior: "smooth",
+        });
+    }, []);
+
     return (
         <div className="relative">
-            <section className="w-[90%] mx-auto my-4 pt-4 pb-8">
+            <AnimatedSection className="w-[90%] mx-auto py-10 md:py-20">
                 <div className="w-full flex flex-col lg:flex-row lg:items-center">
                     <h1 className="text-[28px] lg:text-4xl xl:text-5xl font-bold lg:w-[40%] lg:pl-10">
                         Why we exist?
@@ -42,18 +44,21 @@ function About() {
                         and the world at large.
                     </p>
                 </div>
-            </section>
-            <section className="bg-[#F6F9FE] lg:bg-none">
-                <div
-                    style={{
-                        backgroundImage: !isSmallScreen
-                            ? `url(${backgroundPicture})`
-                            : "none",
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center",
-                    }}
-                    className={`flex flex-col-reverse lg:flex-row items-center w-[90%] lg:w-full h-[450px] 2xl:h-[550px] mx-auto relative ${
-                        isSmallScreen ? "bg-none h-fit gap-5 py-10" : "bg-cover"
+            </AnimatedSection>
+
+            <section
+                className="bg-[#F6F9FE] lg:bg-none"
+                style={{
+                    backgroundImage: !isSmallScreen
+                        ? `url(${backgroundPicture})`
+                        : "none",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                }}
+            >
+                <AnimatedSection
+                    className={`py-20 flex flex-col-reverse lg:flex-row items-center w-[90%] lg:w-full h-[450px] 2xl:h-[550px] mx-auto relative ${
+                        isSmallScreen ? "bg-none h-fit gap-5" : "bg-cover"
                     }`}
                 >
                     <div className="flex-1 lg:py-12 lg:pl-16 lg:pr-4 lg:bg-white">
@@ -67,38 +72,32 @@ function About() {
                             the skills, knowledge, confidence, and opportunities
                             needed to thrive in today’s rapidly evolving world.
                             Founded in 2023 by Tolulope Esan, TOLCE helps to
-                            bride the wide skill gap between classroom and
+                            bridge the wide skill gap between classroom and
                             corporate world.
                         </p>
                     </div>
                     <div className="flex-1">
                         <img
                             src={Team}
-                            alt=""
+                            alt="Our Team"
+                            loading="lazy"
                             className="bg-white object-cover object-center lg:w-[80%] mx-auto lg:h-[350px] xl:h-[400px] 2xl:h-[450px] shadow-lg"
                         />
                     </div>
-                    {/* <YoutubeVideo videoFrameClass="bg-black absolute bottom-14 md:bottom-0 left-1/2 -translate-x-1/2 left w-[80%] md:w-[680px] xl:w-[60%] h-[350px] xl:h-[400px] 2xl:h-[450px] shadow-lg"/> */}
-                </div>
+                </AnimatedSection>
             </section>
-            {/* <section className="py-10">
-                <Service title="Our Services" />
-            </section> */}
-            {/* <section className="bg-[#0020F1] sm:bg-transparent">
-                <GetStarted />
-            </section> */}
-            <section className="lg:py-10">
+
+            <section>
                 <MissionAndValues />
             </section>
-            <section className="absolute w-full">
-                <GetStarted hideStatistics={true} />
-            </section>
-            {/* <div className="w-[90%] mx-auto my-10">
-                <JoinUs />
-            </div> */}
-            <footer className="bg-[#0C111D] pt-28 pb-10 lg:pb-16 mt-40">
-                <Footer />
-            </footer>
+
+            <div className="bg-gradient-to-r from-[#3A8DFF] to-[#1D976C] text-white">
+                <AnimatedSection>
+                    <TeamMembers />
+                </AnimatedSection>
+            </div>
+
+            <Footer />
         </div>
     );
 }

@@ -63,40 +63,42 @@ function JoinUs({ setSubscriptionConfirmed }) {
     }
 
     return (
-        <section className="bg-[#F9FAFB] flex flex-col justify-center py-12 px-3">
-            <h1 className="font-semibold text-2xl lg:text-4xl pb-2 xl:text-[40px] text-center">
-                Join our Learning Community here
-            </h1>
-            <p className="text-base xl:text-lg text-center pb-5">
-                Sign up for our newsletter and get advice for your career growth
-                and development.
-            </p>
-            <div className="flex justify-center">
-                <div className="relative w-[90%] sm:w-[60%] lg:w-[40%]">
+        <section className="flex flex-col lg:flex-row gap-8 lg:gap-0 justify-between pb-12 ">
+            <div className="flex flex-col gap-1 flex-1">
+                <h1 className="font-bold text-2xl">
+                    Join our newsletter
+                </h1>
+                <p className="">
+                    Get all the latest TOLCE learning hub news delivered to your
+                    inbox.
+                </p>
+            </div>
+            <div className="flex flex-1 lg:justify-end">
+                <div className="relative w-full md:w-[486px]">
                     <form
                         onSubmit={(event) => handleSubmit(event)}
-                        className="w-full flex flex-col sm:flex-row items-center justify-start"
+                        className="w-full flex flex-col gap-2 md:flex-row items-center"
                     >
-                        <div className="flex flex-col gap-1 mb-4 sm:mr-4 sm:mb-0 w-[80%] sm:w-[100%] xl:w-[60%] items">
+                        <div className="flex flex-col gap-1 w-full md:w-[343px]">
                             <input
                                 type="text"
                                 placeholder="Enter your email"
-                                className="border border-solid border-[#D0D5DD] w-full py-2 px-4 rounded-lg focus:outline-none transition ease-out hover:shadow-md focus:shadow-md"
+                                className="border text-[#141414] border-solid border-[#D0D5DD] w-full h-[60px] py-4 px-6 rounded-lg focus:outline-none transition ease-out hover:border-[#7F56D9] focus:border-[#7F56D9]"
                                 value={email}
                                 onChange={(event) => handleChange(event)}
                             />
                             {errorMessage && (
-                                <p className="block text-red-500 text-left text-sm sm:hidden">
+                                <p className="block text-red-500 text-left text-sm md:hidden">
                                     {errorMessage}
                                 </p>
                             )}
                         </div>
-                        <button className="bg-[#0020F1] border-2 border-solid border-[#7F56D9] text-white py-2 px-4 w-[50%] sm:w-[30%] xl:w-[30%] rounded-lg focus:bg-[#0020F1] transition ease-linear hover:bg-[#050794] duration-500">
+                        <button className="font-semibold bg-[#0020F1] border-2 border-solid border-[#0020F1] text-white py-4 px-6 w-full md:w-[135px] rounded-lg focus:bg-[#0020F1] transition ease-linear hover:bg-[#050794] hover:border-[#7F56D9] duration-500">
                             Subscribe
                         </button>
                     </form>
                     {errorMessage && (
-                        <p className="hidden text-red-500 text-left text-sm sm:block">
+                        <p className="hidden text-red-500 text-left text-sm md:block">
                             {errorMessage}
                         </p>
                     )}

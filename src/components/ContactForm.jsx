@@ -19,7 +19,7 @@ function ContactForm() {
             noValidate
             className="xl:flex xl:flex-col xl:justify-center"
         >
-            <h1 className="font-bold text-3xl">Contact us</h1>
+            <h1 className="font-semibold text-3xl">Let's Get in Touch</h1>
             <p className="my-3 text-[#475467]">
                 Our friendly team would love to hear from you
             </p>
@@ -126,7 +126,7 @@ function ContactForm() {
                     </a>
                 </span>
             </div>
-            <button className="bg-[#0020F1] text-white text-center w-full py-2 rounded-xl mt-8 cursor-pointer transition ease-linear hover:bg-[#050794] duration-500">
+            <button className="bg-[#0020F1] text-white text-center w-full py-4 px-6 rounded-lg mt-8 cursor-pointer transition ease-linear hover:bg-[#050794] duration-500">
                 Send message
             </button>
         </form>

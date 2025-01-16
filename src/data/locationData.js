@@ -4,3 +4,18 @@ export const location = {
     lng: 3.3143774342109253
 
 }
+
+export const quickLinks = [
+    {
+        name: "Program",
+        link: "/services"
+    },
+    {
+        name: "About Us",
+        link: "/about"
+    },
+    {
+        name: "Contact",
+        link: "/contact"
+    },
+]

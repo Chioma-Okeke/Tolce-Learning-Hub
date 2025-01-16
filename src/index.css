@@ -2,27 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Source Serif 4', sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Source Serif 4", sans-serif;
+    box-sizing: border-box;
 }
 
-/* .hero-section {
-  background-image: url('./assets/heroimage1.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-} */
+body {
+    transition: overflow 0.3s ease;
+}
 
 .blue-to-whiteIcon {
-  color: #050794;
+    color: #050794;
 }
 
 .blue-to-whiteIcon:hover {
-  color: #fff;
+    color: #fff;
 }
 
-.scrollBar::-webkit-scrollbar {display:none;}
-
-.testimonial-carousel::-webkit-scrollbar{
-  visibility: hidden;
+.scrollBar::-webkit-scrollbar {
+    display: none;
 }
+
+.testimonial-carousel::-webkit-scrollbar {
+    visibility: hidden;
+}
+
+.animate-scroll:hover {
+    animation-play-state: paused;
+}
+
+.banner-wrapper {
+    cursor: pointer;
+    width: 100%;
+}
+
+.banner-wrapper .wrapper {
+    display: flex;
+    overflow: hidden;
+}
+
+.banner-wrapper .wrapper .cards {
+    display: flex;
+    flex-shrink: 0;
+    animation: swipe 50000ms linear infinite;
+    width: auto;
+}
+
+.banner-wrapper:hover .wrapper .cards {
+    animation-play-state: paused;
+}
+
+.card {
+    margin-right: 40px;
+}
+
+@keyframes swipe {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.sellingCard {
+    transform-style: preserve-3d;
+}
+
+.sellingCard.flip {
+    transform: perspective(300px) rotateY(180deg);
+}
+
+.selling-card-front {
+    backface-visibility: hidden;
+}
+
+.selling-card-back {
+    transform: rotateY(180deg);
+}
+
+.sellingCard:nth-child(2n+1) .selling-card-back {
+    background-color: #3A8DFF;
+}
+
+.sellingCard:nth-child(2n) .selling-card-back {
+    background-color: #1D976C;
+}
+
+/* Outreach page css */
+.background-text:hover {
+    -webkit-text-stroke: 2px #fff;
+    color: transparent;
+    cursor: pointer;
+}
+
+@media (min-aspect-ration: 16/9) {
+    .background-video {
+        width: 100%;
+        height: auto;
+    }
+} 
+@media (max-aspect-ration: 16/9) {
+    .background-video {
+        width: auto;
+        height: 100%;
+    }
+} 

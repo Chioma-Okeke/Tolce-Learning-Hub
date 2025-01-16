@@ -20,21 +20,16 @@ function Home() {
             <section className="">
                 <HeroSection />
             </section>
-            <section className="py-10">
-                <Service title="Our focus areas" />
+            <section className="pt-[100px] pb-20">
+                <Service title="Focus areas" />
             </section>
             <section className="bg-[#0020F1] sm:bg-transparent">
                 <GetStarted />
             </section>
-            <section className="mt-10 mb-0">
+            <section className="pt-20">
                 <Testimonials />
             </section>
-            <div className="w-[90%] mx-auto mb-10 mt-2 md:my-14">
-                <JoinUs setSubscriptionConfirmed={setSubscriptionConfirmed} />
-            </div>
-            <footer className="bg-[#0C111D] py-16">
-                <Footer />
-            </footer>
+            <Footer />
             {subscriptionConfirmed && (
                 <ConfirmationModal
                     setSubscriptionConfirmed={setSubscriptionConfirmed}

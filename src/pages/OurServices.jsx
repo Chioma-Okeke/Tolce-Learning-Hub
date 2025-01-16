@@ -1,108 +1,180 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
+import {
+    BiBook,
+    BiUserPlus,
+    BiAward,
+    BiHeart,
+    BiCheckCircle,
+    BiCalendar,
+    BiUser,
+    BiBriefcase,
+} from "react-icons/bi";
 import Footer from "../components/Footer";
-import JoinUs from "../components/JoinUs";
-import Nav from "../components/Nav";
-import image from "../assets/dotPattern.svg";
-import heroImage from "../assets/service-images/heroImage.png";
-import { faqData } from "../data/faqItems";
-import FaqItems from "../components/FaqItems";
-import OurService from "../components/OurService";
-import BackToTop from "../components/BackToTop";
+import ServiceTiers from "../components/ServicePage/ServiceTiers";
+import SellingPoint from "../components/ServicePage/SellingPoint";
+import { useLocation } from "react-router-dom";
+import Questions from "../components/shared/FAQ";
+import AnimatedSection from "../components/shared/AnimatedSection";
 
-function OurServices() {
-    const [email, setEmail] = useState("");
-    const [currentIndex, setCurrentIndex] = useState(null);
+const ServicePage = () => {
+    const [activeTab, setActiveTab] = useState("beginners");
+    const serviceTierRef = useRef(null);
+    const location = useLocation();
+    const { program, section } = location.state || {};
+    console.log(program);
 
-    function handleChange(event) {
-        console.log(email);
-        setEmail(event.target.value);
-        console.log(email);
-    }
+    useEffect(() => {
+        if (section === "services") {
+            setActiveTab(program);
+            serviceTierRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        } else {
+            window.scrollTo(0, {
+                top: 0,
+                behavior: "smooth",
+            });
+        }
+    }, [section, program]);
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        setEmail("");
-        console.log(email);
-    }
+    const scrollToServices = () => {
+        serviceTierRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    };
+
     return (
-        <div>
-            <section
-                className="py-8 relative w-[90%] mx-auto my-4"
-                style={{
-                    backgroundImage: `url(${image})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                }}
-            >
-                <div className="relative max-w-[1440px] mx-auto">
-                    <div className="md:absolute md:left-[7%] md:top-[10%] md:w-[80%] lg:left-[7%] lg:top-[21%] lg:w-[80%] xl:left-[18%] xl:top-[28%] xl:w-[80%]">
-                        <h1 className="font-bold text-2xl w-full text-center text-[#101828] md:text-start md:text-4xl md:w-[80%] xl:text-5xl xl:w-[80%]">
-                            Our services are curated to meet your goals
-                        </h1>
-                        <p className="text-base text-center md:text-start text-[#475467] md:w-[60%] my-6">
-                            Explore limitless opportunities, gain insights, and
-                            unlock your potential in every aspect of your career
-                            journey..
-                        </p>
-                        <form
-                            onSubmit={(event) => handleSubmit(event)}
-                            className="w-full max-w-[600px] sm:w-[60%] flex flex-col items-center lg:flex-row md:items-start lg:items-center justify-center"
+        <div className="w-full">
+            {/* Hero Section */}
+            <div className="relative py-20 w-full bg-gradient-to-r from-[#3A8DFF] to-[#1D976C] flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/30" /> {/* Overlay */}
+                <AnimatedSection className="relative z-10 text-center max-w-4xl mx-auto px-4">
+                    <h1 className="text-5xl md:text-[60px] font-bold text-white leading-[1.2] font-['Inter']">
+                        Empowering the Next Generation of Leaders with Digital
+                        and Soft Skills
+                    </h1>
+                    <p className="mt-6 text-xl md:text-2xl text-white leading-[1.5] font-['Inter']">
+                        Simplified, engaging, and self-paced learning for
+                        today's digital world.
+                    </p>
+                    <div className="mt-10 flex flex-col md:flex-row gap-4 items-center justify-center">
+                        <button className="w-[200px] h-[60px] bg-[#1D976C] text-white font-semibold text-lg rounded-lg shadow-md hover:bg-[#168c5f] transition-colors">
+                            Join Now
+                        </button>
+                        <button
+                            onClick={scrollToServices}
+                            className="w-[200px] h-[60px] text-white font-semibold text-lg rounded-lg shadow-md bg-[#0020F1] transition ease-linear hover:bg-[#080E7F] duration-300"
                         >
-                            <input
-                                type="text"
-                                placeholder="Enter your email"
-                                className="border border-solid border-[#D0D5DD] mb-4 lg:mr-4 lg:mb-0 py-2 px-4 w-[80%] lg:w-[70%] rounded-lg focus:outline-none transition ease-out hover:shadow-md focus:shadow-md"
-                                value={email}
-                                onChange={(event) => handleChange(event)}
-                            />
-                            <button className="bg-[#0020F1] border-2 border-solid border-[#7F56D9] text-white py-2 px-4 w-[80%] md:w-[80%] lg:w-[50%] xl:w-[40%] rounded-lg focus:bg-[#0020F1] transition ease-linear hover:bg-[#050794] duration-500">
-                                Join our newsletter
-                            </button>
-                        </form>
+                            Learn More
+                        </button>
                     </div>
-                    <img
-                        src={heroImage}
-                        alt=""
-                        className="hidden md:block w-[50%] ml-auto max-w-[587px]"
+                </AnimatedSection>
+            </div>
+
+            {/* Why Choose Us Section */}
+            <div className="bg-[#F7F9FC] py-20">
+                <div className="max-w-7xl mx-auto px-4">
+                    <AnimatedSection>
+                        <h2 className="text-4xl text-center font-semibold text-[#333333] leading-tight">
+                            Why Choose TOLCE Learning Hub?
+                        </h2>
+                        <SellingPoint />
+                    </AnimatedSection>
+                    {/* <div className="rounded-2xl overflow-hidden">
+                        <img
+                            src="/api/placeholder/600/400"
+                            alt="Team learning"
+                            className="w-full h-full object-cover"
+                        />
+                    </div> */}
+                </div>
+            </div>
+
+            {/* Service Tiers Section */}
+            <AnimatedSection>
+                <div ref={serviceTierRef}>
+                    <ServiceTiers
+                        activeTab={activeTab}
+                        setActiveTab={setActiveTab}
                     />
                 </div>
-            </section>
-            <section className="w-[90%] mx-auto mt-2 mb-16 md:w-full">
-                <OurService />
-            </section>
-            <section className="h-fit w-[90%] sm:w-[80%] mx-auto flex items-center justify-center my-5">
-                <div className="w-full sm:w-[80%] mx-auto p-4">
-                    <h1 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px] text-center">
-                        Frequently Asked Questions
-                    </h1>
-                    <p className="text-base xl:text-lg text-center mb-8">
-                        Everything you need to know about the product and
-                        billing
-                    </p>
-                    {faqData.map(({ id, question, answer }) => {
-                        return (
-                            <FaqItems
-                                key={id}
-                                question={question}
-                                answer={answer}
-                                index={id}
-                                currentIndex={currentIndex}
-                                setCurrentIndex={setCurrentIndex}
-                            />
-                        );
-                    })}
+            </AnimatedSection>
+
+            {/* Interactive Elements Section */}
+            {/* <div className="bg-[#F7F9FC] py-20">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="grid md:grid-cols-4 gap-8">
+                        {[
+                            { icon: <BiBook />, title: "Case Studies" },
+                            { icon: <BiUserPlus />, title: "Role Plays" },
+                            { icon: <BiBriefcase />, title: "Simulations" },
+                            { icon: <BiHeart />, title: "Community Projects" },
+                        ].map((item, index) => (
+                            <div
+                                key={index}
+                                className="text-center p-8 bg-white rounded-xl shadow-sm"
+                            >
+                                <div className="inline-block p-4 bg-[#EAF6F2] rounded-full mb-4">
+                                    {React.cloneElement(item.icon, {
+                                        className: "w-12 h-12 text-[#1D976C]",
+                                    })}
+                                </div>
+                                <h3 className="text-xl font-bold text-[#333333] mb-4">
+                                    {item.title}
+                                </h3>
+                                <p className="text-[#555555]">
+                                    Interactive learning experience through{" "}
+                                    {item.title.toLowerCase()}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </section>
-            <div className="w-[90%] mx-auto my-10">
-                <JoinUs />
-            </div>
-            <footer className="bg-[#0C111D] py-16">
-                <Footer />
-            </footer>
+            </div> */}
+
+            {/* Certification Section */}
+            {/* <div className="bg-[#EAF6F2] py-20">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            { icon: <BiAward />, title: "Certification" },
+                            { icon: <BiBriefcase />, title: "Career Services" },
+                            { icon: <BiUserPlus />, title: "Alumni Community" },
+                        ].map((item, index) => (
+                            <div
+                                key={index}
+                                className="bg-white p-8 rounded-xl shadow-sm"
+                            >
+                                <div className="mb-4 text-[#1D976C]">
+                                    {React.cloneElement(item.icon, {
+                                        className: "w-8 h-8",
+                                    })}
+                                </div>
+                                <h3 className="text-xl font-bold text-[#333333] mb-4">
+                                    {item.title}
+                                </h3>
+                                <p className="text-[#555555]">
+                                    Comprehensive support for your learning
+                                    journey through our{" "}
+                                    {item.title.toLowerCase()} program
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div> */}
+
+            {/* frequently asked questions */}
+            <AnimatedSection className="pb-20">
+                <Questions />
+            </AnimatedSection>
+
+            {/* Footer */}
+            <Footer />
         </div>
     );
-}
+};
 
-export default OurServices;
+export default ServicePage;

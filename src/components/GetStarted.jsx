@@ -39,7 +39,7 @@ function GetStarted({ hideStatistics }) {
                 }`}>
                     Accelerate Your Career Growth. Your learning, Our hub
                 </h1>
-                <button className=" flex items-center justify-center p-3 bg-white text-[#050794] rounded-lg transition ease-linear hover:bg-[#050794] hover:text-white duration-300">
+                <button className=" flex items-center justify-center p-3 bg-white text-[#050794] rounded-3xl transition ease-linear hover:bg-[#050794] hover:text-white duration-300">
                     Get Started
                     <GrFormNextLink
                         size={25}

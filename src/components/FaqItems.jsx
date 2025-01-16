@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FaMinus } from "react-icons/fa6";
 import { HiOutlinePlusSm } from "react-icons/hi";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,14 +18,11 @@ const FaqItems = ({
     }, [currentIndex]);
 
     const toggleOpen = (index) => {
-        // if (isOpen && currentIndex !== index) {
-        //     setIsOpen(false)
-        // }
         setCurrentIndex(isOpen ? null : index);
     };
 
     return (
-        <div className="border-b border-gray-200 py-4 pb-3 w-full">
+        <div className="border-b border-gray-200 py-4 pb-3 w-full h-fit">
             <div
                 tabIndex={0}
                 className="flex justify-between items-center cursor-pointer bg-white"
@@ -42,16 +39,15 @@ const FaqItems = ({
                     {isOpen ? <FaMinus /> : <HiOutlinePlusSm />}
                 </button>
             </div>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: "-50%" }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ y: "-30%", opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="mt-4 lg:text-lg text-[#141414]"
+                        initial={{  y: -20 }}
+                        animate={{  y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="mt-4 lg:text-lg text-[#141414] bg-white"
                     >
-                        {answer} {currentIndex} {index}
+                        {answer}
                     </motion.div>
                 )}
             </AnimatePresence>

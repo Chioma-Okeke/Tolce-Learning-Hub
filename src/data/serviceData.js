@@ -9,6 +9,7 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { TbGraphFilled } from "react-icons/tb";
+import { BiBook, BiCalendar, BiHeart, BiUser } from "react-icons/bi";
 
 export const serviceData = [
     {
@@ -79,5 +80,28 @@ export const values = [
         Icon: FaHandHoldingHeart,
         value: "Service",
         description: "We believe we rise by serving. As students get equipped, they use acquired skills to solve problems in local communities through outreaches.",
+    },
+]
+
+export const sellingPoints = [
+    {
+        Icon: BiBook,
+        title: "Holistic Approach to Learning",
+        message: "Our programs cover both digital and soft skills, ensuring well-rounded personal and professional development."
+    },
+    {
+        Icon: BiCalendar,
+        title: "Flexible Learning",
+        message: "Catering to various learning styles and schedules with self-paced modules, live sessions, and mentoring."
+    },
+    {
+        Icon: BiUser,
+        title: "Expert Instructors",
+        message: "Learn from industry experts with real-world experience and a passion for teaching."
+    },
+    {
+        Icon: BiHeart,
+        title: "Corporate Social Responsibility",
+        message: " Solving global problems through various community projects which tend to build problem solving skills of students."
     },
 ]
