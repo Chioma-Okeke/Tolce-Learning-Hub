@@ -70,7 +70,27 @@ body {
 
 .sellingCard {
     transform-style: preserve-3d;
+    border: 1px solid transparent;
+    animation: borderHighlight 7s linear infinite;
 }
+
+@keyframes borderHighlight {
+    0% {
+      box-shadow: 1px 0 0 0 #dd314e, 0 1px 0 0 transparent, -1px 0 0 0 transparent, 0 -1px 0 0 transparent; /* Top side red */
+    }
+    25% {
+      box-shadow: 1px 0 0 0 #f58c4f, 0 1px 0 0 #f58c4f, -1px 0 0 0 transparent, 0 -1px 0 0 transparent; /* Top orange, right side orange */
+    }
+    50% {
+      box-shadow: 1px 0 0 0 #f5e051, 0 1px 0 0 #f5e051, -1px 0 0 0 #f5e051, 0 -1px 0 0 transparent; /* Yellow */
+    }
+    75% {
+      box-shadow: 1px 0 0 0 #4fe07f, 0 1px 0 0 #4fe07f, -1px 0 0 0 #4fe07f, 0 -1px 0 0 #4fe07f; /* Green */
+    }
+    100% {
+      box-shadow: 1px 0 0 0 #6d3bbd, 0 1px 0 0 #6d3bbd, -1px 0 0 0 #6d3bbd, 0 -1px 0 0 #6d3bbd; /* Blue */
+    }
+  }
 
 .sellingCard.flip {
     transform: perspective(300px) rotateY(180deg);
