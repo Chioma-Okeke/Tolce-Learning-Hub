@@ -18,8 +18,9 @@ function SellingPoint() {
                             duration: 0.4,
                             delay: index * 0.1
                         }}
-                        onPointerEnter={() => setFlippedCard(title)}
-                        onPointerLeave={() => setFlippedCard("")}
+                        onPointerEnter={() => window.innerWidth >= 1024 && setFlippedCard(title)}
+                        onPointerLeave={() => window.innerWidth >= 1024 && setFlippedCard("")}
+                        onClick={() => window.innerWidth < 1024 && setFlippedCard(title)}
                         className={`sellingCard rounded-lg relative transition-transform ease-in-out duration-700 cursor-pointer w-full xl:w-[290px] h-[250px] ${
                             flippedCard === title ? "flip" : ""
                         }`}
