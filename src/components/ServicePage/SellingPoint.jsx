@@ -15,8 +15,8 @@ function SellingPoint() {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1}}
                         transition={{
-                            duration: 0.4,
-                            delay: index * 0.1
+                            duration: 0.5,
+                            // delay: index * 0.1
                         }}
                         onPointerEnter={() => window.innerWidth >= 1024 && setFlippedCard(title)}
                         onPointerLeave={() => window.innerWidth >= 1024 && setFlippedCard("")}

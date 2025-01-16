@@ -95,7 +95,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                     animate={mainControls}
                     className={`${
                         programData[activeTab].packages.length > 1 ? "grid" : ""
-                    } md:grid-cols-2  gap-8 overflow-scroll`}
+                    } md:grid-cols-2  gap-8 overflow-scroll pb-10`}
                 >
                     {programData[activeTab].packages.map((package_, index) => (
                         <div
@@ -150,7 +150,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                         </div>
                     ))}
                 </motion.div>
-                <div className="mt-10 space-y-3">
+                <div className=" space-y-3">
                     <h3 className="text-2xl lg:text-3xl font-semibold text-[#333333] lg:mb-2">
                         Additional Features{" "}
                     </h3>
