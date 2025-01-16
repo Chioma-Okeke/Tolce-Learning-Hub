@@ -11,7 +11,7 @@ function About() {
 
     useEffect(() => {
         function handleResize() {
-            setIsSmallScreen(window.innerWidth < 664);
+            setIsSmallScreen(window.innerWidth < 1024);
         }
 
         handleResize();
@@ -57,11 +57,11 @@ function About() {
                 }}
             >
                 <AnimatedSection
-                    className={`py-20 flex flex-col-reverse lg:flex-row items-center w-[90%] lg:w-full h-[450px] 2xl:h-[550px] mx-auto relative ${
-                        isSmallScreen ? "bg-none h-fit gap-5" : "bg-cover"
+                    className={`max-w-[1800px] py-20 flex flex-col-reverse sm:flex-row items-center w-[90%] lg:w-full h-[450px] 2xl:h-[550px] mx-auto relative ${
+                        isSmallScreen ? "bg-none h-fit gap-5" : "bg-cover h-fit"
                     }`}
                 >
-                    <div className="flex-1 lg:py-12 lg:pl-16 lg:pr-4 lg:bg-white">
+                    <div className="flex-1 lg:py-12 lg:pl-16 sm:pr-4 sm:bg-white">
                         <p className="text-base font-medium text-[#475467] xl:text-lg text-justify">
                             <span className="font-semibold text-xl lg:text-2xl ">
                                 TOLCE Learning Hub
