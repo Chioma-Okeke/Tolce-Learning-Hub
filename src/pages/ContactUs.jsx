@@ -48,6 +48,7 @@ function ContactUs() {
                         <img
                             src={image}
                             alt=""
+                            loading="lazy"
                             className="h-[250px] w-full object-cover object-center md:h-full"
                         />
                     </div>
@@ -57,7 +58,7 @@ function ContactUs() {
                         </FormProvider>
                     </div>
                 </div>
-                <div className="pt-20 text-base lg:text-lg flex items-center justify-between">
+                <div className="pt-10 md:pt-20 text-base lg:text-lg flex flex-col gap-5 md:gap-0 md:flex-row md:items-center justify-between">
                     {contactInfo.map(({ title, description, Icon }, index) => {
                         return (
                             <div key={index} className="flex flex-col gap-2">
