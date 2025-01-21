@@ -105,11 +105,11 @@ body {
 }
 
 .sellingCard:nth-child(2n+1) .selling-card-back {
-    background-color: #3A8DFF;
+    background-color: #0020F1;
 }
 
 .sellingCard:nth-child(2n) .selling-card-back {
-    background-color: #1D976C;
+    background-color: #000;
 }
 
 /* Outreach page css */

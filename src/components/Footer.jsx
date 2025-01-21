@@ -20,7 +20,7 @@ function Footer() {
                                 <li key={link}>
                                     <Link
                                         to={link.link}
-                                        className="hover:text-[#1D976C] transition-colors"
+                                        className="hover:text-[#0020F1] transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -40,7 +40,7 @@ function Footer() {
                                 <a
                                     key={index}
                                     href="#"
-                                    className="hover:text-[#1D976C] transition-colors"
+                                    className="hover:text-[#0020F1] transition-colors"
                                 >
                                     <Icon className="w-6 h-6" />
                                 </a>

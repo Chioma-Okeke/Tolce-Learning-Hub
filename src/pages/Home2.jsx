@@ -20,22 +20,23 @@ import intermediateImage from "../assets/skill-acquisition-1.jpg";
 import { programData } from "../data/programData";
 import { motion, useAnimation } from "framer-motion";
 import AnimatedSection from "../components/shared/AnimatedSection";
+import Counter from "../components/reusables/Counter";
 
 const features = [
     {
-        icon: <BiTime className="w-12 h-12 text-[#1D976C]" />,
+        icon: <BiTime className="w-12 h-12 text-[#0020F1]" />,
         title: "Flexible Learning",
         description:
             "Learn at your own pace with our flexible scheduling options",
     },
     {
-        icon: <BiUserPlus className="w-12 h-12 text-[#3A8DFF]" />,
+        icon: <BiUserPlus className="w-12 h-12 text-[#0020F1]" />,
         title: "Expert Instructors",
         description:
             "Learn from industry professionals with years of experience",
     },
     {
-        icon: <BiGroup className="w-12 h-12 text-[#1D976C]" />,
+        icon: <BiGroup className="w-12 h-12 text-[#0020F1]" />,
         title: "10,000+ Children Reached",
         description:
             "Our programs have inspired thousands of children worldwide",
@@ -43,7 +44,7 @@ const features = [
         count: 10000,
     },
     {
-        icon: <BiTrophy className="w-12 h-12 text-[#3A8DFF]" />,
+        icon: <BiTrophy className="w-12 h-12 text-[#0020F1]" />,
         title: "5,000+ Students Trained",
         description:
             "Equipping learners with the skills to thrive in their careers",
@@ -88,35 +89,7 @@ const testimonials = [
 ];
 
 // Counter Component
-const Counter = ({ number }) => {
-    const [count, setCount] = React.useState(0);
-    const [ref, isInView] = useInView();
 
-    React.useEffect(() => {
-        let start = 0;
-        if (isInView) {
-            const end = parseInt(number);
-            if (start === end) return;
-
-            const duration = 2000;
-            const increment = end / (duration / 16);
-
-            const timer = setInterval(() => {
-                start += increment;
-                if (start > end) {
-                    setCount(end);
-                    clearInterval(timer);
-                    return;
-                }
-                setCount(Math.floor(start));
-            }, 16);
-
-            return () => clearInterval(timer);
-        }
-    }, [number, isInView]);
-
-    return <span ref={ref}>{count.toLocaleString()}+</span>;
-};
 
 const LandingPage = () => {
     const navigate = useNavigate();
@@ -189,7 +162,7 @@ const LandingPage = () => {
                             </p>
                             <button
                                 onClick={navigateToAbout}
-                                className="mt-8 px-8 py-3 bg-[#1D976C] text-white font-semibold rounded-lg hover:bg-[#168c5f] transition-colors"
+                                className="mt-8 px-8 py-3 bg-[#0020F1] text-white font-semibold rounded-lg hover:bg-[#080E7F] transition-colors ease-in-out duration-500"
                             >
                                 Learn More About Us
                             </button>
@@ -251,7 +224,7 @@ const LandingPage = () => {
                                         onClick={() =>
                                             navigateToService(program)
                                         }
-                                        className="px-6 py-3 w-[136px] bg-[#1D976C] text-white font-semibold rounded-lg hover:bg-[#168c5f] transition-colors"
+                                        className="px-6 py-3 w-[136px] bg-[#0020F1] text-white font-semibold rounded-lg hover:bg-[#080E7F] transition-colors ease-in-out duration-500"
                                     >
                                         Learn More
                                     </button>
@@ -345,7 +318,7 @@ const LandingPage = () => {
             </AnimatedSection>
 
             {/* Call-to-Action */}
-            <div className="bg-gradient-to-r from-[#3A8DFF] to-[#1D976C] py-20">
+            <div className="bg-gradient-to-r from-[#0020F1] to-[#080E7F] py-20">
                 <AnimatedSection className="max-w-4xl mx-auto px-4 text-center">
                     <h2 className="text-4xl font-bold text-white mb-6">
                         Ready to Start Your Learning Journey?
@@ -354,7 +327,7 @@ const LandingPage = () => {
                         Join thousands of learners who have transformed their
                         careers with us.
                     </p>
-                    <button className="px-8 py-4 bg-white text-[#1D976C] font-semibold text-lg rounded-lg transition-colors ease-linear hover:bg-[#080E7F] hover:text-white duration-500">
+                    <button className="px-8 py-4 bg-white text-[#0020F1] font-semibold text-lg rounded-lg transition-colors ease-linear hover:bg-[#0020F1] hover:text-white duration-500">
                         Get Started Today
                     </button>
                 </AnimatedSection>

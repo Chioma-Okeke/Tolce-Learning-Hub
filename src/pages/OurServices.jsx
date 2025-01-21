@@ -48,7 +48,7 @@ const ServicePage = () => {
     return (
         <div className="w-full">
             {/* Hero Section */}
-            <div className="relative py-20 w-full bg-gradient-to-r from-[#3A8DFF] to-[#1D976C] flex items-center justify-center">
+            <div className="relative py-20 w-full bg-gradient-to-r from-[#0020F1] to-[#080E7F] flex items-center justify-center">
                 <div className="absolute inset-0 bg-black/30" /> {/* Overlay */}
                 <AnimatedSection className="relative z-10 text-center max-w-4xl mx-auto px-4">
                     <h1 className="text-5xl md:text-[60px] font-bold text-white leading-[1.2] font-['Inter']">
@@ -60,12 +60,12 @@ const ServicePage = () => {
                         today's digital world.
                     </p>
                     <div className="mt-10 flex flex-col md:flex-row gap-4 items-center justify-center">
-                        <button className="w-[200px] h-[60px] bg-[#1D976C] text-white font-semibold text-lg rounded-lg shadow-md hover:bg-[#168c5f] transition-colors">
+                        <button className="w-[200px] h-[60px] border-2 border-white bg-white text-[#0020F1] font-semibold text-lg rounded-lg shadow-md transition-colors ease-in-out hover:bg-transparent hover:text-white duration-500">
                             Join Now
                         </button>
                         <button
                             onClick={scrollToServices}
-                            className="w-[200px] h-[60px] text-white font-semibold text-lg rounded-lg shadow-md bg-[#0020F1] transition ease-linear hover:bg-[#080E7F] duration-300"
+                            className="w-[200px] h-[60px] border-2 border-white text-white font-semibold text-lg rounded-lg shadow-md bg-transparent transition ease-linear hover:bg-white hover:text-[#0020F1] duration-300"
                         >
                             Learn More
                         </button>

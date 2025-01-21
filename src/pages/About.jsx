@@ -91,7 +91,7 @@ function About() {
                 <MissionAndValues />
             </section>
 
-            <div className="bg-gradient-to-r from-[#3A8DFF] to-[#1D976C] text-white">
+            <div className="bg-gradient-to-r from-[#080E7F] to-[#0020F1] text-white">
                 <AnimatedSection>
                     <TeamMembers />
                 </AnimatedSection>

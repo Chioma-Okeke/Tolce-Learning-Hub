@@ -57,7 +57,7 @@ function MissionAndValues() {
                                     onMouseEnter={() => highlightValue(id)}
                                     onMouseLeave={removeHighlight}
                                     key={id}
-                                    className={`flex flex-col lg:flex-row items-center gap-[15px] p-4 transition-all duration-300 rounded-lg ${
+                                    className={`cursor-pointer flex flex-col lg:flex-row items-center gap-[15px] p-4 transition-all duration-300 rounded-lg ${
                                         currentIndex === id
                                             ? "bg-white text-[#141414] scale-105"
                                             : "bg-transparent text-white"

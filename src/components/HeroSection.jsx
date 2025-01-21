@@ -67,7 +67,7 @@ export default function HeroSection() {
                                         {/* <button className="w-[80%] sm:w-[60%] md:w-[200px] rounded-3xl text-[18px] sm:text-base font-bold text-white p-2 md:px-7 md:py-4 bg-[#0020F1]  transition ease-linear hover:bg-[#080E7F] duration-300">
                                             Join us
                                         </button> */}
-                                        <button className="w-[200px] h-[60px] bg-[#1D976C] text-white font-semibold text-lg rounded-lg shadow-md hover:bg-[#168c5f] transition-colors">
+                                        <button className="w-[200px] h-[60px] border-2 border-white bg-transparent text-white font-semibold text-lg rounded-lg shadow-md hover:bg-[#141414] hover:border-none transition-colors ease-in-out duration-500">
                                             Join Us
                                         </button>
                                         <button onClick={navigateToContact} className="w-[200px] h-[60px] text-white font-semibold text-lg rounded-lg shadow-md bg-[#0020F1] transition ease-linear hover:bg-[#080E7F] duration-300">

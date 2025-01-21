@@ -65,13 +65,13 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                             onClick={() => setActiveTab(tab)}
                             className={`relative px-8 py-4 text-lg font-semibold transition-all ease-linear duration-300 ${
                                 activeTab === tab
-                                    ? "text-[#1D976C]"
+                                    ? "text-[#0020F1]"
                                     : "text-[#555555]"
                             }`}
                         >
                             {tab.charAt(0).toUpperCase() + tab.slice(1)} Program
                             <div
-                                className={`absolute bg-[#1D976C] h-[2px] w-full bottom-0 left-0 transition-transform ease-in-out duration-300 ${
+                                className={`absolute bg-[#0020F1] h-[2px] w-full bottom-0 left-0 transition-transform ease-in-out duration-300 ${
                                     activeTab === tab
                                         ? "transform scale-x-100"
                                         : "transform scale-x-0"
@@ -95,7 +95,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                     animate={mainControls}
                     className={`${
                         programData[activeTab].packages.length > 1 ? "grid" : ""
-                    } md:grid-cols-2  gap-8 overflow-scroll pb-10`}
+                    } md:grid-cols-2 gap-8 pb-10`}
                 >
                     {programData[activeTab].packages.map((package_, index) => (
                         <div
@@ -117,11 +117,11 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                                         <h3 className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#333333] lg:mb-2">
                                             {package_.title}
                                         </h3>
-                                        <p className="text-xl lg:text-2xl font-bold text-[#1D976C]">
+                                        <p className="text-xl lg:text-2xl font-bold text-[#0020F1]">
                                             {package_.price}
                                         </p>
                                     </div>
-                                    <button className="max-w-44 px-8 py-4 bg-[#1D976C] text-white font-semibold rounded-lg hover:bg-[#168c5f] transition-colors">
+                                    <button className="max-w-44 px-8 py-4 bg-[#0020F1] text-white font-semibold rounded-lg hover:bg-[#080E7F] transition-colors">
                                         Enroll Now
                                     </button>
                                 </div>
@@ -168,7 +168,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                                     >
                                         <FiCheckCircle
                                             size={20}
-                                            className="text-[#1D976C] flex-shrink-0 mt-1"
+                                            className="text-[#0020F1] flex-shrink-0 mt-1"
                                         />
                                         <span className="text-[#555555]">
                                             <b>{topic}</b>: {rest}
