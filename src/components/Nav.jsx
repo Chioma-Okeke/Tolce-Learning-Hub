@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../assets/logo.svg";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
@@ -7,11 +7,39 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 
+const navLinks = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About Us" },
+    { path: "/services", label: "Our Services" },
+    { path: "/contact", label: "Contact Us" },
+];
+
 function Nav({ handleNavToggle, showNav, setShowNav }) {
     const [showSubMenus, setShowSubMenus] = useState(false);
+    const [showNavItems, setShowNavItems] = useState(false);
     const isTransparent = useSelector(
         (state) => state.navigation.isTransparent
     );
+
+    const closeNav = () => {
+        setShowNavItems(false)
+    }
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            showNav && setShowNavItems(true)
+        }, 300);
+
+        return () => clearTimeout(timeoutId)
+    }, [showNav]);
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            !showNavItems && setShowNav(false);
+        }, 1000);
+
+        return () => clearTimeout(timeoutId)
+    }, [showNavItems]);
 
     console.log(isTransparent, "status nav");
 
@@ -127,104 +155,64 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                 </div>
                 <AnimatePresence>
                     <div
-                        className={`fixed top-0 w-full h-full border-r border-t-gray-900 bg-white py-2 transition-all ease-in-out duration-700 
+                        className={`fixed top-0 w-full h-full border-r border-t-gray-900 bg-white py-2 transition-all ease-in-out duration-1000 
                     ${showNav ? "left-0" : "left-[-100%]"}
                 `}
                     >
-                        <motion.div
-                            initial={{ opacity: 0, width: 0 }}
-                            animate={{ opacity: 1, width: "100%" }}
-                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                        <div
                             className="flex justify-between items-center pr-4"
                         >
                             <a href="/">
                                 <img src={Logo} alt="" className="w-32" />
                             </a>
                             <div
-                                onClick={handleNavToggle}
+                                onClick={closeNav}
                                 className="block lg:hidden"
                             >
-                                {showNav ? (
-                                    <AiOutlineClose
-                                        size={20}
-                                        cursor={"pointer"}
-                                        className="hover:scale-110"
-                                    />
-                                ) : (
-                                    <AiOutlineMenu
-                                        size={20}
-                                        cursor={"pointer"}
-                                        className="hover:scale-110"
-                                    />
-                                )}
+                                <AiOutlineClose
+                                    size={20}
+                                    cursor={"pointer"}
+                                    className="hover:scale-110"
+                                />
                             </div>
-                        </motion.div>
-                        <ul className="px-4 text-black">
-                            <li className="py-4">
-                                <NavLink
-                                    onClick={() => setShowNav(false)}
-                                    className={({ isActive }) => {
-                                        return (
-                                            " no-underline " +
-                                            (!isActive
-                                                ? " hover:text-[#0020f1]"
-                                                : "font-bold")
-                                        );
-                                    }}
-                                    to="/"
-                                >
-                                    Home
-                                </NavLink>
-                            </li>
-                            <li className="py-4">
-                                <NavLink
-                                    onClick={() => setShowNav(false)}
-                                    className={({ isActive }) => {
-                                        return (
-                                            " no-underline " +
-                                            (!isActive
-                                                ? " hover:text-[#0020f1]"
-                                                : "font-bold")
-                                        );
-                                    }}
-                                    to="/about"
-                                >
-                                    About Us
-                                </NavLink>
-                            </li>
-                            <li className="py-4">
-                                <NavLink
-                                    onClick={() => setShowNav(false)}
-                                    className={({ isActive }) => {
-                                        return (
-                                            " no-underline " +
-                                            (!isActive
-                                                ? " hover:text-[#0020f1]"
-                                                : "text-[#0020f1] font-bold")
-                                        );
-                                    }}
-                                    to="/services"
-                                >
-                                    Our Services
-                                </NavLink>
-                            </li>
-                            <li className="py-4">
-                                <NavLink
-                                    onClick={() => setShowNav(false)}
-                                    className={({ isActive }) => {
-                                        return (
-                                            " no-underline " +
-                                            (!isActive
-                                                ? " hover:bg-[#4459e44b]"
-                                                : "text-[#0020f1] font-bold")
-                                        );
-                                    }}
-                                    to="/contact"
-                                >
-                                    Contact Us
-                                </NavLink>
-                            </li>
-                        </ul>
+                        </div>
+                        <AnimatePresence>
+                            {showNavItems && <ul className="px-4 text-black">
+                                {navLinks.map(({ path, label }, index) => {
+                                    return (
+                                        <motion.li
+                                            initial={{ opacity: 0, x: "-100%" }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: "-100%" }}
+                                            transition={{
+                                                duration: 1,
+                                                ease: "easeInOut",
+                                                delay: index * 0.2,
+                                            }}
+                                            key={path}
+                                            className="py-3"
+                                        >
+                                            <NavLink
+                                                onClick={() =>
+                                                    setShowNav(false)
+                                                }
+                                                className={({ isActive }) => {
+                                                    return (
+                                                        " no-underline text-xl " +
+                                                        (!isActive
+                                                            ? "hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
+                                                            : "font-bold")
+                                                    );
+                                                }}
+                                                to={path}
+                                            >
+                                                {label}
+                                            </NavLink>
+                                        </motion.li>
+                                    );
+                                })}
+                            </ul>}
+                        </AnimatePresence>
                     </div>
                 </AnimatePresence>
             </div>

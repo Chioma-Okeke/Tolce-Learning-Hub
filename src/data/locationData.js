@@ -7,7 +7,7 @@ export const location = {
 
 export const quickLinks = [
     {
-        name: "Program",
+        name: "Services",
         link: "/services"
     },
     {

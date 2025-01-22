@@ -219,10 +219,10 @@ function Outreaches() {
                                 impactful outreach.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button className="bg-white text-[#0020F1] px-8 py-3 rounded-lg font-semibold text-lg">
+                                <button className="px-8 py-3 border-2 border-white bg-white text-[#0020F1] font-semibold text-lg rounded-lg shadow-md transition-colors ease-in-out hover:bg-transparent hover:text-white duration-500">
                                     Volunteer With Us
                                 </button>
-                                <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg">
+                                <button className="px-8 py-3 border-2 border-white text-white font-semibold text-lg rounded-lg shadow-md bg-transparent transition ease-linear hover:bg-white hover:text-[#0020F1] duration-500">
                                     Donate Now
                                 </button>
                             </div>
