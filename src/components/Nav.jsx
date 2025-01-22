@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Logo from "../assets/logo.svg";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
@@ -14,23 +14,30 @@ const navLinks = [
     { path: "/contact", label: "Contact Us" },
 ];
 
+const focusAreasSUbMenu = [
+    { path: "/outreaches", label: "Outreaches" },
+    { path: "/services", label: "Skill Acquisition" },
+];
+
 function Nav({ handleNavToggle, showNav, setShowNav }) {
     const [showSubMenus, setShowSubMenus] = useState(false);
     const [showNavItems, setShowNavItems] = useState(false);
     const isTransparent = useSelector(
         (state) => state.navigation.isTransparent
     );
+    const { pathname } = useLocation();
+    console.log(pathname, "paht name here")
 
     const closeNav = () => {
-        setShowNavItems(false)
-    }
+        setShowNavItems(false);
+    };
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-            showNav && setShowNavItems(true)
+            showNav ? setShowNavItems(true) : setShowNavItems(false);
         }, 300);
 
-        return () => clearTimeout(timeoutId)
+        return () => clearTimeout(timeoutId);
     }, [showNav]);
 
     useEffect(() => {
@@ -38,7 +45,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
             !showNavItems && setShowNav(false);
         }, 1000);
 
-        return () => clearTimeout(timeoutId)
+        return () => clearTimeout(timeoutId);
     }, [showNavItems]);
 
     console.log(isTransparent, "status nav");
@@ -59,66 +66,39 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                 </a>
                 <nav className="hidden lg:flex font-medium">
                     <ul className="list-style-none flex gap-5">
-                        <li className="p-2">
-                            <NavLink
-                                className={({ isActive }) => {
-                                    return (
-                                        " no-underline " +
-                                        (!isActive
-                                            ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
-                                            : "font-bold")
-                                    );
-                                }}
-                                to="/"
-                            >
-                                Home
-                            </NavLink>
-                        </li>
-                        <li className="p-2">
-                            <NavLink
-                                className={({ isActive }) => {
-                                    return (
-                                        " no-underline " +
-                                        (!isActive
-                                            ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
-                                            : "font-bold")
-                                    );
-                                }}
-                                to="/about"
-                            >
-                                About Us
-                            </NavLink>
-                        </li>
-                        <li className="p-2">
-                            <NavLink
-                                className={({ isActive }) => {
-                                    return (
-                                        " no-underline " +
-                                        (!isActive
-                                            ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
-                                            : "font-bold")
-                                    );
-                                }}
-                                to="/services"
-                            >
-                                Our Services
-                            </NavLink>
-                        </li>
+                        {navLinks.map(({ path, label }) => {
+                            return (
+                                <li key={path} className="p-2">
+                                    <NavLink
+                                        className={({ isActive }) => {
+                                            return (
+                                                " no-underline " +
+                                                (!isActive
+                                                    ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
+                                                    : "font-bold")
+                                            );
+                                        }}
+                                        to={path}
+                                    >
+                                        {label}
+                                    </NavLink>
+                                </li>
+                            );
+                        })}
                         <li
                             onMouseEnter={() => setShowSubMenus(true)}
                             onMouseLeave={() => setShowSubMenus(false)}
-                            className="p-2"
+                            className="p-2 relative"
                         >
-                            <NavLink
-                                className={({ isActive }) => {
-                                    return (
-                                        "flex items-center gap-2  no-underline " +
-                                        (!isActive
-                                            ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
-                                            : "font-bold")
-                                    );
-                                }}
-                                to="/services"
+                            <div
+                                className={`flex items-center gap-2  no-underline " 
+                                            ${
+                                                pathname !== "/services" ||
+                                                pathname !== "/outreaches"
+                                                    ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
+                                                    : "font-bold"
+                                            }
+                                    `}
                             >
                                 <span>Focus Areas</span>
                                 <IoIosArrowDown
@@ -127,22 +107,45 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                         showSubMenus ? "-rotate-180" : ""
                                     }`}
                                 />
-                            </NavLink>
-                        </li>
-                        <li className="p-2">
-                            <NavLink
-                                className={({ isActive }) => {
-                                    return (
-                                        " no-underline " +
-                                        (!isActive
-                                            ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
-                                            : "font-bold")
-                                    );
-                                }}
-                                to="/contact"
-                            >
-                                Contact Us
-                            </NavLink>
+                            </div>
+                            <div>
+                                {showSubMenus && (
+                                    <ul
+                                        className={`absolute top-full left-0 bg-white shadow-lg w-fit ${
+                                            isTransparent
+                                                ? "text-[#141414]"
+                                                : ""
+                                        }`}
+                                    >
+                                        {focusAreasSUbMenu.map(
+                                            ({ path, label }) => {
+                                                return (
+                                                    <li
+                                                        key={path}
+                                                        className="p-2"
+                                                    >
+                                                        <NavLink
+                                                            className={({
+                                                                isActive,
+                                                            }) => {
+                                                                return (
+                                                                    "flex items-center gap-2  no-underline " +
+                                                                    (!isActive
+                                                                        ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
+                                                                        : "font-bold")
+                                                                );
+                                                            }}
+                                                            to={path}
+                                                        >
+                                                            {label}
+                                                        </NavLink>
+                                                    </li>
+                                                );
+                                            }
+                                        )}
+                                    </ul>
+                                )}
+                            </div>
                         </li>
                     </ul>
                 </nav>
@@ -155,63 +158,153 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                 </div>
                 <AnimatePresence>
                     <div
-                        className={`fixed top-0 w-full h-full border-r border-t-gray-900 bg-white py-2 transition-all ease-in-out duration-1000 
+                        className={`fixed top-0 w-full h-full border-r border-t-gray-900 bg-black py-2 transition-all ease-in-out duration-1000 
                     ${showNav ? "left-0" : "left-[-100%]"}
                 `}
                     >
-                        <div
-                            className="flex justify-between items-center pr-4"
-                        >
+                        <div className="flex justify-between items-center pr-4">
                             <a href="/">
                                 <img src={Logo} alt="" className="w-32" />
                             </a>
-                            <div
-                                onClick={closeNav}
-                                className="block lg:hidden"
-                            >
+                            <div onClick={() => setShowNavItems(false)} className="block lg:hidden">
                                 <AiOutlineClose
                                     size={20}
                                     cursor={"pointer"}
                                     className="hover:scale-110"
+                                    color="white"
                                 />
                             </div>
                         </div>
                         <AnimatePresence>
-                            {showNavItems && <ul className="px-4 text-black">
-                                {navLinks.map(({ path, label }, index) => {
-                                    return (
-                                        <motion.li
-                                            initial={{ opacity: 0, x: "-100%" }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: "-100%" }}
-                                            transition={{
-                                                duration: 1,
-                                                ease: "easeInOut",
-                                                delay: index * 0.2,
-                                            }}
-                                            key={path}
-                                            className="py-3"
-                                        >
-                                            <NavLink
-                                                onClick={() =>
-                                                    setShowNav(false)
-                                                }
-                                                className={({ isActive }) => {
-                                                    return (
-                                                        " no-underline text-xl " +
-                                                        (!isActive
-                                                            ? "hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
-                                                            : "font-bold")
-                                                    );
+                            {showNavItems && (
+                                <ul className="px-4 text-white">
+                                    {navLinks.map(({ path, label }, index) => {
+                                        return (
+                                            <motion.li
+                                                initial={{
+                                                    opacity: 0,
+                                                    x: "-100%",
                                                 }}
-                                                to={path}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                exit={{
+                                                    opacity: 0,
+                                                    x: "-100%",
+                                                }}
+                                                transition={{
+                                                    duration: 1,
+                                                    ease: "easeInOut",
+                                                    delay: index * 0.2,
+                                                }}
+                                                key={path}
+                                                className="py-3"
                                             >
-                                                {label}
-                                            </NavLink>
-                                        </motion.li>
-                                    );
-                                })}
-                            </ul>}
+                                                <NavLink
+                                                    onClick={() =>
+                                                        setShowNav(false)
+                                                    }
+                                                    className={({
+                                                        isActive,
+                                                    }) => {
+                                                        return (
+                                                            " no-underline text-xl " +
+                                                            (!isActive
+                                                                ? "hover:border-b-white hover:border-b-2"
+                                                                : "font-bold")
+                                                        );
+                                                    }}
+                                                    to={path}
+                                                >
+                                                    {label}
+                                                </NavLink>
+                                            </motion.li>
+                                        );
+                                    })}
+                                    <motion.li
+                                        initial={{
+                                            opacity: 0,
+                                            x: "-100%",
+                                        }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{
+                                            opacity: 0,
+                                            x: "-100%",
+                                        }}
+                                        transition={{
+                                            duration: 1,
+                                            ease: "easeInOut",
+                                            delay: 1,
+                                        }}
+                                        onClick={() =>
+                                            setShowSubMenus(
+                                                (prevState) => !prevState
+                                            )
+                                        }
+                                        className="relative w-fit py-3"
+                                    >
+                                        <div
+                                            className={`flex items-center gap-2 text-xl no-underline " 
+                                            ${
+                                                pathname === "/services" ||
+                                                pathname === "/outreaches"
+                                                    ? "font-bold" 
+                                                    : "transition-all ease-in-out duration-100 hover:border-b-white hover:border-b-2"
+                                            }
+                                    `}
+                                        >
+                                            <span>Focus Areas</span>
+                                            <IoIosArrowDown
+                                                size={18}
+                                                className={`transition-transform ease-in-out duration-100 ${
+                                                    showSubMenus
+                                                        ? "-rotate-180"
+                                                        : ""
+                                                }`}
+                                            />
+                                        </div>
+                                        <div>
+                                            {showSubMenus && (
+                                                <ul
+                                                    className={`absolute top-full left-0 bg-white shadow-lg w-fit text-[#141414]`}
+                                                >
+                                                    {focusAreasSUbMenu.map(
+                                                        ({ path, label }) => {
+                                                            return (
+                                                                <li
+                                                                    key={path}
+                                                                    className="p-2"
+                                                                >
+                                                                    <NavLink
+                                                                        onClick={() =>
+                                                                            setShowNav(
+                                                                                false
+                                                                            )
+                                                                        }
+                                                                        className={({
+                                                                            isActive,
+                                                                        }) => {
+                                                                            return (
+                                                                                "flex items-center gap-2  no-underline " +
+                                                                                (!isActive
+                                                                                    ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
+                                                                                    : "font-bold")
+                                                                            );
+                                                                        }}
+                                                                        to={
+                                                                            path
+                                                                        }
+                                                                    >
+                                                                        {label}
+                                                                    </NavLink>
+                                                                </li>
+                                                            );
+                                                        }
+                                                    )}
+                                                </ul>
+                                            )}
+                                        </div>
+                                    </motion.li>
+                                </ul>
+                            )}
                         </AnimatePresence>
                     </div>
                 </AnimatePresence>
