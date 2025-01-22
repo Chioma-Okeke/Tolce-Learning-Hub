@@ -43,7 +43,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             !showNavItems && setShowNav(false);
-        }, 1000);
+        }, 2000);
 
         return () => clearTimeout(timeoutId);
     }, [showNavItems]);
@@ -162,7 +162,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                     ${showNav ? "left-0" : "left-[-100%]"}
                 `}
                     >
-                        <div className="flex justify-between items-center pr-4">
+                        <div className="flex justify-between items-center pr-4 mb-8">
                             <a href="/">
                                 <img src={Logo} alt="" className="w-32" />
                             </a>
@@ -232,7 +232,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                         transition={{
                                             duration: 1,
                                             ease: "easeInOut",
-                                            delay: 1,
+                                            delay: 0.9,
                                         }}
                                         onClick={() =>
                                             setShowSubMenus(
