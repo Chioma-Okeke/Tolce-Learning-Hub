@@ -158,7 +158,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                 </div>
                 <AnimatePresence>
                     <div
-                        className={`fixed top-0 w-full h-full border-r border-t-gray-900 bg-black py-2 transition-all ease-in-out duration-1000 
+                        className={`fixed top-0 w-full h-full bg-black py-2 transition-all ease-in-out duration-1000 
                     ${showNav ? "left-0" : "left-[-100%]"}
                 `}
                     >
