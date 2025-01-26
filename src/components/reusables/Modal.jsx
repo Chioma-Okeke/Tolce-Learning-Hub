@@ -1,27 +1,40 @@
+import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
 
-function Modal({closeModal, children}) {
+function Modal({ closeModal, children }) {
     return (
-        <div>
-            {/* Modal Backdrop */}
-            <div
-                className="bg-filter bg-black bg-opacity-50 fixed inset-0 w-full h-full z-30"
-                onClick={closeModal}
-            ></div>
-            
-            {/* modal component */}
-            <main className="flex flex-col items-center justify-center h-full w-full relative">
-                <div className="modal-wrapper flex items-center z-30 relative xl:w-[70%] justify-center">
-                    {children}
-                </div>
-            </main>
+        <div className="fixed inset-0 w-full h-full z-40 ">
+            <AnimatePresence mode="wait">
+                {/* Modal Backdrop */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="bg-filter bg-black bg-opacity-50 fixed inset-0 w-full h-full z-30"
+                    onClick={closeModal}
+                ></motion.div>
+
+                {/* modal component */}
+                <main className="flex flex-col items-center justify-center h-full w-full relative">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.4 }}
+                        className="modal-wrapper flex items-center z-50 relative xl:w-[70%] justify-center"
+                    >
+                        {children}
+                    </motion.div>
+                </main>
+            </AnimatePresence>
         </div>
     );
 }
 
 Modal.propTypes = {
-    closeModal: PropTypes.function,
-    children: PropTypes.node
-}
+    closeModal: PropTypes.func,
+    children: PropTypes.node,
+};
 
 export default Modal;

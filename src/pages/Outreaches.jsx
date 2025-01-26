@@ -92,10 +92,10 @@ function Outreaches() {
                         <div className="bg-black h-full absolute top-0 left-0 opacity-50 w-full -z-10"></div>
                         <div className="w-[90%] mx-auto max-w-[1440px] z-30 flex flex-col justify-center items-center h-full">
                             <div className="relative text-center mb-10">
-                                <h1 className="text-5xl font-bold text-white mb-4 font-inter">
+                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 font-inter">
                                     Making a Difference Together
                                 </h1>
-                                <p className="text-2xl text-white font-inter">
+                                <p className="text-xl sm:text-3xl lg:text-4xl text-white font-inter">
                                     Explore moments from our impactful community
                                     outreach programs.
                                 </p>

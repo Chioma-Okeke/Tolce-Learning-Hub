@@ -7,10 +7,11 @@ import Nav from "../components/Nav";
 import image from "../assets/Hero/Contact_us.png";
 import BackToTop from "../components/BackToTop";
 import ContactForm from "../components/ContactForm";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AnimatedSection from "../components/shared/AnimatedSection";
 import { BiEnvelope, BiPhone } from "react-icons/bi";
 import { PiHouse } from "react-icons/pi";
+import Modal from "../components/reusables/Modal";
 
 const contactInfo = [
     {
@@ -32,6 +33,13 @@ const contactInfo = [
 
 function ContactUs() {
     const methods = useForm();
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+    function closeModal() {
+        setTimeout(() => {
+            setShowSuccessModal(false);
+        }, 700)
+    }
 
     useEffect(() => {
         window.scrollTo(0, {
@@ -39,6 +47,14 @@ function ContactUs() {
             behavior: "smooth",
         });
     }, []);
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setShowSuccessModal(false);
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+    }, [showSuccessModal]);
 
     return (
         <div>
@@ -54,7 +70,9 @@ function ContactUs() {
                     </div>
                     <div className="flex-1">
                         <FormProvider {...methods}>
-                            <ContactForm />
+                            <ContactForm
+                                setShowSuccessModal={setShowSuccessModal}
+                            />
                         </FormProvider>
                     </div>
                 </div>
@@ -63,7 +81,7 @@ function ContactUs() {
                         return (
                             <div key={index} className="flex flex-col gap-2">
                                 <div className="bg-[#EAF6F2] rounded-full w-fit p-3">
-                                    <Icon className="w-8 h-8 text-[#3A8DFF]"/>
+                                    <Icon className="w-8 h-8 text-[#3A8DFF]" />
                                 </div>
                                 <p className="font-bold mt-2">{title}</p>
                                 <p>{description}</p>
@@ -72,6 +90,24 @@ function ContactUs() {
                     })}
                 </div>
             </AnimatedSection>
+            {showSuccessModal && (
+                <Modal closeModal={() => setShowSuccessModal(false)}>
+                    <div className="bg-white w-[90%] md:w-[50%] p-10">
+                        <h1 className="text-2xl font-bold text-center">
+                            Thank you for reaching out
+                        </h1>
+                        <p className="text-center mt-2">
+                            We will get back to you as soon as possible
+                        </p>
+                        <button
+                            onClick={closeModal}
+                            className="bg-[#0020F1] text-white text-center w-full py-4 px-6 rounded-lg mt-8 cursor-pointer transition ease-linear"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </Modal>
+            )}
             <Footer />
         </div>
     );

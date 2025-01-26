@@ -12,7 +12,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "aos": "^2.3.4",
+    "axios": "^1.7.9",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.7",
     "framer-motion": "^11.2.9",
     "google-map-react": "^2.2.1",
     "prop-types": "^15.8.1",

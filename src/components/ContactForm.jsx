@@ -1,16 +1,34 @@
 // import React from "react";
 import { useFormContext } from "react-hook-form";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
+import PropTypes from "prop-types";
+import axios from "axios";
+const apiUrl = import.meta.env.VITE_FORM_SUBMISSION_URL;
 
-function ContactForm() {
+function ContactForm({ setShowSuccessModal }) {
     const {
         register,
         handleSubmit,
         formState: { errors },
+        watch,
+        reset,
     } = useFormContext();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        try {
+            // const response = await axios.post(
+            //     apiUrl,
+            //     data,
+            //     { headers: { Accept: "application/json" } }
+            // );
+            // console.log("Message sent: ", response);
+            console.log(data);
+            setShowSuccessModal(true);
+            reset();
+        } catch (error) {
+            console.error(error);
+            alert("Failed to send message. Please try again.");
+        }
     };
 
     return (
@@ -24,26 +42,31 @@ function ContactForm() {
                 Our friendly team would love to hear from you
             </p>
             <div className="xs:grid xs:grid-cols-2 gap-3">
-                <div className="my-4 flex flex-col gap-1">
-                    <label
-                        className=" text-[#344054] xl:mb-2"
-                        htmlFor="firstName"
-                    >
-                        First name
-                    </label>
-                    <input
-                        type="text"
-                        id="firstName"
-                        aria-invalid={errors.name ? "true" : "false"}
-                        placeholder="First Name"
-                        className="border border-solid border-[#D0D5DD] p-2 rounded-xl xl:p-4"
-                        {...register("firstName", {
-                            required: {
-                                value: true,
-                                message: "required",
-                            },
-                        })}
-                    /> 
+                <div>
+                    <div className="my-4 flex flex-col gap-1">
+                        <label
+                            className=" text-[#344054] xl:mb-2"
+                            htmlFor="firstName"
+                        >
+                            First name
+                        </label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            aria-invalid={errors.name ? "true" : "false"}
+                            placeholder="First Name"
+                            className="border border-solid border-[#D0D5DD] p-2 rounded-xl xl:p-4"
+                            {...register("firstName", {
+                                required: {
+                                    value: true,
+                                    message: "First name is required",
+                                },
+                            })}
+                        />
+                        {errors.firstName && (
+                            <InputError message={errors.firstName.message} />
+                        )}
+                    </div>
                 </div>
                 <div className="my-4 flex flex-col gap-1">
                     <label
@@ -61,10 +84,13 @@ function ContactForm() {
                         {...register("lastName", {
                             required: {
                                 value: true,
-                                message: "required",
+                                message: "Last name is required",
                             },
                         })}
                     />
+                    {errors.lastName && (
+                        <InputError message={errors.lastName.message} />
+                    )}
                 </div>
             </div>
             <div className="mb-4 flex flex-col gap-1">
@@ -78,12 +104,14 @@ function ContactForm() {
                     placeholder="you@email.com"
                     className="border border-solid border-[#D0D5DD] p-2 rounded-xl xl:p-4"
                     {...register("email", {
-                        required: {
-                            value: true,
-                            message: "required",
+                        required: "Email Address is required",
+                        pattern: {
+                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                            message: "Enter a valid email address",
                         },
                     })}
                 />
+                {errors.email && <InputError message={errors.email.message} />}
             </div>
             <div className=" my-4 flex flex-col gap-1">
                 <label className=" text-[#344054] xl:mb-2" htmlFor="message">
@@ -99,10 +127,13 @@ function ContactForm() {
                     {...register("message", {
                         required: {
                             value: true,
-                            message: "required",
+                            message: "Message is required",
                         },
                     })}
                 ></textarea>
+                {errors.message && (
+                    <InputError message={errors.message.message} />
+                )}
             </div>
             <div className="flex items-center mt-2">
                 <input
@@ -126,30 +157,39 @@ function ContactForm() {
                     </a>
                 </span>
             </div>
-            <button className="bg-[#0020F1] text-white text-center w-full py-4 px-6 rounded-lg mt-8 cursor-pointer transition ease-linear hover:bg-[#050794] duration-500">
+            <button
+                disabled={!watch("isChecked")}
+                className={`bg-[#0020F1] text-white text-center w-full py-4 px-6 rounded-lg mt-8 cursor-pointer transition ease-linear ${
+                    watch("isChecked")
+                        ? "opacity-100"
+                        : "opacity-50 cursor-not-allowed"
+                }`}
+            >
                 Send message
             </button>
         </form>
     );
 }
 
-function InputError({ message, role }) {
-    const mainControls = useAnimation();
-
+function InputError({ message }) {
     return (
         <motion.div
-            variants={{
-                hidden: { opacity: 0, y: 10 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
-            }}
-            initial="hidden"
-            animate={mainControls}
-            exit={{ opacity: 10, y: 10 }}
-            className="text-red-500 font-semibold"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="text-red-500 font-semibold text-sm"
         >
-            <span role={role}>{message}</span>
+            <span>{message}</span>
         </motion.div>
     );
 }
+
+InputError.propTypes = {
+    message: PropTypes.string,
+};
+
+ContactForm.propTypes = {
+    setShowSuccessModal: PropTypes.func,
+};
 
 export default ContactForm;

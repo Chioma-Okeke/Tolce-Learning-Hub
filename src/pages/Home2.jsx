@@ -224,7 +224,7 @@ const LandingPage = () => {
                                         onClick={() =>
                                             navigateToService(program)
                                         }
-                                        className="px-6 py-3 w-[136px] bg-[#0020F1] text-white font-semibold rounded-lg hover:bg-[#080E7F] transition-colors ease-in-out duration-500"
+                                        className="px-6 py-3 w-[145px] bg-[#0020F1] text-white font-semibold rounded-lg hover:bg-[#080E7F] transition-colors ease-in-out duration-500"
                                     >
                                         Learn More
                                     </button>

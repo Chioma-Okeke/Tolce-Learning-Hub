@@ -26,7 +26,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
         (state) => state.navigation.isTransparent
     );
     const { pathname } = useLocation();
-    console.log(pathname, "paht name here")
+    console.log(pathname, "paht name here");
 
     const closeNav = () => {
         setShowNavItems(false);
@@ -74,7 +74,11 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                             return (
                                                 " no-underline " +
                                                 (!isActive
-                                                    ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
+                                                    ? `transition-all ease-in-out duration-100  hover:border-b-2  ${
+                                                          isTransparent
+                                                              ? "hover:border-b-white"
+                                                              : "hover:border-b-[#0020f1] hover:text-[#0020f1]"
+                                                      }`
                                                     : "font-bold")
                                             );
                                         }}
@@ -91,12 +95,16 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                             className="p-2 relative"
                         >
                             <div
-                                className={`flex items-center gap-2  no-underline " 
+                                className={`flex items-center gap-2  no-underline
                                             ${
-                                                pathname !== "/services" ||
-                                                pathname !== "/outreaches"
-                                                    ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
-                                                    : "font-bold"
+                                                pathname === "/services" ||
+                                                pathname === "/outreaches"
+                                                    ? " font-bold"
+                                                    : ` transition-all ease-in-out duration-100  hover:border-b-2  ${
+                                                          isTransparent
+                                                              ? "hover:border-b-white"
+                                                              : "hover:border-b-[#0020f1] hover:text-[#0020f1]"
+                                                      }`
                                             }
                                     `}
                             >
@@ -166,7 +174,10 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                             <a href="/">
                                 <img src={Logo} alt="" className="w-32" />
                             </a>
-                            <div onClick={() => setShowNavItems(false)} className="block lg:hidden">
+                            <div
+                                onClick={() => setShowNavItems(false)}
+                                className="block lg:hidden"
+                            >
                                 <AiOutlineClose
                                     size={20}
                                     cursor={"pointer"}
@@ -232,7 +243,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                         transition={{
                                             duration: 1,
                                             ease: "easeInOut",
-                                            delay: 0.9,
+                                            delay: 0.8,
                                         }}
                                         onClick={() =>
                                             setShowSubMenus(
@@ -246,7 +257,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                             ${
                                                 pathname === "/services" ||
                                                 pathname === "/outreaches"
-                                                    ? "font-bold" 
+                                                    ? "font-bold"
                                                     : "transition-all ease-in-out duration-100 hover:border-b-white hover:border-b-2"
                                             }
                                     `}

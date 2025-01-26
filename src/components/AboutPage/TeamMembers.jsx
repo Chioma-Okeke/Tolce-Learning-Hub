@@ -62,19 +62,19 @@ function TeamMembers() {
             </h4>
             <div className="flex flex-col md:flex-row items-center gap-8 md:h-[451px]">
                 {/* Previous Button */}
-                <button
+                {teamMembers.length > 1 && <button
                     onClick={handlePrevious}
                     aria-label="Previous Member"
                     className="hidden lg:block"
                 >
                     <GrPrevious size={24} />
-                </button>
+                </button>}
 
                 {/* Team Member Details */}
                 <div className="flex-1 flex flex-col items-center md:items-start gap-6">
-                    <p className="text-lg font-semibold text-center md:text-left">
+                    {/* <p className="text-lg font-semibold text-center md:text-left">
                         Meet the people behind our mission
-                    </p>
+                    </p> */}
                     {/* Team Leaders */}
                     <div className="flex items-center gap-3">
                         {teamLeadersImages.map((leader, index) => (
@@ -135,16 +135,16 @@ function TeamMembers() {
                 </div>
 
                 {/* Next Button */}
-                <button
+                {teamMembers.length > 1 && <button
                     onClick={handleNext}
                     aria-label="Next Member"
                     className="hidden lg:block"
                 >
                     <GrNext size={24} />
-                </button>
+                </button>}
 
                 {/* combined buttons */}
-                <div className="md:hidden flex items-center justify-center">
+                {teamMembers.length > 1 && <div className="md:hidden flex items-center justify-center">
                     <button
                         onClick={handlePrevious}
                         aria-label="Previous Member"
@@ -159,7 +159,7 @@ function TeamMembers() {
                     >
                         <GrNext size={24} />
                     </button>
-                </div>
+                </div>}
             </div>
         </section>
     );
