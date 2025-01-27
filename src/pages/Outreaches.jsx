@@ -24,9 +24,22 @@ function Outreaches() {
     const dispatch = useDispatch();
     const [visibleImagesLimit, setVisibleImagesLimit] = useState(4);
     const [currentExpandedImage, setCurrentExpandedImage] = useState("");
-    const [focusedIndex, setFocusedIndex] = useState(1);
+    const [focusedIndex, setFocusedIndex] = useState(null);
+    const imageContainerRef = useRef(null);
+    const expandedImage =
+        focusedIndex !== null && galleryCategoriesImages[focusedIndex];
 
-    const expandedImage = galleryCategoriesImages[focusedIndex];
+    useEffect(() => {
+        if (
+            visibleImagesLimit !== galleryCategoriesImages.length &&
+            imageContainerRef.current
+        ) {
+            imageContainerRef.current.scrollIntoView({
+                block: "start",
+                behavior: "smooth",
+            });
+        }
+    }, [visibleImagesLimit]);
 
     useEffect(() => {
         document.body.style.overflow = isLocked ? "hidden" : "auto";
@@ -56,13 +69,13 @@ function Outreaches() {
 
     function handlePrevious() {
         setFocusedIndex((prevIndex) =>
-            prevIndex === 1 ? galleryCategoriesImages.length - 1 : prevIndex - 1
+            prevIndex > 0 ? prevIndex - 1 : galleryCategoriesImages.length - 1
         );
     }
 
     function handleNext() {
         setFocusedIndex((prevIndex) =>
-            prevIndex === galleryCategoriesImages.length - 1 ? 0 : prevIndex + 1
+            prevIndex < galleryCategoriesImages.length - 1 ? prevIndex + 1 : 0
         );
     }
 
@@ -161,7 +174,10 @@ function Outreaches() {
                                 <h2 className="font-semibold text-2xl lg:text-4xl lg:py-6 xl:text-[40px] mb-12 text-center">
                                     Gallery of Our Activities
                                 </h2>
-                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                                <div
+                                    ref={imageContainerRef}
+                                    className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                                >
                                     <AnimatePresence>
                                         {galleryCategoriesImages
                                             .slice(0, visibleImagesLimit)
@@ -187,7 +203,13 @@ function Outreaches() {
                                                     className="relative group overflow-hidden rounded-lg"
                                                 >
                                                     <img
-                                                        onClick={() => setFocusedIndex(imageIndex)}
+                                                        onClick={() => {
+                                                            setFocusedIndex(
+                                                                imageIndex
+                                                            );
+                                                            setIsLocked(true);
+                                                        }}
+                                                        loading="lazy"
                                                         src={image.imageLink}
                                                         alt={`${image.title} ${
                                                             imageIndex + 1
@@ -260,48 +282,83 @@ function Outreaches() {
 
                     {/* Call-to-Action Section */}
                     <section className="bg-gradient-to-r from-[#0020F1] to-[#080E7F] py-12 sm:py-20">
-                        <div className="max-w-7xl mx-auto px-4 text-center">
-                            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                                Be a Part of the Change
-                            </h2>
-                            <p className="text-lg sm:text-xl text-white mb-8">
-                                Join our mission to empower communities through
-                                impactful outreach.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button className="bg-white text-[#0020F1] px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition-colors ease-in-out duration-300">
-                                    Volunteer With Us
-                                </button>
-                                <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors ease-in-out duration-300">
-                                    Donate Now
-                                </button>
+                        <AnimatedSection>
+                            <div className="max-w-7xl mx-auto px-4 text-center">
+                                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                                    Be a Part of the Change
+                                </h2>
+                                <p className="text-lg sm:text-xl text-white mb-8">
+                                    Join our mission to empower communities
+                                    through impactful outreach.
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <button className="bg-white text-[#0020F1] px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition-colors ease-in-out duration-300">
+                                        Volunteer With Us
+                                    </button>
+                                    <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors ease-in-out duration-300">
+                                        Donate Now
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </AnimatedSection>
                     </section>
 
-                    {focusedIndex !== 0 && (
-                        <Modal closeModal={() => setFocusedIndex(0)}>
-                            <div className="flex flex-col justify-center items-center gap-10">
-                                <img
-                                    onClick={() => setFocusedIndex(0)}
-                                    src={expandedImage.imageLink}
-                                    alt=""
-                                    className=" w-[90%] md:w-[60%] min-h-[80%] md:h-[70%] object-cover "
-                                />
-                                <div className="md:hidden flex items-center justify-center text-white">
+                    {focusedIndex !== null && (
+                        <Modal
+                            closeModal={() => {
+                                setFocusedIndex(null);
+                                setIsLocked(false);
+                            }}
+                        >
+                            <div className="relative bg-white rounded-lg shadow-lg p-4 w-[90%] max-w-5xl mx-auto h-[85vh] max-h-[85vh] flex flex-col justify-center items-center overflow-hidden">
+                                {/* Image and Controls */}
+                                <div className="relative flex items-center justify-between w-full h-full">
+                                    {/* Previous Button */}
                                     <button
                                         onClick={handlePrevious}
                                         aria-label="Previous Member"
-                                        className=""
+                                        className="hidden lg:block absolute left-4 z-10 bg-gray-800 hover:bg-gray-600 text-white rounded-full p-2 transition duration-300"
                                     >
                                         <GrPrevious size={28} />
+                                    </button>
+
+                                    {/* Image */}
+                                    <img
+                                        onClick={() => {
+                                            setFocusedIndex(null);
+                                            setIsLocked(false);
+                                        }}
+                                        src={expandedImage.imageLink}
+                                        alt=""
+                                        loading="lazy"
+                                        className="object-contain w-full max-w-3xl h-auto max-h-[80vh] rounded-md mx-auto"
+                                    />
+
+                                    {/* Next Button */}
+                                    <button
+                                        onClick={handleNext}
+                                        aria-label="Next Member"
+                                        className="hidden lg:block absolute right-4 z-10 bg-gray-800 hover:bg-gray-600 text-white rounded-full p-2 transition duration-300"
+                                    >
+                                        <GrNext size={28} />
+                                    </button>
+                                </div>
+
+                                {/* Mobile Controls */}
+                                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 lg:hidden">
+                                    <button
+                                        onClick={handlePrevious}
+                                        aria-label="Previous Member"
+                                        className="bg-gray-800 hover:bg-gray-600 text-white rounded-full p-3 transition duration-300"
+                                    >
+                                        <GrPrevious size={20} />
                                     </button>
                                     <button
                                         onClick={handleNext}
                                         aria-label="Next Member"
-                                        className=""
+                                        className="bg-gray-800 hover:bg-gray-600 text-white rounded-full p-3 transition duration-300"
                                     >
-                                        <GrNext size={28} />
+                                        <GrNext size={20} />
                                     </button>
                                 </div>
                             </div>

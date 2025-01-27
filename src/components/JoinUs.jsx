@@ -7,10 +7,29 @@ import { IoClose } from "react-icons/io5";
 import thankYouGif from "../assets/thank you evelope.gif";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import Modal from "./reusables/Modal";
+import { useEffect } from "react";
 
 function JoinUs({ setSubscriptionConfirmed }) {
     const [email, setEmail] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    const [isLocked, setIsLocked] = useState(false);
+
+    useEffect(() => {
+        document.body.style.overflow = isLocked ? "hidden" : "auto";
+
+        return () => (document.body.style.overflow = "auto");
+    }, [isLocked]);
+
+    useEffect(() => {
+        if (showConfirmationModal) {
+            setTimeout(() => {
+                setShowConfirmationModal(false);
+                setIsLocked(false);
+            }, 8000);
+        }
+    }, [showConfirmationModal]);
 
     function handleChange(event) {
         setErrorMessage(false);
@@ -20,54 +39,22 @@ function JoinUs({ setSubscriptionConfirmed }) {
     function handleSubmit(event) {
         event.preventDefault();
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        console.log(email);
         if (email === "") {
             setErrorMessage("Enter an email before submission.");
         } else if (!emailRegex.test(email)) {
             setErrorMessage("Enter a valid email address");
         } else {
             setErrorMessage("");
-            confirmAlert({
-                customUI: ({ onClose }) => {
-                    return (
-                        <div className="w-[80%] lg:w-[600px] h-fit mx-auto bg-white shadow-xl rounded-xl relative p-5 md:p-10 flex flex-col items-center justify-center">
-                            <IoClose
-                                onClick={onClose}
-                                size={25}
-                                cursor={"pointer"}
-                                className="absolute right-2 top-2 mb-11 transition ease-out hover:text-[#0020F1]"
-                            />
-                            <h1 className="mt-2 font-bold text-2xl">
-                                Welcome!
-                            </h1>
-                            <img
-                                src={thankYouGif}
-                                alt="thank you gif"
-                                className="w-44"
-                            />
-                            <h1 className="text-[#101828] text-center">
-                                Congratulations and welcome to our Learning
-                                Community! 🎉 You have successfully subscribed
-                                to our newsletter. Get ready to receive regular
-                                updates packed with valuable career advice,
-                                industry insights, and development tips
-                                delivered straight to your inbox.
-                            </h1>
-                        </div>
-                    );
-                },
-            });
+            setShowConfirmationModal(true);
+            setIsLocked(true);
             setEmail("");
-            console.log(email);
         }
     }
 
     return (
         <section className="flex flex-col lg:flex-row gap-8 lg:gap-0 justify-between pb-12 ">
             <div className="flex flex-col gap-1 flex-1">
-                <h1 className="font-bold text-2xl">
-                    Join our newsletter
-                </h1>
+                <h1 className="font-bold text-2xl">Join our newsletter</h1>
                 <p className="">
                     Get all the latest TOLCE learning hub news delivered to your
                     inbox.
@@ -104,6 +91,40 @@ function JoinUs({ setSubscriptionConfirmed }) {
                     )}
                 </div>
             </div>
+            {showConfirmationModal && (
+                <Modal
+                    closeModal={() => {
+                        setShowConfirmationModal(false);
+                        setIsLocked(false);
+                    }}
+                >
+                    <div className="w-[80%] lg:w-[600px] h-fit mx-auto bg-white shadow-xl rounded-xl relative p-5 md:p-10 flex flex-col items-center justify-center">
+                        <IoClose
+                            onClick={() => {
+                                setShowConfirmationModal(false);
+                                setIsLocked(false);
+                            }}
+                            size={25}
+                            cursor={"pointer"}
+                            className="absolute right-2 top-2 mb-11 transition ease-out hover:text-[#0020F1]"
+                        />
+                        <h1 className="mt-2 font-bold text-2xl">Welcome!</h1>
+                        <img
+                            src={thankYouGif}
+                            alt="thank you gif"
+                            className="w-44"
+                        />
+                        <h1 className="text-[#101828] text-center">
+                            Congratulations and welcome to our Learning
+                            Community! 🎉 You have successfully subscribed to
+                            our newsletter. Get ready to receive regular updates
+                            packed with valuable career advice, industry
+                            insights, and development tips delivered straight to
+                            your inbox.
+                        </h1>
+                    </div>
+                </Modal>
+            )}
         </section>
     );
 }

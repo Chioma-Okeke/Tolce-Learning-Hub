@@ -74,7 +74,7 @@ const SkillAcquisitionPage = () => {
             <section className="py-16 bg-white">
                 <AnimatedSection>
                     <div className="max-w-7xl mx-auto px-4">
-                        <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px]">
+                        <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px] text-center">
                             Our Skill Development Approach
                         </h2>
                         <div className="grid md:grid-cols-2 gap-12">
@@ -112,7 +112,7 @@ const SkillAcquisitionPage = () => {
             <section className="py-16 bg-gray-50">
                 <AnimatedSection>
                     <div className="max-w-7xl mx-auto px-4">
-                        <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px]">
+                        <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px] text-center">
                             Program Benefits
                         </h2>
                         <div className="grid md:grid-cols-3 gap-8">
@@ -141,7 +141,7 @@ const SkillAcquisitionPage = () => {
             <section className="py-16 bg-white">
                 <AnimatedSection>
                     <div className="max-w-4xl mx-auto px-4">
-                        <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px]">
+                        <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px] text-center">
                             Holistic Skill Development
                         </h2>
                         <div className="space-y-6 text-lg text-black">

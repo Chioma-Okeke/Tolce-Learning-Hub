@@ -20,7 +20,7 @@ function Modal({ closeModal, children }) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="bg-filter bg-black bg-opacity-50 fixed inset-0 w-full h-full z-30"
+                    className="bg-filter bg-black/70 fixed inset-0 w-full h-full z-30"
                     onClick={closeModal}
                 ></motion.div>
 

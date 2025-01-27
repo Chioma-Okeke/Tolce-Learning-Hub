@@ -158,6 +158,8 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                         </li>
                     </ul>
                 </nav>
+
+                {/* mobile-view start from here */}
                 <div onClick={handleNavToggle} className="block lg:hidden">
                     <AiOutlineMenu
                         size={20}
@@ -167,7 +169,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                 </div>
                 <AnimatePresence>
                     <div
-                        className={`fixed top-0 w-full h-full bg-black py-2 transition-all ease-in-out duration-1000 
+                        className={`overflow-auto fixed top-0 w-full h-full bg-black py-2 transition-all ease-in-out duration-1000 
                     ${showNav ? "left-0" : "left-[-100%]"}
                 `}
                     >
