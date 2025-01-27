@@ -2,7 +2,7 @@
 // import React from "react";
 import { useEffect, useState } from "react";
 import Image from "../assets/Hero/focusing-image.png";
-import { serviceData } from "../data/serviceData";
+// import { serviceData } from "../data/serviceData";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { FaArrowRightLong } from "react-icons/fa6";

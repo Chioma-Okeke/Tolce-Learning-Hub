@@ -55,7 +55,7 @@ export default function HeroSection() {
                     <SwiperSlide key={id} className="relative w-full z-10">
                         <div
                             style={{ backgroundImage: `url(${image})` }}
-                            className="w-full h-[700px] md:h-screen bg-cover bg-no-repeat bg-center"
+                            className="w-full h-[800px] md:h-screen bg-cover bg-no-repeat bg-center"
                         >
                             <div className="bg-black h-full absolute top-0 left-0 opacity-50 w-full z-10"></div>
                             <div className="w-[90%] mx-auto max-w-[1440px] z-20 flex items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">

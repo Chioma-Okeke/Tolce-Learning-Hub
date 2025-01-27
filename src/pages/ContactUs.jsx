@@ -35,12 +35,6 @@ function ContactUs() {
     const methods = useForm();
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-    function closeModal() {
-        setTimeout(() => {
-            setShowSuccessModal(false);
-        }, 700)
-    }
-
     useEffect(() => {
         window.scrollTo(0, {
             top: 0,
@@ -58,8 +52,8 @@ function ContactUs() {
 
     return (
         <div>
-            <AnimatedSection className="w-[90%] max-w-[1100px] md:w-[95%] mx-auto my-2 pt-6 pb-20">
-                <div className="flex flex-col md:flex-row gap-4 lg:gap-10 max-w-[1440px] mx-auto">
+            <AnimatedSection className="w-[90%] max-w-[1100px] md:w-[95%] mx-auto my-2">
+                <div className="flex flex-col md:flex-row gap-4 lg:gap-10 max-w-[1440px] mx-auto py-12 sm:py-20">
                     <div className="flex-1">
                         <img
                             src={image}
@@ -76,7 +70,7 @@ function ContactUs() {
                         </FormProvider>
                     </div>
                 </div>
-                <div className="pt-10 md:pt-20 text-base lg:text-lg flex flex-col gap-5 md:gap-0 md:flex-row md:items-center justify-between">
+                <div className="py-12 sm:py-20 text-base lg:text-lg flex flex-col gap-5 md:gap-0 md:flex-row md:items-center justify-between">
                     {contactInfo.map(({ title, description, Icon }, index) => {
                         return (
                             <div key={index} className="flex flex-col gap-2">
@@ -100,7 +94,7 @@ function ContactUs() {
                             We will get back to you as soon as possible
                         </p>
                         <button
-                            onClick={closeModal}
+                            onClick={() => setShowSuccessModal(false)}
                             className="bg-[#0020F1] text-white text-center w-full py-4 px-6 rounded-lg mt-8 cursor-pointer transition ease-linear"
                         >
                             Close

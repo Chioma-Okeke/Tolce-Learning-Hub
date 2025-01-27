@@ -46,7 +46,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
     }
 
     return (
-        <div className="py-20 bg-white">
+        <div className="py-12 sm:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-center mb-12 border-b relative overflow-auto">
                     {/* <div
@@ -63,7 +63,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
-                            className={`relative px-8 py-4 text-lg font-semibold transition-all ease-linear duration-300 ${
+                            className={`relative px-8 py-4 sm:text-lg font-semibold transition-all ease-linear duration-300 ${
                                 activeTab === tab
                                     ? "text-[#0020F1]"
                                     : "text-[#555555]"

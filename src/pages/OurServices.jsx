@@ -48,10 +48,10 @@ const ServicePage = () => {
     return (
         <div className="w-full">
             {/* Hero Section */}
-            <div className="relative py-20 w-full bg-gradient-to-r from-[#0020F1] to-[#080E7F] flex items-center justify-center">
+            <div className="relative py-12 sm:py-20 w-full bg-gradient-to-r from-[#0020F1] to-[#080E7F] flex items-center justify-center">
                 <div className="absolute inset-0 bg-black/30" /> {/* Overlay */}
-                <AnimatedSection className="relative z-10 text-center max-w-4xl mx-auto px-4">
-                    <h1 className="text-5xl md:text-[60px] font-bold text-white leading-[1.2] font-['Inter']">
+                <AnimatedSection className="relative z-10 text-center max-w-4xl mx-auto px-4 h-[600px]">
+                    <h1 className="font-bold text-center md:text-start text-4xl sm:text-4xl md:text-5xl lg:text-6xl text-white w-full lg:w-[80%] mb-5 md:mb-9 leading-12">
                         Empowering the Next Generation of Leaders with Digital
                         and Soft Skills
                     </h1>
@@ -60,12 +60,12 @@ const ServicePage = () => {
                         today's digital world.
                     </p>
                     <div className="mt-10 flex flex-col md:flex-row gap-4 items-center justify-center">
-                        <button className="w-[200px] h-[60px] border-2 border-white bg-white text-[#0020F1] font-semibold text-lg rounded-lg shadow-md transition-colors ease-in-out hover:bg-transparent hover:text-white duration-500">
+                        <button className="w-[200px] h-[60px] border-2 border-white bg-white text-[#0020F1] font-semibold text-lg rounded-lg shadow-md hover:bg-gray-200 transition-colors ease-in-out duration-300">
                             Join Now
                         </button>
                         <button
                             onClick={scrollToServices}
-                            className="w-[200px] h-[60px] border-2 border-white text-white font-semibold text-lg rounded-lg shadow-md bg-transparent transition ease-linear hover:bg-white hover:text-[#0020F1] duration-300"
+                            className="w-[200px] h-[60px] border-2 border-white text-white font-semibold text-lg rounded-lg shadow-md bg-transparent hover:bg-white/20 transition-colors ease-in-out duration-300"
                         >
                             Learn More
                         </button>
@@ -74,10 +74,10 @@ const ServicePage = () => {
             </div>
 
             {/* Why Choose Us Section */}
-            <div className="bg-[#F7F9FC] py-20">
+            <div className="bg-[#F7F9FC] py-12 sm:py-20">
                 <div className="max-w-7xl mx-auto px-4">
                     <AnimatedSection>
-                        <h2 className="text-4xl text-center font-semibold text-[#333333] leading-tight">
+                        <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px] text-center">
                             Why Choose TOLCE Learning Hub?
                         </h2>
                         <SellingPoint />
@@ -102,72 +102,8 @@ const ServicePage = () => {
                 </div>
             </AnimatedSection>
 
-            {/* Interactive Elements Section */}
-            {/* <div className="bg-[#F7F9FC] py-20">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid md:grid-cols-4 gap-8">
-                        {[
-                            { icon: <BiBook />, title: "Case Studies" },
-                            { icon: <BiUserPlus />, title: "Role Plays" },
-                            { icon: <BiBriefcase />, title: "Simulations" },
-                            { icon: <BiHeart />, title: "Community Projects" },
-                        ].map((item, index) => (
-                            <div
-                                key={index}
-                                className="text-center p-8 bg-white rounded-xl shadow-sm"
-                            >
-                                <div className="inline-block p-4 bg-[#EAF6F2] rounded-full mb-4">
-                                    {React.cloneElement(item.icon, {
-                                        className: "w-12 h-12 text-[#1D976C]",
-                                    })}
-                                </div>
-                                <h3 className="text-xl font-bold text-[#333333] mb-4">
-                                    {item.title}
-                                </h3>
-                                <p className="text-[#555555]">
-                                    Interactive learning experience through{" "}
-                                    {item.title.toLowerCase()}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div> */}
-
-            {/* Certification Section */}
-            {/* <div className="bg-[#EAF6F2] py-20">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {[
-                            { icon: <BiAward />, title: "Certification" },
-                            { icon: <BiBriefcase />, title: "Career Services" },
-                            { icon: <BiUserPlus />, title: "Alumni Community" },
-                        ].map((item, index) => (
-                            <div
-                                key={index}
-                                className="bg-white p-8 rounded-xl shadow-sm"
-                            >
-                                <div className="mb-4 text-[#1D976C]">
-                                    {React.cloneElement(item.icon, {
-                                        className: "w-8 h-8",
-                                    })}
-                                </div>
-                                <h3 className="text-xl font-bold text-[#333333] mb-4">
-                                    {item.title}
-                                </h3>
-                                <p className="text-[#555555]">
-                                    Comprehensive support for your learning
-                                    journey through our{" "}
-                                    {item.title.toLowerCase()} program
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div> */}
-
             {/* frequently asked questions */}
-            <AnimatedSection className="pb-20">
+            <AnimatedSection className="py-12 sm:py-20">
                 <Questions />
             </AnimatedSection>
 

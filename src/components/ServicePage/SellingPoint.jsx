@@ -30,7 +30,7 @@ function SellingPoint() {
                             <div className="bg-[#EAF6F2] rounded-full inline-block p-4">
                                 <Icon className="w-12 h-12 text-[#0020F1]" />
                             </div>
-                            <p className="text-lg font-semibold text-[#333333]">
+                            <p className="sm:text-lg font-semibold text-[#333333]">
                                 {title}
                             </p>
                         </div>

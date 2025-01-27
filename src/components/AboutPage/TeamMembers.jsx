@@ -52,7 +52,7 @@ function TeamMembers() {
 
     return (
         <section
-            className="w-[90%] max-w-[650px] md:max-w-[1170px] mx-auto text-base md:text-lg overflow-hidden py-20"
+            className="w-[90%] max-w-[650px] md:max-w-[1170px] mx-auto text-base md:text-lg overflow-hidden py-12 sm:py-20"
             onMouseEnter={stopAutoTransition}
             onMouseLeave={startAutoTransition}
         >
@@ -76,7 +76,7 @@ function TeamMembers() {
                         Meet the people behind our mission
                     </p> */}
                     {/* Team Leaders */}
-                    <div className="flex items-center gap-3">
+                    {teamMembers.length > 1 && <div className="flex items-center gap-3">
                         {teamLeadersImages.map((leader, index) => (
                             <img
                                 key={index}
@@ -90,7 +90,7 @@ function TeamMembers() {
                                 }`}
                             />
                         ))}
-                    </div>
+                    </div>}
 
                     {/* Member Message & Details */}
                     <div className="max-w-[515px] min-h-[270px] md:w-full">

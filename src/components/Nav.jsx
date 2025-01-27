@@ -16,7 +16,7 @@ const navLinks = [
 
 const focusAreasSUbMenu = [
     { path: "/outreaches", label: "Outreaches" },
-    { path: "/services", label: "Skill Acquisition" },
+    { path: "/skillacquisition", label: "Skill Acquisition" },
 ];
 
 function Nav({ handleNavToggle, showNav, setShowNav }) {
@@ -95,9 +95,10 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                             className="p-2 relative"
                         >
                             <div
-                                className={`flex items-center gap-2  no-underline
+                                className={`flex items-center gap-2 no-underline
                                             ${
-                                                pathname === "/services" ||
+                                                pathname ===
+                                                    "/skillacquisition" ||
                                                 pathname === "/outreaches"
                                                     ? " font-bold"
                                                     : ` transition-all ease-in-out duration-100  hover:border-b-2  ${
@@ -137,7 +138,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                                                 isActive,
                                                             }) => {
                                                                 return (
-                                                                    "flex items-center gap-2  no-underline " +
+                                                                    "flex items-center gap-2 no-underline " +
                                                                     (!isActive
                                                                         ? "transition-all ease-in-out duration-100 hover:border-b-[#0020f1] hover:border-b-2 hover:text-[#0020f1]"
                                                                         : "font-bold")
@@ -255,7 +256,8 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                         <div
                                             className={`flex items-center gap-2 text-xl no-underline " 
                                             ${
-                                                pathname === "/services" ||
+                                                pathname ===
+                                                    "/skillacquisition" ||
                                                 pathname === "/outreaches"
                                                     ? "font-bold"
                                                     : "transition-all ease-in-out duration-100 hover:border-b-white hover:border-b-2"

@@ -29,7 +29,7 @@ function About() {
 
     return (
         <div className="relative">
-            <AnimatedSection className="w-[90%] mx-auto py-10 md:py-20">
+            <AnimatedSection className="w-[90%] mx-auto py-12 md:py-20">
                 <div className="w-full flex flex-col lg:flex-row lg:items-center">
                     <h1 className="text-[28px] lg:text-4xl xl:text-5xl font-bold lg:w-[40%] lg:pl-10">
                         Why we exist?
@@ -57,7 +57,7 @@ function About() {
                 }}
             >
                 <AnimatedSection
-                    className={`max-w-[1800px] py-20 flex flex-col-reverse sm:flex-row items-center w-[90%] lg:w-full h-[450px] 2xl:h-[550px] mx-auto relative ${
+                    className={`max-w-[1800px] py-12 sm:py-20 flex flex-col-reverse sm:flex-row items-center w-[90%] lg:w-full h-[450px] 2xl:h-[550px] mx-auto relative ${
                         isSmallScreen ? "bg-none h-fit gap-5" : "bg-cover h-fit"
                     }`}
                 >
