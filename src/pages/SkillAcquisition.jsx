@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/shared/AnimatedSection";
+import { useNavigate } from "react-router-dom";
 
 const SkillAcquisitionPage = () => {
+    const navigate = useNavigate()
     const skillHighlights = [
         {
             title: "Technical Skills",
@@ -51,6 +53,10 @@ const SkillAcquisitionPage = () => {
             behavior: "smooth"
         })
     }, [])
+
+    function navigateToServiceTiers () {
+        navigate("/services")
+    }
 
     return (
         <div className="w-full">
@@ -190,7 +196,7 @@ const SkillAcquisitionPage = () => {
                             <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition-colors ease-in-out duration-500">
                                 Enroll Now
                             </button>
-                            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors ease-in-out duration-500">
+                            <button onClick={navigateToServiceTiers} className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors ease-in-out duration-500">
                                 Learn More
                             </button>
                         </div>

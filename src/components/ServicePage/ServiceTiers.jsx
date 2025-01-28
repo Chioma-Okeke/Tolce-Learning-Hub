@@ -1,17 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { programData } from "../../data/programData";
+import { programData, summarizedProgramData } from "../../data/programData";
 import ServiceDescription from "./ServiceDescription";
 import { FiCheckCircle } from "react-icons/fi";
 import { splitSentence } from "../../utils/textFormatting";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import PricingCard from "../PricingCard";
 
 const ServiceTiers = ({ activeTab, setActiveTab }) => {
     // const [activeTab, setActiveTab] = useState("beginners");
     const [showSubMenus, setShowSubMenus] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(null);
-    const cardRefs = useRef([])
+    const cardRefs = useRef([]);
     const [ref, inView] = useInView();
 
     const mainControls = useAnimation();
@@ -23,7 +24,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
     }, [inView, mainControls]);
 
     function scrollToTopOfCard(index) {
-        console.log(index, "focused index")
+        console.log(index, "focused index");
         cardRefs.current[index].scrollIntoView({
             behavior: "smooth",
             block: "start",
@@ -59,7 +60,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                                     : "calc(114px + 72px)", // Adjust the left position based on tabIndex
                         }}
                     ></div> */}
-                    {Object.keys(programData).map((tab) => (
+                    {Object.keys(summarizedProgramData).map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
@@ -94,67 +95,37 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                     initial="hidden"
                     animate={mainControls}
                     className={`${
-                        programData[activeTab].packages.length > 1 ? "grid" : ""
+                        summarizedProgramData[activeTab].packages.length > 1
+                            ? "grid"
+                            : ""
                     } md:grid-cols-2 gap-8 pb-10`}
                 >
-                    {programData[activeTab].packages.map((package_, index) => (
-                        <div
-                            key={package_.id}
-                            ref={(el) => cardRefs.current[index] = el}
-                            className={` bg-white rounded-xl shadow-lg p-8 ${
-                                programData[activeTab].packages.length > 1
-                                    ? ""
-                                    : "lg:max-w-3xl lg:mx-auto"
-                            } `}
-                        >
+                    {summarizedProgramData[activeTab].packages.map(
+                        (package_, index) => (
                             <div
-                                tabIndex={0}
-                                onClick={() => expandTier(package_.id, index)}
-                                className="mb-8 flex lg:block items-center justify-between"
+                                key={package_.id}
+                                ref={(el) => (cardRefs.current[index] = el)}
+                                // className={` bg-white rounded-xl shadow-lg p-8 ${
+                                //     programData[activeTab].packages.length > 1
+                                //         ? ""
+                                //         : "lg:max-w-3xl lg:mx-auto"
+                                // } `}
                             >
-                                <div className="flex flex-col xl:flex-row gap-2 xl:gap-6 justify-between xl:items-center">
-                                    <div>
-                                        <h3 className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#333333] lg:mb-2">
-                                            {package_.title}
-                                        </h3>
-                                        <p className="text-xl lg:text-2xl font-bold text-[#0020F1]">
-                                            {package_.price}
-                                        </p>
-                                    </div>
-                                    <button className="max-w-44 px-8 py-4 bg-[#0020F1] text-white font-semibold rounded-lg hover:bg-[#080E7F] transition-colors">
-                                        Enroll Now
-                                    </button>
-                                </div>
-                                {window.innerWidth < 768 && (
-                                    <div>
-                                        <IoIosArrowDown
-                                            size={20}
-                                            className={`transition-transform ease-in-out duration-100 ${
-                                                showSubMenus &&
-                                                currentIndex === package_.id
-                                                    ? "-rotate-180"
-                                                    : ""
-                                            }`}
-                                        />
-                                    </div>
-                                )}
+                                <PricingCard
+                                index={index}
+                                    title={package_.title}
+                                    price={package_.price}
+                                    features={package_.features}
+                                />
                             </div>
-                            <div className="hidden md:block">
-                                <ServiceDescription package_={package_} />
-                            </div>
-                            {currentIndex === package_.id && (
-                                <div className="block md:hidden">
-                                    <ServiceDescription package_={package_} />
-                                </div>
-                            )}
-                        </div>
-                    ))}
+                        )
+                    )}
                 </motion.div>
                 <div className=" space-y-3">
                     <h3 className="text-2xl lg:text-3xl font-semibold text-[#333333] lg:mb-2">
                         Additional Features{" "}
                     </h3>
-                    <ul className="space-y-3 pl-8 text-base xl:text-lg">
+                    <ul className="space-y-3 pl-3 text-base xl:text-lg">
                         {programData[activeTab].additionalFeatures.map(
                             (item, index) => {
                                 const { topic, rest } = splitSentence(

@@ -103,3 +103,53 @@ export const programData = {
         ]
     },
 };
+
+export const summarizedProgramData = {
+    beginners: {
+        packages: [
+            {
+                id: "student-package",
+                title: "Student Package",
+                price: "NGN 30,000",
+                features: [
+                    "Target Audience: Designed for beginners, undergraduates, fresh graduates, and NYSC members aiming to build digital and soft skills.",
+                    "Program Structure: A 5-week virtual, self-paced course with bi-weekly live classes.",
+                    "Core Content: Covers communication skills, Excel basics, data analysis, dashboards, and interview preparation.",
+                    "Interactive Learning: Includes real-world case studies, role plays, simulations, and weekly projects to build critical thinking and problem-solving skills.",
+                    "Community Impact: Culminates in a group project to solve local problems, enhancing leadership and collaboration.",
+                    "Additional Features: Bonus sessions on interview prep and a final project presentation."
+                ]
+            },
+            {
+                id: "professional-package",
+                title: "Professional Package",
+                price: "NGN 40,000",
+                features: [
+                    "Target Audience: Ideal for beginners, early career starters, professionals looking to improve technical and soft skills, and those seeking mentorship opportunities.",
+                    "Program Structure: An 8-week virtual, self-paced course with bi-weekly live classes.",
+                    "Core Content: Focuses on communication skills, Excel fundamentals, data visualization with Power BI, and LinkedIn optimization for personal branding.",
+                    "Interactive Learning: Includes real-world case studies, role plays, and simulations to build critical thinking, teamwork, and problem-solving abilities.",
+                    "Practical Projects: Hands-on weekly assignments and a final project presentation to apply learning effectively.",
+                    "Career Development: Offers tools for personal branding and data-driven problem-solving, preparing participants for professional growth."
+                ]
+            }
+        ]
+    },
+    intermediate: {
+        packages: [
+            {
+                id: "advanced-digital-skills",
+                title: "Advanced Digital Skills",
+                price: "NGN 50,000",
+                features: [
+                    "Target Audience: Perfect for individuals with basic knowledge aiming to advance their digital and soft skills, including students, professionals, business owners, and freelancers.",
+                    "Program Structure: An 8-week blended course combining online modules with live workshops for an interactive experience.",
+                    "Core Content: Covers advanced Excel, Power Query, Power BI, SQL, communication skills, and LinkedIn optimization.",
+                    "Interactive Learning: Includes real-world case studies, role plays, and simulations to enhance problem-solving and teamwork.",
+                    "Practical Projects: Weekly hands-on projects and a final project presentation to reinforce learning.",
+                    "Professional Growth: Develops personal branding, advanced technical skills, and critical thinking for career advancement."
+                ]
+            }
+        ]
+    }
+}

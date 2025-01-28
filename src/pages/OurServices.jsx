@@ -20,12 +20,10 @@ const ServicePage = () => {
     const [activeTab, setActiveTab] = useState("beginners");
     const serviceTierRef = useRef(null);
     const location = useLocation();
-    const { program, section } = location.state || {};
-    console.log(program);
+    const { section } = location.state || {};
 
     useEffect(() => {
         if (section === "services") {
-            setActiveTab(program);
             serviceTierRef.current.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
@@ -36,7 +34,7 @@ const ServicePage = () => {
                 behavior: "smooth",
             });
         }
-    }, [section, program]);
+    }, [section]);
 
     const scrollToServices = () => {
         serviceTierRef.current.scrollIntoView({
@@ -50,12 +48,12 @@ const ServicePage = () => {
             {/* Hero Section */}
             <div className="relative py-12 sm:py-20 w-full bg-gradient-to-r from-[#0020F1] to-[#080E7F] flex items-center justify-center">
                 <div className="absolute inset-0 bg-black/30" /> {/* Overlay */}
-                <AnimatedSection className="relative z-10 text-center max-w-4xl mx-auto px-4 h-[600px]">
-                    <h1 className="font-bold text-center md:text-start text-4xl sm:text-4xl md:text-5xl lg:text-6xl text-white w-full lg:w-[80%] mb-5 md:mb-9 leading-12">
+                <AnimatedSection className="relative z-10 text-center max-w-4xl mx-auto px-4">
+                    <h1 className="font-bold text-center text-4xl sm:text-4xl md:text-5xl lg:text-6xl text-white w-full mb-5 md:mb-9 leading-12">
                         Empowering the Next Generation of Leaders with Digital
                         and Soft Skills
                     </h1>
-                    <p className="mt-6 text-xl md:text-2xl text-white leading-[1.5] font-['Inter']">
+                    <p className="mt-6 text-xl md:text-2xl text-white leading-[1.5]">
                         Simplified, engaging, and self-paced learning for
                         today's digital world.
                     </p>
