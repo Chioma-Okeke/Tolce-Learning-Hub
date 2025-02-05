@@ -1,6 +1,7 @@
 import image1 from "../assets/Hero/Others3.png";
-import image2 from "../assets/Hero/collaborative-learning.jpeg";
+import image2 from "../assets/outreaches/outreach-1.jpg";
 import image3 from "../assets/Hero/team-image.png";
+import ceoImage from "../assets/ceo-portrait.jpg"
 
 export const heroData = [
     {
@@ -11,12 +12,12 @@ export const heroData = [
     {
         id: 2,
         image: image2,
-        text: "Building Intellectually sound and exceptionally skillful youths.",
+        text: "Empowering students with real-world skills ",
     },
     {
         id: 3,
         image: image3,
-        text: "Empowering students with real-world skills ",
+        text: "Building Intellectually sound and exceptionally skillful youths.",
     },
 ];
 

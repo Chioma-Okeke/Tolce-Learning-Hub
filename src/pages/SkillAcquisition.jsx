@@ -1,62 +1,79 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import AnimatedSection from "../components/shared/AnimatedSection";
 import { useNavigate } from "react-router-dom";
+import Modal from "../components/reusables/Modal";
+import { IoClose } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsLocked } from "../store/lockScreenSlice";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
+const skillHighlights = [
+    {
+        title: "Technical Skills",
+        skills: ["Excel", "Power BI", "Data Analysis", "Presentation Tools"],
+    },
+    {
+        title: "Soft Skills",
+        skills: [
+            "Communication",
+            "Teamwork",
+            "Problem-Solving",
+            "Critical Thinking",
+        ],
+    },
+];
+
+const programBenefits = [
+    {
+        icon: "🎯",
+        title: "Competitive Edge",
+        description:
+            "Comprehensive skill development for modern workplace demands",
+    },
+    {
+        icon: "💼",
+        title: "Career Readiness",
+        description:
+            "Balanced approach to technical and interpersonal skill growth",
+    },
+    {
+        icon: "🚀",
+        title: "Professional Development",
+        description:
+            "Preparing students for dynamic and evolving work environments",
+    },
+];
 
 const SkillAcquisitionPage = () => {
-    const navigate = useNavigate()
-    const skillHighlights = [
-        {
-            title: "Technical Skills",
-            skills: [
-                "Excel",
-                "Power BI",
-                "Data Analysis",
-                "Presentation Tools",
-            ],
-        },
-        {
-            title: "Soft Skills",
-            skills: [
-                "Communication",
-                "Teamwork",
-                "Problem-Solving",
-                "Critical Thinking",
-            ],
-        },
-    ];
+    const navigate = useNavigate();
+    const [showEnrollModal, setShowEnrollModal] = useState(false);
+    const [showEnrollForm, setShowEnrollForm] = useState(false);
+    const isLocked = useSelector((state) => state.lockScreen.isLocked);
+    const dispatch = useDispatch();
 
-    const programBenefits = [
-        {
-            icon: "🎯",
-            title: "Competitive Edge",
-            description:
-                "Comprehensive skill development for modern workplace demands",
-        },
-        {
-            icon: "💼",
-            title: "Career Readiness",
-            description:
-                "Balanced approach to technical and interpersonal skill growth",
-        },
-        {
-            icon: "🚀",
-            title: "Professional Development",
-            description:
-                "Preparing students for dynamic and evolving work environments",
-        },
-    ];
+    useEffect(() => {
+        document.body.style.overflow = isLocked ? "hidden" : "auto";
 
-    useEffect(()=> {
+        return () => (document.body.style.overflow = "auto");
+    }, [isLocked]);
+
+    useEffect(() => {
         window.scrollTo(0, {
             top: 0,
-            behavior: "smooth"
-        })
-    }, [])
+            behavior: "smooth",
+        });
+    }, []);
 
-    function navigateToServiceTiers () {
-        navigate("/services")
+    function navigateToServiceTiers() {
+        navigate("/services");
     }
+
+    const openEnrollmentForm = () => {
+        setShowEnrollModal(true);
+        dispatch(setIsLocked(true));
+    };
 
     return (
         <div className="w-full">
@@ -193,16 +210,70 @@ const SkillAcquisitionPage = () => {
                             acquisition program
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition-colors ease-in-out duration-500">
+                            <button
+                                onClick={openEnrollmentForm}
+                                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition-colors ease-in-out duration-500"
+                            >
                                 Enroll Now
                             </button>
-                            <button onClick={navigateToServiceTiers} className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors ease-in-out duration-500">
+                            <button
+                                onClick={navigateToServiceTiers}
+                                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors ease-in-out duration-500"
+                            >
                                 Learn More
                             </button>
                         </div>
                     </div>
                 </AnimatedSection>
             </section>
+
+            {showEnrollModal && (
+                <Modal
+                    closeModal={() => {
+                        setShowEnrollModal(false);
+                        dispatch(setIsLocked(false));
+                    }}
+                >
+                    <AnimatePresence>
+                        <motion.div
+                            initial={{ x: "100%", opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: "-100%", opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="w-[80%] lg:w-[600px] h-fit mx-auto bg-white shadow-xl rounded-xl relative p-5 md:p-10 flex flex-col items-center justify-center"
+                        >
+                            <IoClose
+                                onClick={() => {
+                                    setShowEnrollModal(false);
+                                    dispatch(setIsLocked(false));
+                                }}
+                                size={25}
+                                cursor={"pointer"}
+                                className="absolute right-2 top-2 mb-11 transition ease-out hover:text-[#0020F1]"
+                            />
+                            {showEnrollForm ? (
+                                <div className="flex flex-col items-center justify-cente">
+                                    <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px] text-center">
+                                        Select a Package
+                                    </h2>
+                                    <div className="flex items-center gap-2">
+                                        <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#0020F1] hover:text-white transition-colors ease-in-out duration-500">
+                                            Student Package
+                                        </button>
+                                        <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#0020F1] hover:text-white transition-colors ease-in-out duration-500">
+                                            Professional Package
+                                        </button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div>
+                                    
+                                </div>
+                            )}
+                        </motion.div>
+                    </AnimatePresence>
+                </Modal>
+            )}
 
             {/* footer section */}
             <Footer />

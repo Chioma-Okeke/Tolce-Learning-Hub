@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 function AnimatedSection({ children, ...props }) {
     const { ref, inView } = useInView({
         triggerOnce: true, // Trigger animation only once
-        threshold: 0.2, // 20% of the section is visible
+        threshold: 0.08,
     });
 
     return (

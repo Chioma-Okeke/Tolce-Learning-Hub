@@ -3,7 +3,7 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import JoinUs from "./JoinUs";
 import { Link } from "react-router-dom";
-import { quickLinks } from "../data/locationData";
+import { contactLinks, quickLinks } from "../data/locationData";
 
 function Footer() {
     return (
@@ -31,15 +31,11 @@ function Footer() {
                     <div>
                         <h4 className="font-bold mb-4">Connect With Us</h4>
                         <div className="flex gap-4">
-                            {[
-                                FaFacebook,
-                                FaInstagram,
-                                FaTwitter,
-                                FaLinkedin,
-                            ].map((Icon, index) => (
+                            {contactLinks.map(({ Icon, link }, index) => (
                                 <a
                                     key={index}
-                                    href="#"
+                                    href={link}
+                                    target="_blank"
                                     className="hover:text-[#0020F1] transition-colors"
                                 >
                                     <Icon className="w-6 h-6" />
@@ -50,10 +46,14 @@ function Footer() {
                     <div>
                         <h4 className="font-bold mb-4">Contact Info</h4>
                         <address className="not-italic">
-                            <p>123 Learning Street</p>
-                            <p>Education City, ED 12345</p>
-                            <p className="mt-2">contact@tolce.com</p>
-                            <p>+1 (555) 123-4567</p>
+                            <a
+                                href="mailto:tolcelearninghub@gmail.com"
+                                target="_blank"
+                                className="mt-2"
+                            >
+                                tolcelearninghub@gmail.com
+                            </a>
+                            <p>+234 814 627 3427</p>
                         </address>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { FaMinus } from "react-icons/fa6";
 import { HiOutlinePlusSm } from "react-icons/hi";
 import { AnimatePresence, motion } from "framer-motion";
+import { FiCheckCircle } from "react-icons/fi";
 
 const FaqItems = ({
     question,
@@ -13,12 +14,36 @@ const FaqItems = ({
 }) => {
     const isOpen = currentIndex === index;
 
-    useEffect(() => {
-        console.log(currentIndex);
-    }, [currentIndex]);
-
     const toggleOpen = (index) => {
         setCurrentIndex(isOpen ? null : index);
+    };
+
+    const convertAnswer = (answer) => {
+        if (!answer.includes("*")) return <span>{answer}</span>;
+
+        const separatedAnswer = answer.split("*");
+
+        return (
+            <div>
+                <p className="mb-5">{separatedAnswer[0]}</p>
+                <ul className="space-y-1 lg:space-y-3">
+                    {separatedAnswer.slice(1).map((item, index) => {
+                        return (
+                            <li
+                                key={index}
+                                className="flex items-center gap-3 "
+                            >
+                                <FiCheckCircle
+                                    size={18}
+                                    className=" flex-shrink-0 mt-1"
+                                />
+                                <span className="">{item.trim()}</span>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
+        );
     };
 
     return (
@@ -42,12 +67,12 @@ const FaqItems = ({
             <AnimatePresence mode="wait">
                 {isOpen && (
                     <motion.div
-                        initial={{  y: -20 }}
-                        animate={{  y: 0 }}
+                        initial={{ y: -20 }}
+                        animate={{ y: 0 }}
                         transition={{ duration: 0.5 }}
                         className="mt-4 lg:text-lg text-[#141414] bg-white"
                     >
-                        {answer}
+                        {convertAnswer(answer)}
                     </motion.div>
                 )}
             </AnimatePresence>

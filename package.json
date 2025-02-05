@@ -16,6 +16,7 @@
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
     "framer-motion": "^11.2.9",
+    "fs": "^0.0.1-security",
     "google-map-react": "^2.2.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -29,6 +30,7 @@
     "react-router-dom": "^6.23.1",
     "react-scroll-trigger": "^0.6.14",
     "react-youtube": "^10.1.0",
+    "sitemap": "^8.0.0",
     "swiper": "^11.1.3",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"

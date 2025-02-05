@@ -7,7 +7,7 @@ import DiamondSvg from "../assets/random-designs/pentagon-design.svg";
 function PricingCard({ index, title, price, features }) {
     return (
             <div
-                className={`relative md:h-[750px] lg:h-[675px] pb-10 md:pb-0 lg:max-w-lg border lg:mx-auto  rounded-2xl shadow ${
+                className={`relative md:h-[750px] lg:h-[675px] pb-10 md:pb-0 border lg:mx-auto  rounded-2xl shadow ${
                     index === 1
                         ? "text-white bg-gradient-to-r from-[#0020F1] to-[#080E7F]"
                         : "bg-white text-black"

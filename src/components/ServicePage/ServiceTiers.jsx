@@ -105,11 +105,7 @@ const ServiceTiers = ({ activeTab, setActiveTab }) => {
                             <div
                                 key={package_.id}
                                 ref={(el) => (cardRefs.current[index] = el)}
-                                // className={` bg-white rounded-xl shadow-lg p-8 ${
-                                //     programData[activeTab].packages.length > 1
-                                //         ? ""
-                                //         : "lg:max-w-3xl lg:mx-auto"
-                                // } `}
+                                className="lg:max-w-2xl lg:mx-auto"
                             >
                                 <PricingCard
                                 index={index}

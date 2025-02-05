@@ -18,16 +18,13 @@ const contactInfo = [
         title: "Email Support",
         description: "Our team can respond in real time.",
         Icon: BiEnvelope,
-    },
-    {
-        title: "Visit Our Office",
-        description: "Visit our location in real life.",
-        Icon: PiHouse,
+        contact: "tolcelearninghub@gmail.com"
     },
     {
         title: "Call Us Directly",
         description: "Available during work hours",
         Icon: BiPhone,
+        contact: "+234 814 627 3427"
     },
 ];
 
@@ -53,7 +50,7 @@ function ContactUs() {
     return (
         <div>
             <AnimatedSection className="w-[90%] max-w-[1100px] md:w-[95%] mx-auto my-2">
-                <div className="flex flex-col md:flex-row gap-4 lg:gap-10 max-w-[1440px] mx-auto py-12 sm:py-20">
+                <div className="flex flex-col md:flex-row gap-4 lg:gap-10 max-w-[1440px] mx-auto py-12 sm:py-20 sm:pb-10">
                     <div className="flex-1">
                         <img
                             src={image}
@@ -70,8 +67,8 @@ function ContactUs() {
                         </FormProvider>
                     </div>
                 </div>
-                <div className="py-12 sm:py-20 text-base lg:text-lg flex flex-col gap-5 md:gap-0 md:flex-row md:items-center justify-between">
-                    {contactInfo.map(({ title, description, Icon }, index) => {
+                <div className="py-12 sm:py-20 text-base lg:text-lg flex flex-col gap-20 md:flex-row md:items-center">
+                    {contactInfo.map(({ title, description, Icon, contact }, index) => {
                         return (
                             <div key={index} className="flex flex-col gap-2">
                                 <div className="bg-[#EAF6F2] rounded-full w-fit p-3">
@@ -79,6 +76,7 @@ function ContactUs() {
                                 </div>
                                 <p className="font-bold mt-2">{title}</p>
                                 <p>{description}</p>
+                                <p>{contact}</p>
                             </div>
                         );
                     })}

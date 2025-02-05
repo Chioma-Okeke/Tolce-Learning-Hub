@@ -62,13 +62,15 @@ function TeamMembers() {
             </h4>
             <div className="flex flex-col md:flex-row items-center gap-8 md:h-[451px]">
                 {/* Previous Button */}
-                {teamMembers.length > 1 && <button
-                    onClick={handlePrevious}
-                    aria-label="Previous Member"
-                    className="hidden lg:block"
-                >
-                    <GrPrevious size={24} />
-                </button>}
+                {teamMembers.length > 1 && (
+                    <button
+                        onClick={handlePrevious}
+                        aria-label="Previous Member"
+                        className="hidden lg:block"
+                    >
+                        <GrPrevious size={24} />
+                    </button>
+                )}
 
                 {/* Team Member Details */}
                 <div className="flex-1 flex flex-col items-center md:items-start gap-6">
@@ -76,24 +78,30 @@ function TeamMembers() {
                         Meet the people behind our mission
                     </p> */}
                     {/* Team Leaders */}
-                    {teamMembers.length > 1 && <div className="flex items-center gap-3">
-                        {teamLeadersImages.map((leader, index) => (
-                            <img
-                                key={index}
-                                src={leader.imgSrc}
-                                alt={leader.name}
-                                onClick={() => setFocusedIndex(index)}
-                                className={`rounded-full w-[55px] lg:w-[70px] h-[55px] lg:h-[70px] object-center object-cover transition-opacity duration-300 hover:opacity-70 ${
-                                    leader.name === focusedMember.name
-                                        ? "opacity-100"
-                                        : "opacity-50"
-                                }`}
-                            />
-                        ))}
-                    </div>}
+                    {teamMembers.length > 1 && (
+                        <div className="flex items-center gap-3">
+                            {teamLeadersImages.map((leader, index) => (
+                                <img
+                                    key={index}
+                                    src={leader.imgSrc}
+                                    alt={leader.name}
+                                    onClick={() => setFocusedIndex(index)}
+                                    className={`rounded-full w-[55px] lg:w-[70px] h-[55px] lg:h-[70px] object-center object-cover transition-opacity duration-300 hover:opacity-70 ${
+                                        leader.name === focusedMember.name
+                                            ? "opacity-100"
+                                            : "opacity-50"
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    )}
 
                     {/* Member Message & Details */}
-                    <div className="max-w-[515px] min-h-[270px] md:w-full">
+                    <div
+                        className={`max-w-[515px]  md:w-full ${
+                            teamMembers.length > 1 ? "min-h-[270px]" : ""
+                        }`}
+                    >
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={focusedIndex} // Use focusedIndex for unique key
@@ -129,37 +137,41 @@ function TeamMembers() {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0.5 }}
                             transition={{ ease: "easeInOut", duration: 0.5 }}
-                            className="rounded-lg w-[515px] h-[370px] md:max-h-[370px] object-cover object-center"
+                            className="rounded-lg w-[515px] h-[370px] md:max-h-[370px] aspect-[4/3] object-cover object-top"
                         />
                     </AnimatePresence>
                 </div>
 
                 {/* Next Button */}
-                {teamMembers.length > 1 && <button
-                    onClick={handleNext}
-                    aria-label="Next Member"
-                    className="hidden lg:block"
-                >
-                    <GrNext size={24} />
-                </button>}
-
-                {/* combined buttons */}
-                {teamMembers.length > 1 && <div className="md:hidden flex items-center justify-center">
-                    <button
-                        onClick={handlePrevious}
-                        aria-label="Previous Member"
-                        className=""
-                    >
-                        <GrPrevious size={24} />
-                    </button>
+                {teamMembers.length > 1 && (
                     <button
                         onClick={handleNext}
                         aria-label="Next Member"
-                        className=""
+                        className="hidden lg:block"
                     >
                         <GrNext size={24} />
                     </button>
-                </div>}
+                )}
+
+                {/* combined buttons */}
+                {teamMembers.length > 1 && (
+                    <div className="md:hidden flex items-center justify-center">
+                        <button
+                            onClick={handlePrevious}
+                            aria-label="Previous Member"
+                            className=""
+                        >
+                            <GrPrevious size={24} />
+                        </button>
+                        <button
+                            onClick={handleNext}
+                            aria-label="Next Member"
+                            className=""
+                        >
+                            <GrNext size={24} />
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );
