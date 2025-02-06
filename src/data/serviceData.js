@@ -1,10 +1,3 @@
-import {
-    PiChatsCircleLight,
-    PiMapPinLight,
-    PiPhoneCallThin,
-} from "react-icons/pi";
-import { GoZap } from "react-icons/go";
-import { FaChartLine } from "react-icons/fa";
 import image1 from "../assets/outreaches/outreach-1.jpg";
 import image2 from "../assets/outreaches/outreach-2.jpg";
 import image3 from "../assets/outreaches/outreach-3.jpg";

@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
-import { useEffect } from "react";
 import { FaMinus } from "react-icons/fa6";
 import { HiOutlinePlusSm } from "react-icons/hi";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiCheckCircle } from "react-icons/fi";
+import PropTypes from "prop-types"
 
 const FaqItems = ({
     question,
@@ -79,5 +78,10 @@ const FaqItems = ({
         </div>
     );
 };
+
+FaqItems.propTypes = {
+    question: PropTypes.string,
+    index: PropTypes.number
+}
 
 export default FaqItems;

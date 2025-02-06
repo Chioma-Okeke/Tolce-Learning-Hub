@@ -2,8 +2,7 @@
 import { useFormContext } from "react-hook-form";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import axios from "axios";
-const apiUrl = import.meta.env.VITE_FORM_SUBMISSION_URL;
+// const apiUrl = import.meta.env.VITE_FORM_SUBMISSION_URL;
 
 function ContactForm({ setShowSuccessModal }) {
     const {
@@ -37,7 +36,7 @@ function ContactForm({ setShowSuccessModal }) {
             noValidate
             className="xl:flex xl:flex-col xl:justify-center"
         >
-            <h1 className="font-semibold text-3xl">Let's Get in Touch</h1>
+            <h1 className="font-semibold text-3xl">Let&apos;s Get in Touch</h1>
             <p className="my-3 text-[#475467]">
                 Our friendly team would love to hear from you
             </p>

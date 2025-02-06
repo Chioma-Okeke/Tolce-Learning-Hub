@@ -178,7 +178,7 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                 <img src={Logo} alt="" className="w-32" />
                             </a>
                             <div
-                                onClick={() => setShowNavItems(false)}
+                                onClick={() => setShowNav(false)}
                                 className="block lg:hidden"
                             >
                                 <AiOutlineClose
@@ -200,10 +200,6 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                                     x: "-100%",
                                                 }}
                                                 animate={{ opacity: 1, x: 0 }}
-                                                exit={{
-                                                    opacity: 0,
-                                                    x: "-100%",
-                                                }}
                                                 transition={{
                                                     duration: 1,
                                                     ease: "easeInOut",
@@ -239,10 +235,6 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
                                             x: "-100%",
                                         }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        exit={{
-                                            opacity: 0,
-                                            x: "-100%",
-                                        }}
                                         transition={{
                                             duration: 1,
                                             ease: "easeInOut",

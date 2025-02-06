@@ -1,6 +1,3 @@
-// import React from 'react'
-
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import JoinUs from "./JoinUs";
 import { Link } from "react-router-dom";
 import { contactLinks, quickLinks } from "../data/locationData";
@@ -45,7 +42,7 @@ function Footer() {
                     </div>
                     <div>
                         <h4 className="font-bold mb-4">Contact Info</h4>
-                        <address className="not-italic">
+                        <address className="not-italic flex flex-col">
                             <a
                                 href="mailto:tolcelearninghub@gmail.com"
                                 target="_blank"
@@ -53,7 +50,7 @@ function Footer() {
                             >
                                 tolcelearninghub@gmail.com
                             </a>
-                            <p>+234 814 627 3427</p>
+                            <a href="tel:+2348146273427">+234 814 627 3427</a>
                         </address>
                     </div>
                 </div>

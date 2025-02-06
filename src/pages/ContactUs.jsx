@@ -1,30 +1,25 @@
-/* eslint-disable react/no-unknown-property */
-// import React, { useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import Footer from "../components/Footer";
-import JoinUs from "../components/JoinUs";
-import Nav from "../components/Nav";
 import image from "../assets/Hero/Contact_us.png";
-import BackToTop from "../components/BackToTop";
 import ContactForm from "../components/ContactForm";
 import { useEffect, useState } from "react";
 import AnimatedSection from "../components/shared/AnimatedSection";
 import { BiEnvelope, BiPhone } from "react-icons/bi";
-import { PiHouse } from "react-icons/pi";
 import Modal from "../components/reusables/Modal";
+import SearchEngineConfig from "../SEO";
 
 const contactInfo = [
     {
         title: "Email Support",
         description: "Our team can respond in real time.",
         Icon: BiEnvelope,
-        contact: "tolcelearninghub@gmail.com"
+        contact: "tolcelearninghub@gmail.com",
     },
     {
         title: "Call Us Directly",
         description: "Available during work hours",
         Icon: BiPhone,
-        contact: "+234 814 627 3427"
+        contact: "+234 814 627 3427",
     },
 ];
 
@@ -49,6 +44,12 @@ function ContactUs() {
 
     return (
         <div>
+            <SearchEngineConfig
+                title="Contact Tolce Learning hub via email and phone number found here"
+                description="Learn more about Tolce Learning Hub and our mission to empower learners."
+                url="https://tolcelearninghub.netlify.app/contact"
+                image="https://tolcelearninghub.netlify.app/Core_values_3.png"
+            />
             <AnimatedSection className="w-[90%] max-w-[1100px] md:w-[95%] mx-auto my-2">
                 <div className="flex flex-col md:flex-row gap-4 lg:gap-10 max-w-[1440px] mx-auto py-12 sm:py-20 sm:pb-10">
                     <div className="flex-1">
@@ -68,18 +69,23 @@ function ContactUs() {
                     </div>
                 </div>
                 <div className="py-12 sm:py-20 text-base lg:text-lg flex flex-col gap-20 md:flex-row md:items-center">
-                    {contactInfo.map(({ title, description, Icon, contact }, index) => {
-                        return (
-                            <div key={index} className="flex flex-col gap-2">
-                                <div className="bg-[#EAF6F2] rounded-full w-fit p-3">
-                                    <Icon className="w-8 h-8 text-[#3A8DFF]" />
+                    {contactInfo.map(
+                        ({ title, description, Icon, contact }, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className="flex flex-col gap-2"
+                                >
+                                    <div className="bg-[#EAF6F2] rounded-full w-fit p-3">
+                                        <Icon className="w-8 h-8 text-[#3A8DFF]" />
+                                    </div>
+                                    <p className="font-bold mt-2">{title}</p>
+                                    <p>{description}</p>
+                                    <p>{contact}</p>
                                 </div>
-                                <p className="font-bold mt-2">{title}</p>
-                                <p>{description}</p>
-                                <p>{contact}</p>
-                            </div>
-                        );
-                    })}
+                            );
+                        }
+                    )}
                 </div>
             </AnimatedSection>
             {showSuccessModal && (

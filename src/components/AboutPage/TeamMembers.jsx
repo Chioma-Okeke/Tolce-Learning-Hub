@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { teamLeadersImages, teamMembers } from "../../data/homeData";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { AnimatePresence, motion } from "framer-motion";
@@ -115,7 +115,7 @@ function TeamMembers() {
                                 className="text-center md:text-left"
                             >
                                 <p className="mb-4 ">
-                                    "{focusedMember.message}"
+                                    &quot;{focusedMember.message}&quot;
                                 </p>
                                 <p className="font-bold mb-1">
                                     - {focusedMember.name}

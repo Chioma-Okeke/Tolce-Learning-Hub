@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-// import image from "../assets/outreach-1.jpg";
+import { useEffect, useRef, useState } from "react";
 import videoSrc from "../assets/outreaches/outreach-hero-video.mp4";
-// import videoEmpowerment from "../assets/outreaches/outreach-section-video.mp4";
 import { useDispatch } from "react-redux";
 import { setTransparentNav } from "../store/navSlice";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,7 +21,6 @@ function Outreaches() {
     const [isLocked, setIsLocked] = useState(true);
     const dispatch = useDispatch();
     const [visibleImagesLimit, setVisibleImagesLimit] = useState(4);
-    const [currentExpandedImage, setCurrentExpandedImage] = useState("");
     const [focusedIndex, setFocusedIndex] = useState(null);
     const imageContainerRef = useRef(null);
     const expandedImage =
@@ -200,7 +197,7 @@ function Outreaches() {
                                                         duration: 0.4,
                                                         ease: "easeInOut",
                                                     }}
-                                                    className="relative group overflow-hidden rounded-lg"
+                                                    className="relative group overflow-hidden rounded-lg w-full h-[225px] bg-slate-300"
                                                 >
                                                     <img
                                                         onClick={() => {
@@ -209,7 +206,6 @@ function Outreaches() {
                                                             );
                                                             setIsLocked(true);
                                                         }}
-                                                        loading="lazy"
                                                         src={image.imageLink}
                                                         alt={`${image.title} ${
                                                             imageIndex + 1
