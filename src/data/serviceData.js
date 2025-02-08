@@ -1,11 +1,11 @@
-import image1 from "../assets/outreaches/outreach-1.jpg";
-import image2 from "../assets/outreaches/outreach-2.jpg";
-import image3 from "../assets/outreaches/outreach-3.jpg";
-import image4 from "../assets/outreaches/outreach-4.jpg";
-import image5 from "../assets/outreaches/outreach-5.jpg";
-import image6 from "../assets/outreaches/outreach-6.jpg";
-import image7 from "../assets/outreaches/outreach-7.jpg";
-import image8 from "../assets/outreaches/outreach-8.jpg";
+// import image1 from "../assets/outreaches/outreach-1.jpg";
+// import image2 from "../assets/outreaches/outreach-2.jpg";
+// import image3 from "../assets/outreaches/outreach-3.jpg";
+// import image4 from "../assets/outreaches/outreach-4.jpg";
+// import image5 from "../assets/outreaches/outreach-5.jpg";
+// import image6 from "../assets/outreaches/outreach-6.jpg";
+// import image7 from "../assets/outreaches/outreach-7.jpg";
+// import image8 from "../assets/outreaches/outreach-8.jpg";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
@@ -84,34 +84,34 @@ export const sellingPoints = [
 export const galleryCategoriesImages = [
     {
         id: 1,
-        imageLink: image1,
+        imageLink: "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048056/outreach-1.jpg",
     },
     {
         id: 2,
-        imageLink: image2,
+        imageLink: "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048056/outreach-2.jpg",
     },
     {
         id: 3,
-        imageLink: image3,
+        imageLink: "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048056/outreach-3.jpg",
     },
     {
         id: 4,
-        imageLink: image4,
+        imageLink: "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048057/outreach-4.jpg",
     },
     {
         id: 5,
-        imageLink: image5,
+        imageLink: "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048058/outreach-5.jpg",
     },
     {
         id: 6,
-        imageLink: image6,
+        imageLink: "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048058/outreach-6.jpg",
     },
     {
         id: 7,
-        imageLink: image7,
+        imageLink: "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048058/outreach-7.jpg",
     },
     {
         id: 8,
-        imageLink: image8,
+        imageLink: "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048059/outreach-8.jpg",
     },
 ];

@@ -56,7 +56,6 @@ function ContactUs() {
                         <img
                             src={image}
                             alt=""
-                            loading="lazy"
                             className="h-[250px] w-full object-cover object-center md:h-full"
                         />
                     </div>

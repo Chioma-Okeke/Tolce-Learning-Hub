@@ -179,26 +179,11 @@ function Outreaches() {
                                         {galleryCategoriesImages
                                             .slice(0, visibleImagesLimit)
                                             .map((image, imageIndex) => (
-                                                <motion.div
+                                                <div
                                                     key={imageIndex}
-                                                    initial={{
-                                                        opacity: 0,
-                                                        scale: 0.9,
-                                                    }}
-                                                    animate={{
-                                                        opacity: 1,
-                                                        scale: 1,
-                                                    }}
-                                                    exit={{
-                                                        opacity: 0,
-                                                        scale: 0.9,
-                                                    }}
-                                                    transition={{
-                                                        duration: 0.4,
-                                                        ease: "easeInOut",
-                                                    }}
-                                                    className="relative group overflow-hidden rounded-lg w-full h-[225px] bg-slate-300"
+                                                    className="relative group overflow-hidden rounded-lg w-full min-h-[225px] bg-slate-300"
                                                 >
+                                                    {!image.imageLink && <div className="animate-pulse bg-gray-400 w-full h-full"></div>}
                                                     <img
                                                         onClick={() => {
                                                             setFocusedIndex(
@@ -210,14 +195,15 @@ function Outreaches() {
                                                         alt={`${image.title} ${
                                                             imageIndex + 1
                                                         }`}
-                                                        className="cursor-pointer w-full h-[225px] object-cover transition-transform duration-300 hover:scale-110"
+                                                        loading="lazy"
+                                                        className="w-full h-full object-cover transition-opacity duration-500 opacity-0 hover:scale-110"
+                                                        onLoad={(e) =>
+                                                            e.currentTarget.classList.remove(
+                                                                "opacity-0"
+                                                            )
+                                                        }
                                                     />
-                                                    {/* <div className="cursor-pointer absolute inset-0 bg-blue-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                                    <span className="text-white text-lg font-semibold">
-                                                        View More
-                                                    </span>
-                                                </div> */}
-                                                </motion.div>
+                                                </div>
                                             ))}
                                     </AnimatePresence>
                                 </div>

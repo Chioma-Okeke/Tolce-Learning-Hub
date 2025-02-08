@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-// import Image from "../assets/get-started/image1.png";
-// import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { testimonialData } from "../data/TestimonialData";
-// import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import Banner from "./Banner";
-// import { Autoplay, EffectFade } from "swiper/modules";
 
 function Testimonials() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,27 +10,12 @@ function Testimonials() {
     const containerRef = useRef(null);
     const testimonialRef = useRef([]);
     const intervalRef = useRef(null);
-    const cardWidth = 300; // Adjust this based on your card width in pixels
-    const totalWidth = testimonialData.length * 2 * cardWidth;
-
-    const keyframes = {
-        scroll: {
-            "0%": { transform: "translateX(0)" },
-            "100%": {
-                transform: `translateX(-${
-                    (100 * totalWidth) / window.innerWidth
-                }%)`,
-            },
-        },
-    };
 
     function scrollToCard(index) {
         const container = containerRef.current;
         if (container) {
-            const containerWidth = container.offsetWidth; // Visible width of the container
-            const cardWidth = container.scrollWidth / testimonialData.length; // Width of a single testimonial card
-
-            // Calculate the scroll amount to center the current index item
+            const containerWidth = container.offsetWidth; 
+            const cardWidth = container.scrollWidth / testimonialData.length;
             const scrollAmount =
                 index * cardWidth - (containerWidth - cardWidth) / 2;
 

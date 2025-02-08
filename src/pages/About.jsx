@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import MissionAndValues from "../components/MissionAndValues";
 import TeamMembers from "../components/AboutPage/TeamMembers";
 import backgroundPicture from "../assets/backgroundpattern.svg";
-import Team from "../assets/Hero/Core_values_3.png";
+// import Team from "../assets/Hero/Core_values_3.png";
 import AnimatedSection from "../components/shared/AnimatedSection";
 import SearchEngineConfig from "../SEO";
 
@@ -89,7 +89,7 @@ function About() {
                         </div>
                         <div className="flex-1">
                             <img
-                                src={Team}
+                                src="https://res.cloudinary.com/djrp3aaq9/image/upload/v1739046329/core-values-3.jpg"
                                 alt="Our Team"
                                 loading="lazy"
                                 className="bg-white object-cover object-center lg:w-[80%] mx-auto lg:h-[350px] xl:h-[400px] 2xl:h-[450px] shadow-lg"

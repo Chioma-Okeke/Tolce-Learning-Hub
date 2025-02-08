@@ -45,7 +45,7 @@ function TeamMembers() {
     useEffect(() => {
         startAutoTransition();
 
-        return () => stopAutoTransition(); // Cleanup on component unmount
+        return () => stopAutoTransition();
     }, []);
 
     const focusedMember = teamMembers[focusedIndex];
@@ -104,7 +104,7 @@ function TeamMembers() {
                     >
                         <AnimatePresence mode="wait">
                             <motion.div
-                                key={focusedIndex} // Use focusedIndex for unique key
+                                key={focusedIndex}
                                 initial={{ opacity: 0.5 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0.5 }}
@@ -130,7 +130,7 @@ function TeamMembers() {
                 <div className="flex-1">
                     <AnimatePresence mode="wait">
                         <motion.img
-                            key={focusedIndex} // Use focusedIndex for unique key
+                            key={focusedIndex}
                             src={focusedMember.imgSrc}
                             alt={focusedMember.name}
                             initial={{ opacity: 0.5 }}
