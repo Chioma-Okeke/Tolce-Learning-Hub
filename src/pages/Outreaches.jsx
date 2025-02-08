@@ -19,6 +19,7 @@ const stats = [
 function Outreaches() {
     const [animate, setAnimate] = useState(false);
     const [isLocked, setIsLocked] = useState(true);
+    const [isLoading, setIsLoading] = useState(true)
     const dispatch = useDispatch();
     const [visibleImagesLimit, setVisibleImagesLimit] = useState(4);
     const [focusedIndex, setFocusedIndex] = useState(null);
@@ -181,9 +182,9 @@ function Outreaches() {
                                             .map((image, imageIndex) => (
                                                 <div
                                                     key={imageIndex}
-                                                    className="relative group overflow-hidden rounded-lg w-full min-h-[225px] bg-slate-300"
+                                                    className="relative group overflow-hidden rounded-lg w-full h-[225px]"
                                                 >
-                                                    {!image.imageLink && <div className="animate-pulse bg-gray-400 w-full h-full"></div>}
+                                                    {isLoading && <div className="animate-pulse bg-gray-200 w-full h-full"></div>}
                                                     <img
                                                         onClick={() => {
                                                             setFocusedIndex(
@@ -198,9 +199,12 @@ function Outreaches() {
                                                         loading="lazy"
                                                         className="w-full h-full object-cover transition-opacity duration-500 opacity-0 hover:scale-110"
                                                         onLoad={(e) =>
+                                                            {
+                                                            setIsLoading(false)
                                                             e.currentTarget.classList.remove(
                                                                 "opacity-0"
                                                             )
+                                                        }
                                                         }
                                                     />
                                                 </div>
