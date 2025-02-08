@@ -92,7 +92,8 @@ function Testimonials() {
                                 <img
                                     src={testimonial.image}
                                     alt={testimonial.name}
-                                    className="rounded-full w-[60%] sm:w-[20%] "
+                                    loading="lazy"
+                                    className="rounded-full w-[60%] sm:w-[20%] bg-slate-100"
                                 />
                                 <div>
                                     <p className="font-bold">

@@ -1,11 +1,3 @@
-// import image1 from "../assets/outreaches/outreach-1.jpg";
-// import image2 from "../assets/outreaches/outreach-2.jpg";
-// import image3 from "../assets/outreaches/outreach-3.jpg";
-// import image4 from "../assets/outreaches/outreach-4.jpg";
-// import image5 from "../assets/outreaches/outreach-5.jpg";
-// import image6 from "../assets/outreaches/outreach-6.jpg";
-// import image7 from "../assets/outreaches/outreach-7.jpg";
-// import image8 from "../assets/outreaches/outreach-8.jpg";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaGraduationCap } from "react-icons/fa";
 import { VscWorkspaceTrusted } from "react-icons/vsc";

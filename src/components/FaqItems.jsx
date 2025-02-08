@@ -30,7 +30,7 @@ const FaqItems = ({
                         return (
                             <li
                                 key={index}
-                                className="flex items-center gap-3 "
+                                className="flex gap-3 "
                             >
                                 <FiCheckCircle
                                     size={18}
@@ -81,7 +81,10 @@ const FaqItems = ({
 
 FaqItems.propTypes = {
     question: PropTypes.string,
-    index: PropTypes.number
+    index: PropTypes.number,
+    answer: PropTypes.array,
+    currentIndex: PropTypes.number,
+    setCurrentIndex: PropTypes.func
 }
 
 export default FaqItems;

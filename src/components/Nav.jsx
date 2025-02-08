@@ -26,11 +26,6 @@ function Nav({ handleNavToggle, showNav, setShowNav }) {
         (state) => state.navigation.isTransparent
     );
     const { pathname } = useLocation();
-    console.log(pathname, "paht name here");
-
-    const closeNav = () => {
-        setShowNavItems(false);
-    };
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {

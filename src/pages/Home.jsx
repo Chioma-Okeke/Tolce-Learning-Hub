@@ -6,7 +6,6 @@ import Testimonials from "../components/Testimonials";
 import HeroSection from "../components/HeroSection";
 import LearnMoreImage from "../assets/Hero/focusing-image.png";
 import { useNavigate } from "react-router-dom";
-import outreachesImage from "../assets/outreaches/outreach-1.jpg";
 import skillImage from "../assets/skill-acquisition-1.jpg";
 import { motion, useAnimation } from "framer-motion";
 import AnimatedSection from "../components/shared/AnimatedSection";
@@ -155,7 +154,7 @@ const LandingPage = () => {
                                     <img
                                         src={
                                             index === 0
-                                                ? outreachesImage
+                                                ? "https://res.cloudinary.com/djrp3aaq9/image/upload/v1739048056/outreach-1.jpg"
                                                 : skillImage
                                         }
                                         alt={

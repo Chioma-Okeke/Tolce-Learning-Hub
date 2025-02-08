@@ -70,7 +70,7 @@ const SkillAcquisitionPage = () => {
         navigate("/services");
     }
 
-    const openEnrollmentForm = () => {
+    const openEnrollmentModal = () => {
         setShowEnrollModal(true);
         dispatch(setIsLocked(true));
     };
@@ -82,10 +82,10 @@ const SkillAcquisitionPage = () => {
                 <div className="absolute inset-0 bg-black/30" />
                 <AnimatedSection>
                     <div className="relative z-10 text-center px-4">
-                        <h1 className="text-5xl font-bold text-white mb-4">
+                        <h1  className="font-bold text-center text-4xl sm:text-4xl md:text-5xl lg:text-6xl text-white w-full mb-5 md:mb-9 leading-12">
                             Skill Acquisition Program
                         </h1>
-                        <p className="text-2xl text-white max-w-3xl mx-auto">
+                        <p className="mt-6 text-xl md:text-2xl text-white leading-[1.5]">
                             Empowering Students with Comprehensive Technical and
                             Soft Skills
                         </p>
@@ -211,7 +211,7 @@ const SkillAcquisitionPage = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <button
-                                onClick={openEnrollmentForm}
+                                onClick={openEnrollmentModal}
                                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-200 transition-colors ease-in-out duration-500"
                             >
                                 Enroll Now
@@ -235,42 +235,64 @@ const SkillAcquisitionPage = () => {
                     }}
                 >
                     <AnimatePresence>
-                        <motion.div
-                            initial={{ x: "100%", opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: "-100%", opacity: 0 }}
-                            transition={{ duration: 0.5 }}
+                        <div
+                            // initial={{ x: "100%", opacity: 0 }}
+                            // animate={{ x: 0, opacity: 1 }}
+                            // exit={{ x: "-100%", opacity: 0 }}
+                            // transition={{ duration: 0.5 }}
                             className="w-[80%] lg:w-[600px] h-fit mx-auto bg-white shadow-xl rounded-xl relative p-5 md:p-10 flex flex-col items-center justify-center"
                         >
                             <IoClose
                                 onClick={() => {
                                     setShowEnrollModal(false);
                                     dispatch(setIsLocked(false));
+                                    setShowEnrollForm(false)
                                 }}
                                 size={25}
                                 cursor={"pointer"}
                                 className="absolute right-2 top-2 mb-11 transition ease-out hover:text-[#0020F1]"
                             />
-                            {showEnrollForm ? (
-                                <div className="flex flex-col items-center justify-cente">
+                            {!showEnrollForm ? (
+                                <motion.div
+                                    initial={{ x: "15%", opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    exit={{ x: "-15%", opacity: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="flex flex-col items-center justify-center"
+                                >
                                     <h2 className="font-semibold text-2xl lg:text-4xl pb-[10px] lg:py-6 xl:text-[40px] text-center">
                                         Select a Package
                                     </h2>
                                     <div className="flex items-center gap-2">
-                                        <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#0020F1] hover:text-white transition-colors ease-in-out duration-500">
+                                        <button onClick={setShowEnrollForm(true)} className="bg-white text-[#0020F1] border-[#0020F1] border-2 shadow-md px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#0020F1] hover:text-white transition-colors ease-in-out duration-500">
                                             Student Package
                                         </button>
-                                        <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#0020F1] hover:text-white transition-colors ease-in-out duration-500">
+                                        <button onClick={setShowEnrollForm(true)} className="bg-white text-[#0020F1] border-[#0020F1] border-2 shadow-md px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#0020F1] hover:text-white transition-colors ease-in-out duration-500">
                                             Professional Package
                                         </button>
                                     </div>
-                                </div>
+                                </motion.div>
                             ) : (
-                                <div>
-                                    
-                                </div>
+                                <motion.div
+                                    initial={{ x: "15%", opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    exit={{ x: "-15%", opacity: 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="flex items-center justify-center"
+                                >
+                                    <iframe
+                                        src="https://docs.google.com/forms/d/e/1FAIpQLSf1f1A-nd8tE0fDzLi7tqBKbXg4Zxz6KcokHkj1JRaQhXp8Mw/viewform?embedded=true"
+                                        width="640"
+                                        height="500"
+                                        frameborder="0"
+                                        marginheight="0"
+                                        marginwidth="0"
+                                    >
+                                        <div className="w-14 animate-pulse h-14 rounded-full"></div>
+                                    </iframe>
+                                </motion.div>
                             )}
-                        </motion.div>
+                        </div>
                     </AnimatePresence>
                 </Modal>
             )}
